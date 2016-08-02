@@ -1,5 +1,5 @@
 
-package ohha.puzzlecrafter;
+package ohha.puzzlecrafter.grid;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,23 +10,24 @@ public class GridTest {
     
     private Grid grid;
     
+    
     @Before
     public void setUp() {
         grid = new Grid(4, 5);
         
-        grid.setCell(0, 0, 1);
-        grid.setCell(2, 0, 2);
-        grid.setCell(3, 0, 3);
+        grid.setCell(new Cell(0, 0), 1);
+        grid.setCell(new Cell(2, 0), 2);
+        grid.setCell(new Cell(3, 0), 3);
         
-        grid.setCell(0, 1, 1);
-        grid.setCell(1, 1, 2);
-        grid.setCell(4, 1, 2);
+        grid.setCell(new Cell(0, 1), 1);
+        grid.setCell(new Cell(1, 1), 2);
+        grid.setCell(new Cell(4, 1), 2);
         
-        grid.setCell(2, 2, 3);
-        grid.setCell(4, 2, -1);
+        grid.setCell(new Cell(2, 2), 3);
+        grid.setCell(new Cell(4, 2), -1);
         
-        grid.setCell(3, 3, -1);
-        grid.setCell(4, 3, -1);
+        grid.setCell(new Cell(3, 3), -1);
+        grid.setCell(new Cell(4, 3), -1);
         /*
         1 0 2 3 0
         1 2 0 0 2
@@ -48,36 +49,36 @@ public class GridTest {
     
     @Test
     public void duplicatedNumberOnRowIsReportedAsDuplicated() {
-        assertTrue(grid.duplicatedOnRow(1, 1));
+        assertTrue(grid.isDuplicatedOnRow(new Cell(1, 1)));
     }
     @Test
     public void uniqueNumberOnRowIsNotReportedAsDuplicated() {
-        assertFalse(grid.duplicatedOnRow(0, 0));
+        assertFalse(grid.isDuplicatedOnRow(new Cell(0, 0)));
     }
     @Test
     public void undeterminedCellOnRowIsNotReportedAsDuplicated() {
-        assertFalse(grid.duplicatedOnRow(1, 0));
+        assertFalse(grid.isDuplicatedOnRow(new Cell(1, 0)));
     }
     @Test
     public void emptyCellOnRowIsNotReportedAsDuplicated() {
-        assertFalse(grid.duplicatedOnRow(3, 3));
+        assertFalse(grid.isDuplicatedOnRow(new Cell(3, 3)));
     }
     
     
     @Test
     public void duplicatedNumberOnColumnIsReportedAsDuplicated() {
-        assertTrue(grid.duplicatedOnColumn(0, 1));
+        assertTrue(grid.isDuplicatedOnColumn(new Cell(0, 1)));
     }
     @Test
     public void uniqueNumberOnColumnIsNotReportedAsDuplicated() {
-        assertFalse(grid.duplicatedOnColumn(1, 1));
+        assertFalse(grid.isDuplicatedOnColumn(new Cell(1, 1)));
     }
     @Test
     public void undeterminedCellOnColumnIsNotReportedAsDuplicated() {
-        assertFalse(grid.duplicatedOnColumn(1, 2));
+        assertFalse(grid.isDuplicatedOnColumn(new Cell(1, 2)));
     }
     @Test
     public void emptyCellOnColumnIsNotReportedAsDuplicated() {
-        assertFalse(grid.duplicatedOnColumn(4, 3));
+        assertFalse(grid.isDuplicatedOnColumn(new Cell(4, 3)));
     }
 }

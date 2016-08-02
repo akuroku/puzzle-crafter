@@ -1,6 +1,7 @@
 
 package ohha.puzzlecrafter;
 
+import ohha.puzzlecrafter.grid.Grid;
 import java.util.List;
 import java.util.LinkedList;
 
@@ -26,8 +27,8 @@ public class Skyscrapers implements Puzzle {
     
     
     @Override
-    public boolean isValidState(int x, int y) {
-        if (grid.duplicatedOnRow(x, y) || grid.duplicatedOnColumn(x, y)) {
+    public boolean isPartialSolution(int x, int y) {
+        if (grid.isDuplicatedOnRow(x, y) || grid.isDuplicatedOnColumn(x, y)) {
             return false;
         }
         return true;
