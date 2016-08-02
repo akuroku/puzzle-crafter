@@ -83,7 +83,7 @@ public class GridTest {
     }
     @Test
     public void emptyCellIsNotReportedAsFilled() {
-        assertFalse(grid.isFilledIn(new Cell(4, 4)));
+        assertFalse(grid.isFilledIn(new Cell(3, 3)));
     }
     
     
