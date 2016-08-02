@@ -50,6 +50,11 @@ public class CellTest {
         assertFalse(a.equals(null));
     }
     
+    @Test
+    public void equalsDoesntEquateWithObjectOfDifferentType() {
+        assertFalse(a.equals(new int[] {1}));
+    }
+    
     
     @Test
     public void equalsIsConsistentWhenReturningTrue() {

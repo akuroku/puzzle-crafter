@@ -48,6 +48,46 @@ public class GridTest {
     
     
     @Test
+    public void undeterminedCellIsReportedAsUndetermined() {
+        assertTrue(grid.isUndetermined(new Cell(1, 0)));
+    }
+    @Test
+    public void filledCellIsNotReportedAsUndetermined() {
+        assertFalse(grid.isUndetermined(new Cell(0, 0)));
+    }
+    @Test
+    public void emptyCellIsNotReportedAsUndetermined() {
+        assertFalse(grid.isUndetermined(new Cell(3, 3)));
+    }
+    
+    @Test
+    public void emptyCellIsReportedAsEmpty() {
+        assertTrue(grid.isEmpty(new Cell(3, 3)));
+    }
+    @Test
+    public void undeterminedCellIsNotReportedAsEmpty() {
+        assertFalse(grid.isEmpty(new Cell(1, 0)));
+    }
+    @Test
+    public void filledCellisNotReportedAsEmpty() {
+        assertFalse(grid.isEmpty(new Cell(0, 0)));
+    }
+    
+    @Test
+    public void filledCellIsReportedAsFilled() {
+        assertTrue(grid.isFilledIn(new Cell(0, 0)));
+    }
+    @Test
+    public void undeterminedCellIsNotReportedAsFilled() {
+        assertFalse(grid.isFilledIn(new Cell(1, 0)));
+    }
+    @Test
+    public void emptyCellIsNotReportedAsFilled() {
+        assertFalse(grid.isFilledIn(new Cell(4, 4)));
+    }
+    
+    
+    @Test
     public void duplicatedNumberOnRowIsReportedAsDuplicated() {
         assertTrue(grid.isDuplicatedOnRow(new Cell(1, 1)));
     }

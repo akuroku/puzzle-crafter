@@ -70,6 +70,11 @@ public class RegionTest {
     }
     
     @Test
+    public void equalsDoesntEquateWithObjectOfDifferentType() {
+        assertFalse(a.equals(s));
+    }
+    
+    @Test
     public void equalsDoesntEquateWithRegionOfDifferentSize() {
         assertFalse(a.equals(c));
     }
