@@ -1,0 +1,1461 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+	border: 1px solid #dddddd;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-family: Consolas, Courier, monospace;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>Grid.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package ohha.puzzlecrafter.grid;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Grid {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private int[][] grid;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_10'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Grid(int height, int width) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_11'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        grid = new int[height][width];</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_12'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getHeight() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_16'/>
+16
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_16'>1</a>
+<span>
+
+1. getHeight : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return grid.length;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getWidth() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_20'/>
+20
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_20'>1</a>
+<span>
+
+1. getWidth : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return grid[0].length;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setCell(Cell c, int v) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_24'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        grid[c.getY()][c.getX()] = v;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_25'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getValueAt(Cell c) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_28'/>
+28
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_28'>1</a>
+<span>
+
+1. getValueAt : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return grid[c.getY()][c.getX()];</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean isUndetermined(Cell c) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_33'/>
+33
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_33'>2</a>
+<span>
+
+1. isUndetermined : negated conditional &rarr; KILLED<br/>
+
+2. isUndetermined : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return getValueAt(c) == 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean isEmpty(Cell c) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_37'/>
+37
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_37'>2</a>
+<span>
+
+1. isEmpty : negated conditional &rarr; KILLED<br/>
+
+2. isEmpty : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return getValueAt(c) == -1;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean isFilledIn(Cell c) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_41'/>
+41
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_41'>3</a>
+<span>
+
+1. isFilledIn : changed conditional boundary &rarr; KILLED<br/>
+
+2. isFilledIn : negated conditional &rarr; KILLED<br/>
+
+3. isFilledIn : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return getValueAt(c) &#62; 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean isDuplicatedOnRow(Cell c) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_46'/>
+46
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_46'>1</a>
+<span>
+
+1. isDuplicatedOnRow : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (!isFilledIn(c)) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_47'/>
+47
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_47'>1</a>
+<span>
+
+1. isDuplicatedOnRow : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return false;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_50'/>
+50
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_50'>3</a>
+<span>
+
+1. isDuplicatedOnRow : changed conditional boundary &rarr; KILLED<br/>
+
+2. isDuplicatedOnRow : Changed increment from 1 to -1 &rarr; KILLED<br/>
+
+3. isDuplicatedOnRow : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; getWidth(); i++) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_51'/>
+51
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_51'>1</a>
+<span>
+
+1. isDuplicatedOnRow : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (i == c.getX()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_52'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                continue;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_54'/>
+54
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_54'>1</a>
+<span>
+
+1. isDuplicatedOnRow : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (getValueAt(c) == getValueAt(c.switchX(i))) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_55'/>
+55
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_55'>1</a>
+<span>
+
+1. isDuplicatedOnRow : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return true;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_58'/>
+58
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_58'>1</a>
+<span>
+
+1. isDuplicatedOnRow : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return false;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean isDuplicatedOnColumn(Cell c) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_62'/>
+62
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_62'>1</a>
+<span>
+
+1. isDuplicatedOnColumn : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (!isFilledIn(c)) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_63'/>
+63
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_63'>1</a>
+<span>
+
+1. isDuplicatedOnColumn : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return false;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_65'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_66'/>
+66
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_66'>3</a>
+<span>
+
+1. isDuplicatedOnColumn : changed conditional boundary &rarr; KILLED<br/>
+
+2. isDuplicatedOnColumn : Changed increment from 1 to -1 &rarr; KILLED<br/>
+
+3. isDuplicatedOnColumn : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; getHeight(); i++) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_67'/>
+67
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_67'>1</a>
+<span>
+
+1. isDuplicatedOnColumn : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (i == c.getY()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_68'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                continue;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_69'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_70'/>
+70
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_70'>1</a>
+<span>
+
+1. isDuplicatedOnColumn : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (getValueAt(c) == getValueAt(c.switchY(i))) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_71'/>
+71
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_71'>1</a>
+<span>
+
+1. isDuplicatedOnColumn : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return true;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_74'/>
+74
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_74'>1</a>
+<span>
+
+1. isDuplicatedOnColumn : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return false;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_75'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@54d8c20d_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_76'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_16'>16</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_16'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getHeight<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.constructorInitialisesCorrectHeight(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_20'>20</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_20'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getWidth<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.constructorInitialisesCorrectWidth(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_28'>28</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_28'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getValueAt<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.emptyCellIsReportedAsEmpty(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_33'>33</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_33'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isUndetermined<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.emptyCellIsNotReportedAsUndetermined(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isUndetermined<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.emptyCellIsNotReportedAsUndetermined(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_37'>37</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_37'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isEmpty<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.emptyCellIsReportedAsEmpty(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isEmpty<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.emptyCellIsReportedAsEmpty(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_41'>41</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_41'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isFilledIn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.undeterminedCellIsNotReportedAsFilled(ohha.puzzlecrafter.grid.GridTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isFilledIn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.undeterminedCellIsNotReportedAsFilled(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isFilledIn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.undeterminedCellIsNotReportedAsFilled(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_46'>46</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_46'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnRow<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.emptyCellOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_47'>47</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_47'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnRow<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.emptyCellOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_50'>50</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_50'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnRow<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isDuplicatedOnRow<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isDuplicatedOnRow<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.duplicatedNumberOnRowIsReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_51'>51</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_51'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnRow<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_54'>54</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_54'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnRow<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_55'>55</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_55'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnRow<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.duplicatedNumberOnRowIsReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_58'>58</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_58'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnRow<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_62'>62</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_62'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnColumn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.emptyCellOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_63'>63</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_63'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnColumn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.emptyCellOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_66'>66</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_66'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnColumn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isDuplicatedOnColumn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isDuplicatedOnColumn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.duplicatedNumberOnColumnIsReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_67'>67</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_67'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnColumn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_70'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnColumn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_71'>71</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_71'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnColumn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.duplicatedNumberOnColumnIsReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@54d8c20d_74'>74</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@54d8c20d_74'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isDuplicatedOnColumn<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>ohha.puzzlecrafter.grid.PartitionGridTest.createRectangularPartitionMakesBottomRightRegion(ohha.puzzlecrafter.grid.PartitionGridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.createRectangularPartitionMakesBottomLeftRegion(ohha.puzzlecrafter.grid.PartitionGridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.undeterminedCellIsReportedAsUndetermined(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.createRectangularPartitionMakesCorrectAmountOfRegions(ohha.puzzlecrafter.grid.PartitionGridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.undeterminedCellOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.duplicatedNumberOnRowIsReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest) (3 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.undeterminedCellOnRegionIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.PartitionGridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.emptyCellOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.undeterminedCellIsNotReportedAsFilled(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.nullRegionIsReturnedWhenCellIsInNoRegion(ohha.puzzlecrafter.grid.PartitionGridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.uniqueNumberOnRegionIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.PartitionGridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.filledCellIsReportedAsFilled(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.undeterminedCellOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.uniqueNumberOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.emptyCellOnRegionIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.PartitionGridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.createRectangularPartitionMakesMidRightRegion(ohha.puzzlecrafter.grid.PartitionGridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.emptyCellIsNotReportedAsFilled(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.emptyCellIsNotReportedAsUndetermined(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.duplicatedNumberOnRegionIsReportedAsDuplicated(ohha.puzzlecrafter.grid.PartitionGridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.emptyCellOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.filledCellisNotReportedAsEmpty(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.createRectangularPartitionMakesTopLeftRegion(ohha.puzzlecrafter.grid.PartitionGridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.undeterminedCellIsNotReportedAsEmpty(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.constructorInitialisesCorrectWidth(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.createRectangularPartitionMakesTopRightRegion(ohha.puzzlecrafter.grid.PartitionGridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.correctContainingRegionOfCellIsReturned(ohha.puzzlecrafter.grid.PartitionGridTest) (48 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.emptyCellIsReportedAsEmpty(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.filledCellIsNotReportedAsUndetermined(ohha.puzzlecrafter.grid.GridTest) (3 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.duplicatedNumberOnColumnIsReportedAsDuplicated(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.constructorInitialisesCorrectHeight(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionGridTest.createRectangularPartitionMakesMidLeftRegion(ohha.puzzlecrafter.grid.PartitionGridTest) (3 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.8
+
+</body>
+</html>
