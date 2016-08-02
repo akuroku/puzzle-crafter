@@ -14,10 +14,10 @@ public class PartitionGrid extends Grid {
     }
     
     // initialise grid with rectangular regions with dimensions height and width
-    public PartitionGrid(int grid_height, int grid_width, int region_height, int region_width) {
-        super(grid_height, grid_width);
+    public PartitionGrid(int gridHeight, int gridWidth, int regionHeight, int regionWidth) {
+        super(gridHeight, gridWidth);
         this.partition = new Partition();
-        partition.createRectangularPartition(region_height, region_width, getHeight() / region_height, getWidth() / region_width);
+        partition.createRectangularPartition(regionHeight, regionWidth, getHeight() / regionHeight, getWidth() / regionWidth);
     }
     
     public Partition getPartition() {

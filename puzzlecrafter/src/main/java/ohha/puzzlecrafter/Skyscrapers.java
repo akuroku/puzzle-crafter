@@ -2,8 +2,10 @@
 package ohha.puzzlecrafter;
 
 import ohha.puzzlecrafter.grid.Grid;
+import ohha.puzzlecrafter.grid.Cell;
 import java.util.List;
 import java.util.LinkedList;
+
 
 public class Skyscrapers implements Puzzle {
     
@@ -27,8 +29,8 @@ public class Skyscrapers implements Puzzle {
     
     
     @Override
-    public boolean isPartialSolution(int x, int y) {
-        if (grid.isDuplicatedOnRow(x, y) || grid.isDuplicatedOnColumn(x, y)) {
+    public boolean isPartialSolution(Cell c) {
+        if (grid.isDuplicatedOnRow(c) || grid.isDuplicatedOnColumn(c)) {
             return false;
         }
         return true;

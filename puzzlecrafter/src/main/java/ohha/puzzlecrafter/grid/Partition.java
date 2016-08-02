@@ -29,21 +29,25 @@ public class Partition {
     }
     
     
-    public void createRectangularPartition(int region_height, int region_width, int partition_height, int partition_width) {
+    public void createRectangularPartition(int regionHeight, int regionWidth, int partitionHeight, int partitionWidth) {
         regions = new HashSet<>();
         
-        for (int yp = 0; yp < partition_height; yp++) {
-            for (int xp = 0; xp < partition_width; xp++) {
-                Region region = new Region();
-                
-                for (int yr = 0; yr < region_height; yr++) {
-                    for (int xr = 0; xr < region_width; xr++) {
-                        region.addCell(new Cell(xp * region_width + xr, yp * region_height + yr));
-                    }
-                }
-                addRegion(region);
+        for (int y = 0; y < partitionHeight; y++) {
+            for (int x = 0; x < partitionWidth; x++) {
+                addRegion(createRectangularRegion(regionHeight, regionWidth, x * regionWidth, y * regionHeight));
             }
         }
+    }
+    
+    private Region createRectangularRegion(int regionHeight, int regionWidth, int topLeftX, int topLeftY) {
+        Region region = new Region();
+        
+        for (int y = 0; y < regionHeight; y++) {
+            for (int x = 0; x < regionWidth; x++) {
+                region.addCell(new Cell(topLeftX + x, topLeftY + y));
+            }
+        }
+        return region;
     }
     
     

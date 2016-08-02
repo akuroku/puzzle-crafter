@@ -3,8 +3,10 @@ package ohha.puzzlecrafter;
 
 import ohha.puzzlecrafter.grid.PartitionGrid;
 import ohha.puzzlecrafter.grid.Partition;
+import ohha.puzzlecrafter.grid.Cell;
 import java.util.List;
 import java.util.LinkedList;
+
 
 public class Sudoku implements Puzzle {
     
