@@ -11,5 +11,5 @@ Toteutetaan ohjelma, jolla voi laatia kynä-ja-paperipulmia sekä ratkoa niitä. Oh
 
 **Luokkakaavio:**
 
-![Luokkakaavio](dokumentaatio/luokkakaavio.png)
+![Luokkakaavio](/dokumentaatio/luokkakaavio.png)
 
