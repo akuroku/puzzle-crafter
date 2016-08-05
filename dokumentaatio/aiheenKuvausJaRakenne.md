@@ -9,3 +9,7 @@ Toteutetaan ohjelma, jolla voi laatia kynä-ja-paperipulmia sekä ratkoa niitä. Oh
 - Laadi pulma käsin
 - Generoi yksikäsitteisen ratkaisun omaava pulma automaattisesti
 
+**Luokkakaavio:**
+
+![Luokkakaavio](dokumentaatio/luokkakaavio.png)
+
