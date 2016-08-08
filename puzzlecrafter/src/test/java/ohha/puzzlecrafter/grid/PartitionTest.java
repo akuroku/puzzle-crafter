@@ -20,8 +20,7 @@ public class PartitionTest {
     
     @Before
     public void setUp() {
-        p = new Partition();
-        p.createRectangularPartition(2, 3, 3, 2);
+        p = new Partition(2, 3, 3, 2);
         
         topLeft = new Region();
         topLeft.addCell(new Cell(0, 0));
@@ -81,7 +80,6 @@ public class PartitionTest {
         p.addRegion(r);
         assertTrue(p.contains(r));
     }
-    
     @Test
     public void uncontainedRegionIsNotReportedAsContained() {
         Region r = new Region();
@@ -95,7 +93,6 @@ public class PartitionTest {
     public void correctContainingRegionOfCellIsReturned() {
         assertEquals(topLeft, p.getRegionOf(new Cell(1, 1)));
     }
-    
     @Test
     public void nullRegionIsReturnedWhenCellIsInNoRegion() {
         assertEquals(null, p.getRegionOf(new Cell(20, 20)));
@@ -103,33 +100,33 @@ public class PartitionTest {
     
     
     @Test
-    public void createRectangularPartitionMakesCorrectAmountOfRegions() {
+    public void rectangularPartitionConstructorMakesCorrectAmountOfRegions() {
         assertEquals(6, p.getRegions().size());
     }
     
     
     @Test
-    public void createRectangularPartitionMakesTopLeftRegion() {
+    public void rectangularPartitionConstructorMakesTopLeftRegion() {
         assertTrue(p.contains(topLeft));
     }
     @Test
-    public void createRectangularPartitionMakesTopRightRegion() {
+    public void rectangularPartitionConstructorMakesTopRightRegion() {
         assertTrue(p.contains(topRight));
     }
     @Test
-    public void createRectangularPartitionMakesMidLeftRegion() {
+    public void rectangularPartitionConstructorMakesMidLeftRegion() {
         assertTrue(p.contains(midLeft));
     }
     @Test
-    public void createRectangularPartitionMakesMidRightRegion() {
+    public void rectangularPartitionConstructorMakesMidRightRegion() {
         assertTrue(p.contains(midRight));
     }
     @Test
-    public void createRectangularPartitionMakesBottomLeftRegion() {
+    public void rectangularPartitionConstructorMakesBottomLeftRegion() {
         assertTrue(p.contains(bottomLeft));
     }
     @Test
-    public void createRectangularPartitionMakesBottomRightRegion() {
+    public void rectangularPartitionConstructorMakesBottomRightRegion() {
         assertTrue(p.contains(bottomRight));
     }
 }

@@ -27,17 +27,14 @@ public class CellTest {
     public void switchXChangesXCoordinate() {
         assertEquals(3, a.switchX(3).getX());
     }
-    
     @Test
     public void switchXDoesntChangeYCoordinate() {
         assertEquals(2, a.switchX(3).getY());
     }
-    
     @Test
     public void switchYChangesYCoordinate() {
         assertEquals(5, a.switchY(5).getY());
     }
-    
     @Test
     public void switchYDoesntChangeXCoordinate() {
         assertEquals(0, a.switchY(5).getX());
@@ -49,7 +46,6 @@ public class CellTest {
     public void equalsDoesntEquateWithNull() {
         assertFalse(a.equals(null));
     }
-    
     @Test
     public void equalsDoesntEquateWithObjectOfDifferentType() {
         assertFalse(a.equals(new int[] {1}));
@@ -60,7 +56,6 @@ public class CellTest {
     public void equalsIsConsistentWhenReturningTrue() {
         assertEquals(b1.equals(b2), b1.equals(b2));
     }
-    
     @Test
     public void equalsIsConsistentWhenReturningFalse() {
         assertEquals(a.equals(b1), a.equals(b1));
@@ -77,7 +72,6 @@ public class CellTest {
     public void equalsIsSymmetricWhenReturningTrue() {
         assertEquals(b1.equals(b2), b2.equals(b1));
     }
-    
     @Test
     public void equalsIsSymmetricWhenReturningFalse() {
         assertEquals(a.equals(b1), b1.equals(a));
@@ -94,7 +88,6 @@ public class CellTest {
     public void hashCodeIsConsistent() {
         assertEquals(a.hashCode(), a.hashCode());
     }
-    
     
     @Test
     public void equalObjectsHaveEqualHashCodes() {

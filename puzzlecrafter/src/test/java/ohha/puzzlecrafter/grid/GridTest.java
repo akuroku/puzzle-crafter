@@ -15,19 +15,19 @@ public class GridTest {
     public void setUp() {
         grid = new Grid(4, 5);
         
-        grid.setCell(new Cell(0, 0), 1);
-        grid.setCell(new Cell(2, 0), 2);
-        grid.setCell(new Cell(3, 0), 3);
+        grid.setValueAt(new Cell(0, 0), 1);
+        grid.setValueAt(new Cell(2, 0), 2);
+        grid.setValueAt(new Cell(3, 0), 3);
         
-        grid.setCell(new Cell(0, 1), 1);
-        grid.setCell(new Cell(1, 1), 2);
-        grid.setCell(new Cell(4, 1), 2);
+        grid.setValueAt(new Cell(0, 1), 1);
+        grid.setValueAt(new Cell(1, 1), 2);
+        grid.setValueAt(new Cell(4, 1), 2);
         
-        grid.setCell(new Cell(2, 2), 3);
-        grid.setCell(new Cell(4, 2), -1);
+        grid.setValueAt(new Cell(2, 2), 3);
+        grid.setValueAt(new Cell(4, 2), -1);
         
-        grid.setCell(new Cell(3, 3), -1);
-        grid.setCell(new Cell(4, 3), -1);
+        grid.setValueAt(new Cell(3, 3), -1);
+        grid.setValueAt(new Cell(4, 3), -1);
         /*
         1 0 2 3 0
         1 2 0 0 2
@@ -60,6 +60,7 @@ public class GridTest {
         assertFalse(grid.isUndetermined(new Cell(3, 3)));
     }
     
+    
     @Test
     public void emptyCellIsReportedAsEmpty() {
         assertTrue(grid.isEmpty(new Cell(3, 3)));
@@ -72,6 +73,7 @@ public class GridTest {
     public void filledCellisNotReportedAsEmpty() {
         assertFalse(grid.isEmpty(new Cell(0, 0)));
     }
+    
     
     @Test
     public void filledCellIsReportedAsFilled() {
@@ -88,37 +90,20 @@ public class GridTest {
     
     
     @Test
-    public void duplicatedNumberOnRowIsReportedAsDuplicated() {
-        assertTrue(grid.isDuplicatedOnRow(new Cell(1, 1)));
+    public void deepCopyCopiesCorrectly() {
+        Grid copy = grid.deepCopy();
+        
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 5; x++) {
+                Cell cell = new Cell(x, y);
+                assertEquals(grid.getValueAt(cell), copy.getValueAt(cell));
+            }
+        }
     }
     @Test
-    public void uniqueNumberOnRowIsNotReportedAsDuplicated() {
-        assertFalse(grid.isDuplicatedOnRow(new Cell(0, 0)));
-    }
-    @Test
-    public void undeterminedCellOnRowIsNotReportedAsDuplicated() {
-        assertFalse(grid.isDuplicatedOnRow(new Cell(1, 0)));
-    }
-    @Test
-    public void emptyCellOnRowIsNotReportedAsDuplicated() {
-        assertFalse(grid.isDuplicatedOnRow(new Cell(3, 3)));
-    }
-    
-    
-    @Test
-    public void duplicatedNumberOnColumnIsReportedAsDuplicated() {
-        assertTrue(grid.isDuplicatedOnColumn(new Cell(0, 1)));
-    }
-    @Test
-    public void uniqueNumberOnColumnIsNotReportedAsDuplicated() {
-        assertFalse(grid.isDuplicatedOnColumn(new Cell(1, 1)));
-    }
-    @Test
-    public void undeterminedCellOnColumnIsNotReportedAsDuplicated() {
-        assertFalse(grid.isDuplicatedOnColumn(new Cell(1, 2)));
-    }
-    @Test
-    public void emptyCellOnColumnIsNotReportedAsDuplicated() {
-        assertFalse(grid.isDuplicatedOnColumn(new Cell(4, 3)));
+    public void deepCopyCopiesDeep() {
+        Grid copy = grid.deepCopy();
+        grid.setValueAt(new Cell(0, 0), 20);
+        assertEquals(1, copy.getValueAt(new Cell(0, 0)));
     }
 }

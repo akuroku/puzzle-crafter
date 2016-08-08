@@ -3,7 +3,6 @@ package ohha.puzzlecrafter.grid;
 
 
 public class Grid {
-    
     private int[][] grid;
     
     
@@ -15,15 +14,13 @@ public class Grid {
     public int getHeight() {
         return grid.length;
     }
-    
     public int getWidth() {
         return grid[0].length;
     }
     
-    public void setCell(Cell c, int v) {
+    public void setValueAt(Cell c, int v) {
         grid[c.getY()][c.getX()] = v;
     }
-    
     public int getValueAt(Cell c) {
         return grid[c.getY()][c.getX()];
     }
@@ -32,45 +29,24 @@ public class Grid {
     public boolean isUndetermined(Cell c) {
         return getValueAt(c) == 0;
     }
-    
     public boolean isEmpty(Cell c) {
         return getValueAt(c) == -1;
     }
-    
     public boolean isFilledIn(Cell c) {
         return getValueAt(c) > 0;
     }
     
     
-    public boolean isDuplicatedOnRow(Cell c) {
-        if (!isFilledIn(c)) {
-            return false;
+    public Grid deepCopy() {
+        Grid grid = new Grid(getHeight(), getWidth());
+        
+        for (int y = 0; y < getHeight(); y++) {
+            for (int x = 0; x < getWidth(); x++) {
+                Cell cell = new Cell(x, y);
+                grid.setValueAt(cell, this.getValueAt(cell));
+            }
         }
         
-        for (int i = 0; i < getWidth(); i++) {
-            if (i == c.getX()) {
-                continue;
-            }
-            if (getValueAt(c) == getValueAt(c.switchX(i))) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public boolean isDuplicatedOnColumn(Cell c) {
-        if (!isFilledIn(c)) {
-            return false;
-        }
-        
-        for (int i = 0; i < getHeight(); i++) {
-            if (i == c.getY()) {
-                continue;
-            }
-            if (getValueAt(c) == getValueAt(c.switchY(i))) {
-                return true;
-            }
-        }
-        return false;
+        return grid;
     }
 }

@@ -47,6 +47,9 @@ public class RegionTest {
         b3.addCell(u);
         
         c = new Region();
+        c.addCell(s);
+        c.addCell(t);
+        c.addCell(u);
         c.addCell(w);
         c.addCell(x);
         c.addCell(y);
@@ -57,7 +60,6 @@ public class RegionTest {
     public void containedCellIsReportedAsContained() {
         assertTrue(a.contains(s));
     }
-    
     @Test
     public void notContainedCellIsNotReportedAsContained() {
         assertFalse(b1.contains(s));
@@ -65,10 +67,26 @@ public class RegionTest {
     
     
     @Test
+    public void rectangularRegionConstructorMakesCorrectAmountOfCells() {
+        Region r = new Region(2, 3, 1, 1);
+        assertEquals(6, r.getCells().size());
+    }
+    @Test
+    public void rectangularRegionConstructorMakesCorrectCells() {
+        Region r = new Region(2, 3, 1, 1);
+        
+        for (int y = 1; y <= 2; y++) {
+            for (int x = 1; x <= 3; x++) {
+                assertTrue(r.contains(new Cell(x, y)));
+            }
+        }
+    }
+    
+    
+    @Test
     public void equalsDoesntEquateWithNull() {
         assertFalse(a.equals(null));
     }
-    
     @Test
     public void equalsDoesntEquateWithObjectOfDifferentType() {
         assertFalse(a.equals(s));
@@ -78,7 +96,6 @@ public class RegionTest {
     public void equalsDoesntEquateWithRegionOfDifferentSize() {
         assertFalse(a.equals(c));
     }
-    
     @Test
     public void equalsDoesntEquateWithUnequalRegionOfSameSize() {
         assertFalse(a.equals(b1));
@@ -89,7 +106,6 @@ public class RegionTest {
     public void equalsIsConsistentWhenReturningTrue() {
         assertEquals(b1.equals(b2), b1.equals(b2));
     }
-    
     @Test
     public void equalsIsConsistentWhenReturningFalse() {
         assertEquals(a.equals(b1), a.equals(b1));
@@ -106,7 +122,6 @@ public class RegionTest {
     public void equalsIsSymmetricWhenReturningTrue() {
         assertEquals(b1.equals(b2), b2.equals(b1));
     }
-    
     @Test
     public void equalsIsSymmetricWhenReturningFalse() {
         assertEquals(a.equals(b1), b1.equals(a));
@@ -123,7 +138,6 @@ public class RegionTest {
     public void hashCodeIsConsistent() {
         assertEquals(a.hashCode(), a.hashCode());
     }
-    
     
     @Test
     public void equalObjectsHaveEqualHashCodes() {

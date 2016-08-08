@@ -12,12 +12,20 @@ public class Region {
     public Region() {
         cells = new HashSet<>();
     }
+    public Region(int regionHeight, int regionWidth, int topLeftX, int topLeftY) {
+        cells = new HashSet<>();
+        
+        for (int y = 0; y < regionHeight; y++) {
+            for (int x = 0; x < regionWidth; x++) {
+                cells.add(new Cell(topLeftX + x, topLeftY + y));
+            }
+        }
+    }
     
     
     public void addCell(Cell c) {
         cells.add(c);
     }
-    
     public Set<Cell> getCells() {
         return cells;
     }
@@ -25,6 +33,16 @@ public class Region {
     
     public boolean contains(Cell c) {
         return cells.contains(c);
+    }
+    
+    
+    public Region deepCopy() {
+        Region copy = new Region();
+        
+        for (Cell c : getCells()) {
+            copy.addCell(new Cell(c.getX(), c.getY()));
+        }
+        return copy;
     }
     
     

@@ -13,12 +13,20 @@ public class Partition {
     public Partition() {
         regions = new HashSet<>();
     }
+    public Partition(int regionHeight, int regionWidth, int partitionHeight, int partitionWidth) {
+        regions = new HashSet<>();
+        
+        for (int y = 0; y < partitionHeight; y++) {
+            for (int x = 0; x < partitionWidth; x++) {
+                regions.add(new Region(regionHeight, regionWidth, x * regionWidth, y * regionHeight));
+            }
+        }
+    }
     
     
     public void addRegion(Region r) {
         regions.add(r);
     }
-    
     public Set<Region> getRegions() {
         return regions;
     }
@@ -29,28 +37,6 @@ public class Partition {
     }
     
     
-    public void createRectangularPartition(int regionHeight, int regionWidth, int partitionHeight, int partitionWidth) {
-        regions = new HashSet<>();
-        
-        for (int y = 0; y < partitionHeight; y++) {
-            for (int x = 0; x < partitionWidth; x++) {
-                addRegion(createRectangularRegion(regionHeight, regionWidth, x * regionWidth, y * regionHeight));
-            }
-        }
-    }
-    
-    private Region createRectangularRegion(int regionHeight, int regionWidth, int topLeftX, int topLeftY) {
-        Region region = new Region();
-        
-        for (int y = 0; y < regionHeight; y++) {
-            for (int x = 0; x < regionWidth; x++) {
-                region.addCell(new Cell(topLeftX + x, topLeftY + y));
-            }
-        }
-        return region;
-    }
-    
-    
     public Region getRegionOf(Cell c) {
         for (Region region : regions) {
             if (region.contains(c)) {
@@ -58,6 +44,16 @@ public class Partition {
             }
         }
         return null; // this should never be returned with a valid partition
+    }
+    
+    
+    public Partition deepCopy() {
+        Partition copy = new Partition();
+        
+        for (Region region : getRegions()) {
+            copy.addRegion(region.deepCopy());
+        }
+        return copy;
     }
     
     

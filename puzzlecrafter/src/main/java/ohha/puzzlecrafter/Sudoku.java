@@ -1,46 +1,60 @@
 
 package ohha.puzzlecrafter;
 
-import ohha.puzzlecrafter.grid.PartitionGrid;
 import ohha.puzzlecrafter.grid.Partition;
 import ohha.puzzlecrafter.grid.Cell;
-import java.util.List;
+
 import java.util.LinkedList;
 
 
-public class Sudoku implements Puzzle {
+public class Sudoku extends Puzzle {
     
-    private PartitionGrid grid; // grid of values
-    private List<Integer> values; // values that a cell in the grid may take
+    private Partition partition;
     
     
     // initialise sudoku with given regions
     public Sudoku(int size, Partition partition) {
-        this.grid = new PartitionGrid(size, size, partition);
-        this.values = new LinkedList<>();
-        for (int i = 1; i <= size; i++) {
-            values.add(i);
-        }
+        super(size, size);
+        super.initialiseDefaultValues(size);
+        this.partition = partition;
     }
     
     // initialise sudoku with rectangular regions with dimensions height and width
-    public Sudoku(int size, int height, int width) {
-        this.grid = new PartitionGrid(size, size, height, width);
-        this.values = new LinkedList<>();
-        for (int i = 1; i <= size; i++) {
-            values.add(i);
+    public Sudoku(int size, int regionHeight, int regionWidth) {
+        super(size, size);
+        super.initialiseDefaultValues(size);
+        partition = new Partition(regionHeight, regionWidth, size / regionHeight, size / regionWidth);
+    }
+    
+    
+    /*
+    @Override
+    public Cell getNextCell(Cell c) {
+        // override with a better heuristic if you can
+    }
+    */
+    
+    
+    @Override
+    public boolean isPartialSolution(Cell cell) {
+        if (IsDuplicated.onRow(getGrid(), cell)) {
+            return false;
         }
+        if (IsDuplicated.onColumn(getGrid(), cell)) {
+            return false;
+        }
+        if (IsDuplicated.onRegion(getGrid(), partition, cell)) {
+            return false;
+        }
+        return true;
     }
     
     
     @Override
-    public List<Integer> getValues() {
-        return values;
-    }
-    
-    
-    @Override
-    public boolean isPartialSolution(Cell c) {
-        return !(grid.isDuplicatedOnRow(c) || grid.isDuplicatedOnColumn(c) || grid.isDuplicatedOnRegion(c));
+    public Sudoku deepCopy() {
+        Sudoku sudoku = new Sudoku(getGrid().getHeight(), partition.deepCopy());
+        sudoku.setValues(new LinkedList<>(getValues()));
+        sudoku.setGrid(getGrid().deepCopy());
+        return sudoku;
     }
 }
