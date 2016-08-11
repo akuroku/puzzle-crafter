@@ -1,6 +1,7 @@
 
 package ohha.puzzlecrafter;
 
+import ohha.puzzlecrafter.puzzles.Puzzle;
 import ohha.puzzlecrafter.grid.Cell;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class Solver {
     public void solvePuzzle() {
         solutions = new LinkedList<>();
         
+        System.out.println("Starting!");
         iterate(new Cell(0, 0));
         
         if (solutions.isEmpty()) {
@@ -41,15 +43,22 @@ public class Solver {
     public void iterate(Cell cell) {
         if (cell == null) {
             // the puzzle has been successfully filled
+            System.out.println("A solution has been found!");
+            System.out.println(puzzle);
             solutions.add(puzzle.deepCopy());
+            System.out.print("");
             return;
         }
         
-        for (int value : puzzle.getValues()) {
+        for (int value : puzzle.getCandidates(cell)) {
             puzzle.setCell(cell, value);
+            System.out.print("Trying " + value + " at " + cell);
             
             if (!puzzle.isPartialSolution(cell)) {
+                System.out.println(", contradiction");
                 continue;
+            } else {
+                System.out.println("");
             }
             iterate(puzzle.getNextCell(cell));
         }

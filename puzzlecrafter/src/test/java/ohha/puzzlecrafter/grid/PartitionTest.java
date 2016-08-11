@@ -129,4 +129,23 @@ public class PartitionTest {
     public void rectangularPartitionConstructorMakesBottomRightRegion() {
         assertTrue(p.contains(bottomRight));
     }
+    
+    
+    @Test
+    public void deepCopyCopiesCorrectly() {
+        Partition copy = p.deepCopy();
+        
+        assertEquals(p.getRegions().size(), copy.getRegions().size());
+        
+        for (Region r : p.getRegions()) {
+            assertTrue(copy.contains(r));
+        }
+    }
+    @Test
+    public void deepCopyCopiesDeep() {
+        Partition copy = p.deepCopy();
+        p.getRegionOf(new Cell(0, 0)).addCell(new Cell(10, 10));
+        
+        assertFalse(copy.getRegionOf(new Cell(0, 0)).contains(new Cell(10, 10)));
+    }
 }

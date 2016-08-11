@@ -1,11 +1,11 @@
 
-package ohha.puzzlecrafter;
-
+package ohha.puzzlecrafter.auxiliary;
 
 import ohha.puzzlecrafter.grid.Cell;
 import ohha.puzzlecrafter.grid.Grid;
 import ohha.puzzlecrafter.grid.Partition;
 import ohha.puzzlecrafter.grid.Region;
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -1,5 +1,5 @@
 
-package ohha.puzzlecrafter;
+package ohha.puzzlecrafter.puzzles;
 
 import ohha.puzzlecrafter.grid.Cell;
 import ohha.puzzlecrafter.grid.Grid;
@@ -34,8 +34,14 @@ public abstract class Puzzle {
     public void setValues(List<Integer> values) {
         this.values = values;
     }
+    // gives all possible values that may be placed in cells
     public List<Integer> getValues() {
         return values;
+    }
+    // gives a list of possible values that may be placed in the given cell
+    // it may be overridden to weed out obviously unfit values, but it must always return actual potential values
+    public List<Integer> getCandidates(Cell cell) {
+        return getValues();
     }
     public void initialiseDefaultValues(int amount) {
         for (int i = 1; i <= amount; i++) {
@@ -49,17 +55,19 @@ public abstract class Puzzle {
     }
     
     
-    // a given is a pre-filled in value that is set in the puzzle as a clue, not to be changed by the solver
+    // a given is a pre-filled in value that is set in the puzzle, not to be changed by the solver
     public void setGiven(Cell cell, int value) {
         setCell(cell, value);
         givens.add(cell);
     }
+    // returns the locations of givens
     public List<Cell> getGivens() {
         return givens;
     }
     
     
     // returns the next undetermined cell for the solver to try, or null if there is none
+    // it may be overridden to implement a better order for the solver to try to fill the puzzle in
     public Cell getNextCell(Cell cell) {
         Cell next = cell.switchX(cell.getX() + 1);
         

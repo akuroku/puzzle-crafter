@@ -1,5 +1,5 @@
 
-package ohha.puzzlecrafter;
+package ohha.puzzlecrafter.puzzles;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -24,6 +24,24 @@ public class CellTest {
     
     
     @Test
+    public void shiftXChangesXCoordinate() {
+        assertEquals(4, b1.shiftX(3).getX());
+    }
+    @Test
+    public void shiftXDoesntChangeYCoordinate() {
+        assertEquals(3, b1.shiftX(3).getY());
+    }
+    @Test
+    public void shiftYChangesYCoordinate() {
+        assertEquals(8, b1.shiftY(5).getY());
+    }
+    @Test
+    public void shiftYDoesntChangeXCoordinate() {
+        assertEquals(1, b1.shiftY(5).getX());
+    }
+    
+    
+    @Test
     public void switchXChangesXCoordinate() {
         assertEquals(3, a.switchX(3).getX());
     }

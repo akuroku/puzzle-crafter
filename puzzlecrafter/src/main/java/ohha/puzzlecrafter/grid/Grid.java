@@ -1,6 +1,8 @@
 
 package ohha.puzzlecrafter.grid;
 
+import java.util.List;
+import java.util.LinkedList;
 
 public class Grid {
     private int[][] grid;
@@ -37,14 +39,23 @@ public class Grid {
     }
     
     
-    public Grid deepCopy() {
-        Grid grid = new Grid(getHeight(), getWidth());
+    public List<Cell> getCells() {
+        List<Cell> cells = new LinkedList<>();
         
         for (int y = 0; y < getHeight(); y++) {
             for (int x = 0; x < getWidth(); x++) {
-                Cell cell = new Cell(x, y);
-                grid.setValueAt(cell, this.getValueAt(cell));
+                cells.add(new Cell(x, y));
             }
+        }
+        return cells;
+    }
+    
+    
+    public Grid deepCopy() {
+        Grid grid = new Grid(getHeight(), getWidth());
+        
+        for (Cell cell : this.getCells()) {
+            grid.setValueAt(cell, this.getValueAt(cell));
         }
         
         return grid;

@@ -84,6 +84,25 @@ public class RegionTest {
     
     
     @Test
+    public void deepCopyCopiesCorrectly() {
+        Region copy = a.deepCopy();
+        
+        assertEquals(a.getCells().size(), copy.getCells().size());
+        
+        for (Cell c : a.getCells()) {
+            assertTrue(copy.contains(c));
+        }
+    }
+    @Test
+    public void deepCopyCopiesDeep() {
+        Region copy = a.deepCopy();
+        a.addCell(new Cell(10, 10));
+        
+        assertEquals(2, copy.getCells().size());
+    }
+    
+    
+    @Test
     public void equalsDoesntEquateWithNull() {
         assertFalse(a.equals(null));
     }

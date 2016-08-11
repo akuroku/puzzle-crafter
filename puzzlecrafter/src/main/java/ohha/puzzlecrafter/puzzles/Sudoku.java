@@ -1,6 +1,7 @@
 
-package ohha.puzzlecrafter;
+package ohha.puzzlecrafter.puzzles;
 
+import ohha.puzzlecrafter.auxiliary.IsDuplicated;
 import ohha.puzzlecrafter.grid.Partition;
 import ohha.puzzlecrafter.grid.Cell;
 
@@ -52,9 +53,9 @@ public class Sudoku extends Puzzle {
     
     @Override
     public Sudoku deepCopy() {
-        Sudoku sudoku = new Sudoku(getGrid().getHeight(), partition.deepCopy());
-        sudoku.setValues(new LinkedList<>(getValues()));
-        sudoku.setGrid(getGrid().deepCopy());
-        return sudoku;
+        Sudoku copy = new Sudoku(getGrid().getHeight(), partition.deepCopy());
+        copy.setValues(new LinkedList<>(getValues()));
+        copy.setGrid(getGrid().deepCopy());
+        return copy;
     }
 }

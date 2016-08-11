@@ -15,16 +15,22 @@ public class Cell {
     public int getX() {
         return x;
     }
-    
     public int getY() {
         return y;
+    }
+    
+    
+    public Cell shiftX(int shift) {
+        return new Cell(this.x + shift, this.y);
+    }
+    public Cell shiftY(int shift) {
+        return new Cell(this.x, this.y + shift);
     }
     
     
     public Cell switchX(int newx) {
         return new Cell(newx, this.y);
     }
-    
     public Cell switchY(int newy) {
         return new Cell(this.x, newy);
     }
