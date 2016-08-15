@@ -1,8 +1,10 @@
 
 package ohha.puzzlecrafter;
 
+import javax.swing.SwingUtilities;
 import ohha.puzzlecrafter.puzzles.Fillomino;
 import ohha.puzzlecrafter.grid.Cell;
+import ohha.puzzlecrafter.ui.MainGUI;
 
 
 public class Main {
@@ -66,6 +68,7 @@ public class Main {
         _ _ _ | 2(5) _
         */
         
+        // both puzzles solve as both sudokus and fillominos
         
         System.out.println("Puzzle:");
         System.out.println(puzzle);
@@ -78,6 +81,8 @@ public class Main {
         
         
         Solver solver = new Solver(puzzle);
-        solver.solvePuzzle();
+        // solver.solvePuzzle();
+        
+        SwingUtilities.invokeLater(new MainGUI());
     }
 }
