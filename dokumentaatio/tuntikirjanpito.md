@@ -9,4 +9,6 @@ Päivä | Tunnit | Kuvaus
  9.8.2016 | 6h | Sudokuratkoja toimii
 10.8.2016 | 4h | Fillomino-ratkojan aloitus
 11.8.2016 | 9h | Testien laatimista, koodausta & dokumentaation päivitys 
+14.8.2016 | 9h | Käyttöliittymätoteutuksen tutkimista & aloittamista
+15.8.2016 | 9h | Käyttöliittymätoteutuksen tutkimista & toteutusta
 ... | ... | ...
