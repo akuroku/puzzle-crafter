@@ -19,20 +19,26 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+
 import ohha.puzzlecrafter.grid.Cell;
 import ohha.puzzlecrafter.grid.Grid;
 import ohha.puzzlecrafter.puzzles.Puzzle;
 
 
-public class MainGUI implements Runnable {
+public class MainWindow implements Runnable {
     
     private JFrame frame;
+    
+    private JComboBox puzzleDropDown;
+    private JSpinner gridHeightSpinner;
+    private JSpinner gridWidthSpinner;
+    private JSpinner cellSizeSpinner;
     
     
     @Override
     public void run() {
         frame = new JFrame("Puzzlecrafter");                // set name displayed on window
-        // frame.setPreferredSize(new Dimension(400, 300));    // set dimensions of window
+        // frame.setPreferredSize(new Dimension(400, 300)); // set dimensions of window
         frame.setResizable(false);                          // make window unresizable
         
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -79,6 +85,7 @@ public class MainGUI implements Runnable {
         
 
         // Create puzzle settings pane
+        // todo: make one grid dimension spinner inactive and copy the other when puzzle style requires square grid
         
         JPanel puzzleSettingsPane = new JPanel(new GridLayout(3, 2, 5, 5));
         
@@ -89,15 +96,15 @@ public class MainGUI implements Runnable {
                         BorderFactory.createEmptyBorder(5, 5, 5, 5)         // inner empty buffer
         )));
         
-        JSpinner gridHeightSpinner = new JSpinner(new SpinnerNumberModel(Grid.DEFAULT_SIZE, Grid.MIN_SIZE, Grid.MAX_SIZE, 1));   // default, min, max, step
+        gridHeightSpinner = new JSpinner(new SpinnerNumberModel(Grid.DEFAULT_SIZE, Grid.MIN_SIZE, Grid.MAX_SIZE, 1));   // default, min, max, step
         JLabel gridHeightLabel = new JLabel("Grid height:", JLabel.RIGHT);
         gridHeightLabel.setToolTipText("Input an integer between " + Grid.MIN_SIZE + " and " + Grid.MAX_SIZE + " to specify the height of the grid in cells.");
         
-        JSpinner gridWidthSpinner = new JSpinner(new SpinnerNumberModel(Grid.DEFAULT_SIZE, Grid.MIN_SIZE, Grid.MAX_SIZE, 1));   // default, min, max, step
+        gridWidthSpinner = new JSpinner(new SpinnerNumberModel(Grid.DEFAULT_SIZE, Grid.MIN_SIZE, Grid.MAX_SIZE, 1));   // default, min, max, step
         JLabel gridWidthLabel = new JLabel("Grid width:", JLabel.RIGHT);
         gridWidthLabel.setToolTipText("Input an integer between " + Grid.MIN_SIZE + " and " + Grid.MAX_SIZE + " to specify the width of the grid in cells.");
         
-        JSpinner cellSizeSpinner = new JSpinner(new SpinnerNumberModel(Cell.DEFAULT_SIZE, Cell.MIN_SIZE, Cell.MAX_SIZE, 1));   // default, min, max, step
+        cellSizeSpinner = new JSpinner(new SpinnerNumberModel(Cell.DEFAULT_SIZE, Cell.MIN_SIZE, Cell.MAX_SIZE, 1));   // default, min, max, step
         JLabel cellSizeLabel = new JLabel("Cell size:", JLabel.RIGHT);
         cellSizeLabel.setToolTipText("Input an integer between " + Cell.MIN_SIZE + " and " + Cell.MAX_SIZE + " to specify the height and width of a cell in pixels.");
         
@@ -135,5 +142,12 @@ public class MainGUI implements Runnable {
     
     public JFrame getFrame() {
         return frame;
+    }
+    
+    
+    private Puzzle createPuzzle() {
+        int gridHeight = (int) gridHeightSpinner.getValue();
+        int gridWidth = (int) gridWidthSpinner.getValue();
+        return null;
     }
 }

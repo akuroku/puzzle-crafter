@@ -1,7 +1,12 @@
 
 package ohha.puzzlecrafter.grid;
 
-
+/**
+ * An object of this class represents coordinates in the puzzle grid.
+ * They serve as conceptual wrappers for a pair of numbers. In particular, this means that they do not hold the actual values found in the puzzle's squares, see {@Link <code>Grid</code>} for this.
+ * <p>
+ * <code>Cell</code> objects are immutable, and the "modifier" methods return new <code>Cell</code> objects instead of modifying the <code>Cell</code> they were called on.
+ */
 public class Cell {
     
     public static final int MIN_SIZE = 8;

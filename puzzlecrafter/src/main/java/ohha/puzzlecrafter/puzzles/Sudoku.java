@@ -22,9 +22,7 @@ public class Sudoku extends Puzzle {
     
     // initialise sudoku with rectangular regions with dimensions height and width
     public Sudoku(int size, int regionHeight, int regionWidth) {
-        super(size, size);
-        super.initialiseDefaultValues(size);
-        partition = new Partition(regionHeight, regionWidth, size / regionHeight, size / regionWidth);
+        this(size, new Partition(regionHeight, regionWidth, size / regionHeight, size / regionWidth));
     }
     
     

@@ -4,7 +4,7 @@ package ohha.puzzlecrafter;
 import javax.swing.SwingUtilities;
 import ohha.puzzlecrafter.puzzles.Fillomino;
 import ohha.puzzlecrafter.grid.Cell;
-import ohha.puzzlecrafter.ui.mainwindow.MainGUI;
+import ohha.puzzlecrafter.ui.mainwindow.MainWindow;
 
 
 public class Main {
@@ -83,6 +83,6 @@ public class Main {
         Solver solver = new Solver(puzzle);
         // solver.solvePuzzle();
         
-        SwingUtilities.invokeLater(new MainGUI());
+        SwingUtilities.invokeLater(new MainWindow());
     }
 }

@@ -4,6 +4,15 @@ package ohha.puzzlecrafter.grid;
 import java.util.Set;
 import java.util.HashSet;
 
+
+/**
+ * An object of this class represents a set of cells forming a region, for example the 3x3 boxes in Sudoku or the regions in Star Battle.
+ * A <code>Region</code> doesn't contain any values filled into the puzzle. This task is done by {@Link Grid}.
+ * <p>
+ * As a <code>Region</code> is a set of cells, it may not contain duplicate cells. No demands or requirements are made on the co-ordinates of the constituent cells; they may be negative as well, although the <code>Grid</code> class only expects non-negative coordinates.
+ * <p>
+ * When constructing a region, no demands or requirements are made that the region is connected, either in the sense of moving cardinally, or touching-by-corners. However, the class offers methods for testing this.
+ */
 public class Region {
     
     private Set<Cell> cells;
@@ -23,16 +32,25 @@ public class Region {
     }
     
     
-    public void addCell(Cell c) {
-        cells.add(c);
+    public void addCell(Cell cell) {
+        cells.add(cell);
     }
     public Set<Cell> getCells() {
         return cells;
     }
     
     
-    public boolean contains(Cell c) {
-        return cells.contains(c);
+    public boolean contains(Cell cell) {
+        return cells.contains(cell);
+    }
+    
+    
+    // TODO: implement two below methods
+    public boolean isConnectedCardinally(Region region) {
+        return false;
+    }
+    public boolean isConnectedCardinalDiagonally(Region region) {
+        return false;
     }
     
     

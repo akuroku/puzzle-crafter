@@ -5,6 +5,12 @@ import java.util.Set;
 import java.util.HashSet;
 
 
+/**
+ * An object of this class is a set of <code>{@Link Region}</code>s, represents a partition of the puzzle grid, such as the nine 3x3 boxes of a regular Sudoku.
+ * As a <code>Partition</code> is a set of regions, it may not contain duplicate regions.
+ * <p>
+ * Despite the name, no demands or requirements are made that the constituent regionSs either cover the grid nor lack overlaps. However, the class offers methods for testing this.
+ */
 public class Partition {
     
     private Set<Region> regions;
