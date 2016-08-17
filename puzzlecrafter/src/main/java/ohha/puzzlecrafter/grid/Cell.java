@@ -4,6 +4,11 @@ package ohha.puzzlecrafter.grid;
 
 public class Cell {
     
+    public static final int MIN_SIZE = 8;
+    public static final int DEFAULT_SIZE = 10;
+    public static final int MAX_SIZE = 100;
+    
+    
     private final int x;
     private final int y;
     

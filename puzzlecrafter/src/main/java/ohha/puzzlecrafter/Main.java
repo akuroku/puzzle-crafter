@@ -4,7 +4,7 @@ package ohha.puzzlecrafter;
 import javax.swing.SwingUtilities;
 import ohha.puzzlecrafter.puzzles.Fillomino;
 import ohha.puzzlecrafter.grid.Cell;
-import ohha.puzzlecrafter.ui.MainGUI;
+import ohha.puzzlecrafter.ui.mainwindow.MainGUI;
 
 
 public class Main {

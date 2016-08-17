@@ -9,6 +9,10 @@ import java.util.LinkedList;
 
 public abstract class Puzzle {
     
+    public static final String[] STYLES = new String[] {
+        "Fillomino", "Sudoku"
+    };
+    
     private Grid grid;
     private List<Integer> values;
     private List<Cell> givens;

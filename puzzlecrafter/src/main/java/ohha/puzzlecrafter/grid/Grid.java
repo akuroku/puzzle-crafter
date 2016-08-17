@@ -5,6 +5,11 @@ import java.util.List;
 import java.util.LinkedList;
 
 public class Grid {
+    
+    public final static int MIN_SIZE = 1;
+    public final static int DEFAULT_SIZE = 9;
+    public final static int MAX_SIZE = 100;
+    
     private int[][] grid;
     
     
