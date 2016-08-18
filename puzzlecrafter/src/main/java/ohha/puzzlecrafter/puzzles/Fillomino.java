@@ -1,13 +1,20 @@
 
 package ohha.puzzlecrafter.puzzles;
 
-import ohha.puzzlecrafter.grid.Cell;
-
+import ohha.puzzlecrafter.grid.Coordinate;
 import ohha.puzzlecrafter.auxiliary.SingleTimeEntryQueue;
 import ohha.puzzlecrafter.auxiliary.Neighbours;
+
 import java.util.List;
 import java.util.LinkedList;
 
+
+/**
+ * Implements the
+ * <a href="https://tspuzzles.wordpress.com/rules/fillomino/">Fillomino</a>
+ * puzzle style.
+ * Solver performance is currently slow.
+ */
 public class Fillomino extends Puzzle {
     
     
@@ -19,7 +26,7 @@ public class Fillomino extends Puzzle {
     
     /*
     @Override
-    public Cell getNextCell(Cell c) {
+    public Coordinate getNextCell(Coordinate c) {
         // override with a better heuristic if you can
     }
     */
@@ -27,27 +34,27 @@ public class Fillomino extends Puzzle {
     
     
     @Override
-    public List<Integer> getCandidates(Cell cell) {
+    public List<Integer> getCandidates(Coordinate cell) {
         // look for the largest possible region that fits in the remaining space
         int max = 0;
         
-        for (Cell c : getGrid().getCells()) {
+        for (Coordinate c : getGrid().getListOfCoordinates()) {
             if (getGrid().getValueAt(c) > max) {
                 max = getGrid().getValueAt(c);
             }
         }
         
-        SingleTimeEntryQueue<Cell> queue = new SingleTimeEntryQueue<>();
+        SingleTimeEntryQueue<Coordinate> queue = new SingleTimeEntryQueue<>();
         queue.addIfUnadded(cell);
         
         int space = 0;
         
         while (!queue.isEmpty()) {
-            Cell current = queue.dequeue();
+            Coordinate current = queue.dequeue();
             
             space++;
             
-            for (Cell neighbour : Neighbours.cardinals(getGrid(), current)) {
+            for (Coordinate neighbour : Neighbours.cardinals(getGrid(), current)) {
                 if (getGrid().isUndetermined(neighbour) || getGrid().getValueAt(neighbour) == max) {
                     queue.addIfUnadded(neighbour);
                 }
@@ -67,17 +74,18 @@ public class Fillomino extends Puzzle {
     
     
     @Override
-    public boolean isPartialSolution(Cell cell) {
+    public boolean isPartialSolution(Coordinate cell) {
         /*
         checks if the region of the current cell is valid,
         and checks of the regions of the four neighbouring cells are valid
-        (newly placed cells might box in neighbouring regions, not allowign them to get as big as they need to)
+        (newly placed cells might box in neighbouring regions, not allowing them
+        to get as big as they need to)
         */
         if (isRegionTooLarge(cell) || isRegionConstricted(cell)) {
             return false;
         }
         
-        for (Cell neighbour : Neighbours.cardinals(getGrid(), cell)) {
+        for (Coordinate neighbour : Neighbours.cardinals(getGrid(), cell)) {
             if (getGrid().getValueAt(neighbour) != getGrid().getValueAt(cell)
                     && getGrid().isFilledIn(neighbour)
                     && isRegionConstricted(neighbour)) {
@@ -88,21 +96,29 @@ public class Fillomino extends Puzzle {
     }
     
     
-    // tests if region contains too many cells for its value
-    private boolean isRegionTooLarge(Cell cell) {
-        SingleTimeEntryQueue<Cell> queue = new SingleTimeEntryQueue<>();
-        queue.addIfUnadded(cell);
+    /**
+     * Returns whether the region contains too many cells for its value. For
+     * example, three adjacent 2s form a region of size three, but its size 
+     * should be two in accordance to its value.
+     * 
+     * @param c the coordinate of the cell to test
+     * @return  true if the region contains more cells than its value allows,
+     * false otherwise
+     */
+    private boolean isRegionTooLarge(Coordinate c) {
+        SingleTimeEntryQueue<Coordinate> queue = new SingleTimeEntryQueue<>();
+        queue.addIfUnadded(c);
         
-        int value = getGrid().getValueAt(cell);
+        int value = getGrid().getValueAt(c);
         
         for (int size = 1; !queue.isEmpty(); size++) {
             if (size > value) {
                 return true;
             }
             
-            Cell current = queue.dequeue();
+            Coordinate current = queue.dequeue();
             
-            for (Cell neighbour : Neighbours.cardinals(getGrid(), current)) {
+            for (Coordinate neighbour : Neighbours.cardinals(getGrid(), current)) {
                 if (getGrid().getValueAt(neighbour) == value) {
                     queue.addIfUnadded(neighbour);
                 }
@@ -112,21 +128,29 @@ public class Fillomino extends Puzzle {
     }
     
     
-    // tests if region has the potential to be as big as its value
-    private boolean isRegionConstricted(Cell cell) {
-        SingleTimeEntryQueue<Cell> queue = new SingleTimeEntryQueue<>();
-        queue.addIfUnadded(cell);
+    /**
+     * Returns whethee the region has enough space to expand to satisfy its
+     * value. For example, a lone cell of 13 with nine undetermined cells left can't
+     * expand to its required size of 13 cells.
+     * 
+     * @param c the coordinate of the cell to test
+     * @return  true if the region is able to expand to its required value,
+     * false otherwise
+     */
+    private boolean isRegionConstricted(Coordinate c) {
+        SingleTimeEntryQueue<Coordinate> queue = new SingleTimeEntryQueue<>();
+        queue.addIfUnadded(c);
         
-        int value = getGrid().getValueAt(cell);
+        int value = getGrid().getValueAt(c);
         
         for (int size = 1; !queue.isEmpty(); size++) {
             if (size >= value) {
                 return false;
             }
             
-            Cell current = queue.dequeue();
+            Coordinate current = queue.dequeue();
             
-            for (Cell neighbour : Neighbours.cardinals(getGrid(), current)) {
+            for (Coordinate neighbour : Neighbours.cardinals(getGrid(), current)) {
                 if (getGrid().getValueAt(neighbour) == value || getGrid().isUndetermined(neighbour)) {
                     queue.addIfUnadded(neighbour);
                 }

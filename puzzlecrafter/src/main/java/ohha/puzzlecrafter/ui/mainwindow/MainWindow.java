@@ -20,11 +20,19 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
-import ohha.puzzlecrafter.grid.Cell;
+import ohha.puzzlecrafter.grid.Coordinate;
 import ohha.puzzlecrafter.grid.Grid;
 import ohha.puzzlecrafter.puzzles.Puzzle;
 
 
+/**
+ * Acts as the main window of the program, from which individual puzzle styles
+ * are created.
+ * The layout design is completed, but as the puzzle editor itself is
+ * unfinished, the puzzle creation functionality is yet lacking.
+ * <p>
+ * Not yet finished.
+ */
 public class MainWindow implements Runnable {
     
     private JFrame frame;
@@ -57,7 +65,7 @@ public class MainWindow implements Runnable {
         
         // Create puzzle selection bar on top
         
-        JComboBox puzzleDropDown = new JComboBox(Puzzle.STYLES);
+        puzzleDropDown = new JComboBox(Puzzle.STYLES);
         puzzleDropDown.setSelectedIndex(1);
         
         JLabel selectPuzzleLabel = new JLabel("Select puzzle style:", JLabel.CENTER);
@@ -104,9 +112,9 @@ public class MainWindow implements Runnable {
         JLabel gridWidthLabel = new JLabel("Grid width:", JLabel.RIGHT);
         gridWidthLabel.setToolTipText("Input an integer between " + Grid.MIN_SIZE + " and " + Grid.MAX_SIZE + " to specify the width of the grid in cells.");
         
-        cellSizeSpinner = new JSpinner(new SpinnerNumberModel(Cell.DEFAULT_SIZE, Cell.MIN_SIZE, Cell.MAX_SIZE, 1));   // default, min, max, step
+        cellSizeSpinner = new JSpinner(new SpinnerNumberModel(Coordinate.DEFAULT_SIZE, Coordinate.MIN_SIZE, Coordinate.MAX_SIZE, 1));   // default, min, max, step
         JLabel cellSizeLabel = new JLabel("Cell size:", JLabel.RIGHT);
-        cellSizeLabel.setToolTipText("Input an integer between " + Cell.MIN_SIZE + " and " + Cell.MAX_SIZE + " to specify the height and width of a cell in pixels.");
+        cellSizeLabel.setToolTipText("Input an integer between " + Coordinate.MIN_SIZE + " and " + Coordinate.MAX_SIZE + " to specify the height and width of a cell in pixels.");
         
         puzzleSettingsPane.add(gridHeightLabel);
         puzzleSettingsPane.add(gridHeightSpinner);
@@ -142,12 +150,5 @@ public class MainWindow implements Runnable {
     
     public JFrame getFrame() {
         return frame;
-    }
-    
-    
-    private Puzzle createPuzzle() {
-        int gridHeight = (int) gridHeightSpinner.getValue();
-        int gridWidth = (int) gridWidthSpinner.getValue();
-        return null;
     }
 }

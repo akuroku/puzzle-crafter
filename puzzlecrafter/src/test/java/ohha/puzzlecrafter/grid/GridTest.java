@@ -15,19 +15,19 @@ public class GridTest {
     public void setUp() {
         grid = new Grid(4, 5);
         
-        grid.setValueAt(new Cell(0, 0), 1);
-        grid.setValueAt(new Cell(2, 0), 2);
-        grid.setValueAt(new Cell(3, 0), 3);
+        grid.setValueAt(new Coordinate(0, 0), 1);
+        grid.setValueAt(new Coordinate(2, 0), 2);
+        grid.setValueAt(new Coordinate(3, 0), 3);
         
-        grid.setValueAt(new Cell(0, 1), 1);
-        grid.setValueAt(new Cell(1, 1), 2);
-        grid.setValueAt(new Cell(4, 1), 2);
+        grid.setValueAt(new Coordinate(0, 1), 1);
+        grid.setValueAt(new Coordinate(1, 1), 2);
+        grid.setValueAt(new Coordinate(4, 1), 2);
         
-        grid.setValueAt(new Cell(2, 2), 3);
-        grid.setValueAt(new Cell(4, 2), -1);
+        grid.setValueAt(new Coordinate(2, 2), 3);
+        grid.setValueAt(new Coordinate(4, 2), -1);
         
-        grid.setValueAt(new Cell(3, 3), -1);
-        grid.setValueAt(new Cell(4, 3), -1);
+        grid.setValueAt(new Coordinate(3, 3), -1);
+        grid.setValueAt(new Coordinate(4, 3), -1);
         /*
         1 0 2 3 0
         1 2 0 0 2
@@ -49,43 +49,43 @@ public class GridTest {
     
     @Test
     public void undeterminedCellIsReportedAsUndetermined() {
-        assertTrue(grid.isUndetermined(new Cell(1, 0)));
+        assertTrue(grid.isUndetermined(new Coordinate(1, 0)));
     }
     @Test
     public void filledCellIsNotReportedAsUndetermined() {
-        assertFalse(grid.isUndetermined(new Cell(0, 0)));
+        assertFalse(grid.isUndetermined(new Coordinate(0, 0)));
     }
     @Test
     public void emptyCellIsNotReportedAsUndetermined() {
-        assertFalse(grid.isUndetermined(new Cell(3, 3)));
+        assertFalse(grid.isUndetermined(new Coordinate(3, 3)));
     }
     
     
     @Test
     public void emptyCellIsReportedAsEmpty() {
-        assertTrue(grid.isEmpty(new Cell(3, 3)));
+        assertTrue(grid.isEmpty(new Coordinate(3, 3)));
     }
     @Test
     public void undeterminedCellIsNotReportedAsEmpty() {
-        assertFalse(grid.isEmpty(new Cell(1, 0)));
+        assertFalse(grid.isEmpty(new Coordinate(1, 0)));
     }
     @Test
     public void filledCellisNotReportedAsEmpty() {
-        assertFalse(grid.isEmpty(new Cell(0, 0)));
+        assertFalse(grid.isEmpty(new Coordinate(0, 0)));
     }
     
     
     @Test
     public void filledCellIsReportedAsFilled() {
-        assertTrue(grid.isFilledIn(new Cell(0, 0)));
+        assertTrue(grid.isFilledIn(new Coordinate(0, 0)));
     }
     @Test
     public void undeterminedCellIsNotReportedAsFilled() {
-        assertFalse(grid.isFilledIn(new Cell(1, 0)));
+        assertFalse(grid.isFilledIn(new Coordinate(1, 0)));
     }
     @Test
     public void emptyCellIsNotReportedAsFilled() {
-        assertFalse(grid.isFilledIn(new Cell(3, 3)));
+        assertFalse(grid.isFilledIn(new Coordinate(3, 3)));
     }
     
     
@@ -95,7 +95,7 @@ public class GridTest {
         
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 5; x++) {
-                Cell cell = new Cell(x, y);
+                Coordinate cell = new Coordinate(x, y);
                 assertEquals(grid.getValueAt(cell), copy.getValueAt(cell));
             }
         }
@@ -103,7 +103,7 @@ public class GridTest {
     @Test
     public void deepCopyCopiesDeep() {
         Grid copy = grid.deepCopy();
-        grid.setValueAt(new Cell(0, 0), 20);
-        assertEquals(1, copy.getValueAt(new Cell(0, 0)));
+        grid.setValueAt(new Coordinate(0, 0), 20);
+        assertEquals(1, copy.getValueAt(new Coordinate(0, 0)));
     }
 }

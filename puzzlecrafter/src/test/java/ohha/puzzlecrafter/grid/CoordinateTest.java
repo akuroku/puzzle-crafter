@@ -6,20 +6,20 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class CellTest {
+public class CoordinateTest {
     
-    private Cell a;
-    private Cell b1;
-    private Cell b2;
-    private Cell b3;
+    private Coordinate a;
+    private Coordinate b1;
+    private Coordinate b2;
+    private Coordinate b3;
     
     
     @Before
     public void setUp() {
-        a = new Cell(0, 2);
-        b1 = new Cell(1, 3);
-        b2 = new Cell(1, 3);
-        b3 = new Cell(1, 3);
+        a = new Coordinate(0, 2);
+        b1 = new Coordinate(1, 3);
+        b2 = new Coordinate(1, 3);
+        b3 = new Coordinate(1, 3);
     }
     
     

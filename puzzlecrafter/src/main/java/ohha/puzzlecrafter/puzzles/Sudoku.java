@@ -3,11 +3,17 @@ package ohha.puzzlecrafter.puzzles;
 
 import ohha.puzzlecrafter.auxiliary.IsDuplicated;
 import ohha.puzzlecrafter.grid.Partition;
-import ohha.puzzlecrafter.grid.Cell;
+import ohha.puzzlecrafter.grid.Coordinate;
 
 import java.util.LinkedList;
 
 
+/**
+ * Implements the
+ * <a href ="https://tspuzzles.wordpress.com/rules/sudoku/">Sudoku</a> puzzle
+ * style.
+ * Solver performance is satisfactory at least on 6 by 6 sudokus.
+ */
 public class Sudoku extends Puzzle {
     
     private Partition partition;
@@ -28,14 +34,14 @@ public class Sudoku extends Puzzle {
     
     /*
     @Override
-    public Cell getNextCell(Cell c) {
+    public Coordinate getNextCell(Coordinate c) {
         // override with a better heuristic if you can
     }
     */
     
     
     @Override
-    public boolean isPartialSolution(Cell cell) {
+    public boolean isPartialSolution(Coordinate cell) {
         if (IsDuplicated.onRow(getGrid(), cell)) {
             return false;
         }

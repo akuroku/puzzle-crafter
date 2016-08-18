@@ -6,59 +6,116 @@ import java.util.HashSet;
 
 
 /**
- * An object of this class represents a set of cells forming a region, for example the 3x3 boxes in Sudoku or the regions in Star Battle.
- * A <code>Region</code> doesn't contain any values filled into the puzzle. This task is done by {@Link Grid}.
+ * Represents a set of cells forming a region, for example the 3x3 boxes in
+ * Sudoku or the regions in Star Battle.
+ * A <code>Region</code> doesn't contain any values filled into the puzzle. This
+ * task is done by {@Link Grid}.
  * <p>
- * As a <code>Region</code> is a set of cells, it may not contain duplicate cells. No demands or requirements are made on the co-ordinates of the constituent cells; they may be negative as well, although the <code>Grid</code> class only expects non-negative coordinates.
+ * As a <code>Region</code> is a set of <code>Coordinate</code>s, it may not
+ * contain duplicate coordinates. No demands or requirements are made on the
+ * components of the constituent coordinates; they may be negative as well,
+ * although the  <code>Grid</code> class only expects non-negative components.
  * <p>
- * When constructing a region, no demands or requirements are made that the region is connected, either in the sense of moving cardinally, or touching-by-corners. However, the class offers methods for testing this.
+ * When constructing a region, no demands or requirements are made that the
+ * region is connected, either in the sense of moving cardinally, or moving both
+ * cardinally and diagonally. However, the class offers methods for testing
+ * this.
  */
 public class Region {
     
-    private Set<Cell> cells;
+    private Set<Coordinate> cells;
     
     
+    /**
+     * A constructor for making an empty region.
+     */
     public Region() {
         cells = new HashSet<>();
     }
-    public Region(int regionHeight, int regionWidth, int topLeftX, int topLeftY) {
+    /**
+     * A constructor for making a rectangular region.
+     * @param regionHeight  height of region in cells
+     * @param regionWidth   width of region in cells
+     * @param topLeft   coordinate of top-left cell of region
+     */
+    public Region(int regionHeight, int regionWidth, Coordinate topLeft) {
         cells = new HashSet<>();
         
         for (int y = 0; y < regionHeight; y++) {
             for (int x = 0; x < regionWidth; x++) {
-                cells.add(new Cell(topLeftX + x, topLeftY + y));
+                cells.add(topLeft.shiftX(x).shiftY(y));
             }
         }
     }
     
     
-    public void addCell(Cell cell) {
-        cells.add(cell);
+    /**
+     * Adds cell at given coordinate into region.
+     * @param c coordinate to be added
+     */
+    public void addCellAt(Coordinate c) {
+        cells.add(c);
     }
-    public Set<Cell> getCells() {
+    /**
+     * Returns the set of coordinates of the region's cells.
+     * @return  the set of coordinates of the region's cells
+     */
+    public Set<Coordinate> getCells() {
         return cells;
     }
     
     
-    public boolean contains(Cell cell) {
-        return cells.contains(cell);
+    /**
+     * Returns true if region contains cell at given coordinate.
+     * @param c coordinate of cell to test
+     * @return  true if the region contains the coordinate, false otherwise
+     */
+    public boolean contains(Coordinate c) {
+        return cells.contains(c);
     }
     
     
-    // TODO: implement two below methods
-    public boolean isConnectedCardinally(Region region) {
+    /**
+     * Not implemented yet, always returns false.
+     * <p>
+     * Returns true if the region is connected cardinally.
+     * A region is connected cardinally if you can go from any cell in the
+     * region to any other, without having to exit the region, by stepping from
+     * cell to one of its neighbours in the four cardinal directions (up, down,
+     * left, right).
+     * @return  true if the region is connected cardinally, false otherwise
+     */
+    public boolean isConnectedCardinally() {
         return false;
     }
-    public boolean isConnectedCardinalDiagonally(Region region) {
+    
+    /**
+     * Not implemented yet, always returns false.
+     * <p>
+     * Returns true if the region is connected in the sense of
+     * touching-by-corners.
+     * A region is connected in this sense if you can go from any cell in the
+     * region. to any other, without having to exit the region, by stepping from
+     * cell to one of its surrounding neighbours (a cell that touches the
+     * current cell at least by corners).
+     * @return  true if the region is connected in the sense of
+     * toucing-by-corners, false otherwise
+     */
+    public boolean isConnectedDiagonally() {
         return false;
     }
     
     
+    /**
+     * Returns a deep copy of the <code>Region</code> it was called on.
+     * 
+     * @return a deep copy of the <code>Region</code> it was called on
+     */
     public Region deepCopy() {
         Region copy = new Region();
         
-        for (Cell c : getCells()) {
-            copy.addCell(new Cell(c.getX(), c.getY()));
+        for (Coordinate c : getCells()) {
+            copy.addCellAt(new Coordinate(c.getX(), c.getY()));
         }
         return copy;
     }
@@ -92,7 +149,7 @@ public class Region {
     @Override
     public String toString() {
         String s = "";
-        for (Cell c : getCells()) {
+        for (Coordinate c : getCells()) {
             s += c.toString() + ", ";
         }
         return s;
