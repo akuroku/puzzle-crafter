@@ -74,8 +74,13 @@
 
     </module>
 
-    <!-- File Length -->
+    <!-- File of ignored classes -->
+    <module name="SuppressionFilter">
+        <property name="file" value="mysuppressions.xml" />
+    </module>
 
+
+    <!-- File Length -->
     <module name='FileLength'>
         <property name='max' value='200' />
     </module>

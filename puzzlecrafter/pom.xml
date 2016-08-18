@@ -39,10 +39,12 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <param>ohha.puzzlecrafter.*</param>
+                        <param>ohha.puzzlecrafter.auxiliary.*</param>
+                        <param>ohha.puzzlecrafter.grid.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>ohha.puzzlecrafter.*</param>
+                        <param>ohha.puzzlecrafter.auxiliary.*</param>
+                        <param>ohha.puzzlecrafter.grid.*</param>
                     </targetTests>
                 </configuration>
             </plugin>

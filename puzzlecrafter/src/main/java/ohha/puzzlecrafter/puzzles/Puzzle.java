@@ -1,3 +1,7 @@
+/* 
+ * Checkstyle valittaa luokan koosta, mutta suurin osa luokasta on JavaDoc-
+ * dokumentaatiota, joten mielestäni valitus on aiheeton.
+ */
 
 package ohha.puzzlecrafter.puzzles;
 
@@ -136,8 +140,6 @@ public abstract class Puzzle {
     }
     
     
-    // returns the next undetermined cell for the solver to try, or null if there is none
-    // it may be overridden to implement a better order for the solver to try to fill the puzzle in
     /**
      * Returns the next undetermined cell for the solver to try, or null if
      * there is none.
