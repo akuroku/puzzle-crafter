@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 12,
-             Errors: 0,
+      <title>File: 16,
+             Errors: 1,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.auxiliary.Neighbours.java">ohha/puzzlecrafter/auxiliary/Neighbours.java</a>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.puzzles.Fillomino.java">ohha/puzzlecrafter/puzzles/Fillomino.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,105 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.puzzles.Fillomino.java">ohha/puzzlecrafter/puzzles/Fillomino.java</a>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.grid.Coordinate.java">ohha/puzzlecrafter/grid/Coordinate.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.ui.editorwindow.GridPane.java">ohha/puzzlecrafter/ui/editorwindow/GridPane.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.puzzles.Puzzle.java">ohha/puzzlecrafter/puzzles/Puzzle.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.grid.Grid.java">ohha/puzzlecrafter/grid/Grid.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.grid.Partition.java">ohha/puzzlecrafter/grid/Partition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.Solver.java">ohha/puzzlecrafter/Solver.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.auxiliary.PositiveIntFormatter.java">ohha/puzzlecrafter/auxiliary/PositiveIntFormatter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.auxiliary.Neighbours.java">ohha/puzzlecrafter/auxiliary/Neighbours.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +186,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.puzzles.Puzzle.java">ohha/puzzlecrafter/puzzles/Puzzle.java</a>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.ui.mainwindow.MainWindow.java">ohha/puzzlecrafter/ui/mainwindow/MainWindow.java</a>
                 </td>
                 <td>
                   0
@@ -144,35 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.grid.Grid.java">ohha/puzzlecrafter/grid/Grid.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.grid.Partition.java">ohha/puzzlecrafter/grid/Partition.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.Solver.java">ohha/puzzlecrafter/Solver.java</a>
+                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.ui.editorwindow.PuzzleEditorWindow.java">ohha/puzzlecrafter/ui/editorwindow/PuzzleEditorWindow.java</a>
                 </td>
                 <td>
                   0
@@ -187,20 +257,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.puzzles.Sudoku.java">ohha/puzzlecrafter/puzzles/Sudoku.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#ohha.puzzlecrafter.grid.Cell.java">ohha/puzzlecrafter/grid/Cell.java</a>
                 </td>
                 <td>
                   0

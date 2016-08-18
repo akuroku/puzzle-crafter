@@ -1,0 +1,1989 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+	border: 1px solid #dddddd;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-family: Consolas, Courier, monospace;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>Coordinate.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package ohha.puzzlecrafter.grid;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Represents coordinates of a cell in the puzzle grid.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * They serve as conceptual wrappers for a pair of numbers. In particular, this</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * means that they do not hold the actual values found in the puzzle&#39;s cells,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * see {@Link &#60;code&#62;Grid&#60;/code&#62;} for this.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;p&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;code&#62;Coordinate&#60;/code&#62; objects are immutable, and the &#34;modifier&#34; methods</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * return new &#60;code&#62;Coordinate&#60;/code&#62; objects instead of modifying the</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;code&#62;Coordinate&#60;/code&#62; they were called on.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Coordinate {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static final int MIN_SIZE = 8;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static final int DEFAULT_SIZE = 10;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static final int MAX_SIZE = 100;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final int x;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final int y;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_24'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Coordinate(int x, int y) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_25'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.x = x;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_26'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.y = y;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_27'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getX() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_30'/>
+30
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_30'>1</a>
+<span>
+
+1. getX : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return x;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getY() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_33'/>
+33
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_33'>1</a>
+<span>
+
+1. getY : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return y;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_37'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Returns a new &#60;code&#62;Coordinate&#60;/code&#62; with a shifted x-component.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Specifically, the new &#60;code&#62;Coordinate&#60;/code&#62; shares its y-component with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * the &#60;code&#62;Coordinate&#60;/code&#62; the method was called on, and the new</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_41'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;code&#62;Coordinate&#60;/code&#62;&#39;s x-component is calculated by adding</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@param shift} to the x-coordinate of the cell the method was called on.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param   shift   shift in the x-direction</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return  a new &#60;code&#62;Coordinate&#60;/code&#62; with a shifted x-component</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Coordinate shiftX(int shift) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_48'/>
+48
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_48'>2</a>
+<span>
+
+1. shiftX : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+2. shiftX : mutated return of Object value for ohha/puzzlecrafter/grid/Coordinate::shiftX to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Coordinate(this.x + shift, this.y);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Returns a new &#60;code&#62;Coordinate&#60;/code&#62; with a shifted y-component.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Specifically, the new &#60;code&#62;Coordinate&#60;/code&#62; shares its x-component with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_54'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * the &#60;code&#62;Coordinate&#60;/code&#62; the method was called on, and the new</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_55'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;code&#62;Coordinate&#60;/code&#62;&#39;s y-component is calculated by adding</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * {@param shift} to the y-component of the cell the method was called on.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_58'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param   shift   shift in the y-direction</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return  a new &#60;code&#62;Coordinate&#60;/code&#62; with a shifted y-component</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Coordinate shiftY(int shift) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_62'/>
+62
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_62'>2</a>
+<span>
+
+1. shiftY : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+2. shiftY : mutated return of Object value for ohha/puzzlecrafter/grid/Coordinate::shiftY to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Coordinate(this.x, this.y + shift);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_65'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_66'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Returns a new &#60;code&#62;Coordinate&#60;/code&#62; with the specified x-component.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_68'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Specifically, the new &#60;code&#62;Coordinate&#60;/code&#62; shares its y-component with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_69'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * the &#60;code&#62;Coordinate&#60;/code&#62; the method was called on, and the new</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_70'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;code&#62;Coordinate&#60;/code&#62;&#39;s x-component is {@param newx}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_71'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param   newx   the new x-coordinate</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return  a new &#60;code&#62;Coordinate&#60;/code&#62; with a switched x-component</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_75'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Coordinate switchX(int newx) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_76'/>
+76
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_76'>1</a>
+<span>
+
+1. switchX : mutated return of Object value for ohha/puzzlecrafter/grid/Coordinate::switchX to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Coordinate(newx, this.y);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_77'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_78'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_79'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_80'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Returns a new &#60;code&#62;Coordinate&#60;/code&#62; with the specified y-component.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_81'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Specifically, the new &#60;code&#62;Coordinate&#60;/code&#62; shares its x-component with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_82'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * the &#60;code&#62;Coordinate&#60;/code&#62; the method was called on, and the new</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_83'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * &#60;code&#62;Coordinate&#60;/code&#62;&#39;s y-component is {@param newy}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_84'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_85'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param   newy   the new y-component</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_86'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return  a new &#60;code&#62;Coordinate&#60;/code&#62; with a switched y-component</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_87'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_88'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Coordinate switchY(int newy) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_89'/>
+89
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_89'>1</a>
+<span>
+
+1. switchY : mutated return of Object value for ohha/puzzlecrafter/grid/Coordinate::switchY to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Coordinate(this.x, newy);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_90'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_91'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_92'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_93'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_94'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean equals(Object obj) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_95'/>
+95
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_95'>1</a>
+<span>
+
+1. equals : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (obj == null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_96'/>
+96
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_96'>1</a>
+<span>
+
+1. equals : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return false;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_97'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_98'/>
+98
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_98'>1</a>
+<span>
+
+1. equals : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (getClass() != obj.getClass()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_99'/>
+99
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_99'>1</a>
+<span>
+
+1. equals : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return false;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_100'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_101'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_102'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final Coordinate other = (Coordinate) obj;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_103'/>
+103
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_103'>3</a>
+<span>
+
+1. equals : negated conditional &rarr; KILLED<br/>
+
+2. equals : negated conditional &rarr; KILLED<br/>
+
+3. equals : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.x == other.x &#38;&#38; this.y == other.y;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_104'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_105'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_106'/>
+106
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_106'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_107'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int hashCode() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_108'/>
+108
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_108'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        int hash = 7;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_109'/>
+109
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_109'>2</a>
+<span>
+
+1. hashCode : Replaced integer multiplication with division &rarr; SURVIVED<br/>
+
+2. hashCode : Replaced integer addition with subtraction &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        hash = 73 * hash + this.x;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_110'/>
+110
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_110'>2</a>
+<span>
+
+1. hashCode : Replaced integer multiplication with division &rarr; SURVIVED<br/>
+
+2. hashCode : Replaced integer addition with subtraction &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        hash = 73 * hash + this.y;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_111'/>
+111
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_111'>1</a>
+<span>
+
+1. hashCode : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return hash;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_112'/>
+112
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_112'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_113'/>
+113
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_113'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_114'/>
+114
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_114'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_115'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_116'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public String toString() {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_117'/>
+117
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_117'>1</a>
+<span>
+
+1. toString : mutated return of Object value for ohha/puzzlecrafter/grid/Coordinate::toString to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return &#34;(&#34; + getX() + &#34;, &#34; + getY() + &#34;)&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_118'/>
+118
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_118'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@101ca8da_119'/>
+119
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_119'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_30'>30</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_30'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getX<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.shiftXChangesXCoordinate(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_33'>33</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_33'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getY<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.shiftXDoesntChangeYCoordinate(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_48'>48</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_48'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>shiftX<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.shiftXChangesXCoordinate(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>shiftX<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.shiftXChangesXCoordinate(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> mutated return of Object value for ohha/puzzlecrafter/grid/Coordinate::shiftX to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_62'>62</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_62'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>shiftY<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.shiftYChangesYCoordinate(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>shiftY<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.shiftYChangesYCoordinate(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> mutated return of Object value for ohha/puzzlecrafter/grid/Coordinate::shiftY to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_76'>76</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_76'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>switchX<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.switchXChangesXCoordinate(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> mutated return of Object value for ohha/puzzlecrafter/grid/Coordinate::switchX to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_89'>89</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_89'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>switchY<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.switchYChangesYCoordinate(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> mutated return of Object value for ohha/puzzlecrafter/grid/Coordinate::switchY to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_95'>95</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_95'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.equalsDoesntEquateWithNull(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_96'>96</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_96'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.equalsDoesntEquateWithNull(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_98'>98</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_98'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.equalsDoesntEquateWithObjectOfDifferentType(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_99'>99</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_99'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.equalsDoesntEquateWithObjectOfDifferentType(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_103'>103</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_103'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.equalsIsReflexive(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.equalsIsReflexive(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>ohha.puzzlecrafter.grid.CoordinateTest.equalsIsReflexive(ohha.puzzlecrafter.grid.CoordinateTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_109'>109</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_109'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>hashCode<br/><b>Killed by : </b>none</span></span> Replaced integer multiplication with division &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>hashCode<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_110'>110</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_110'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>hashCode<br/><b>Killed by : </b>none</span></span> Replaced integer multiplication with division &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>hashCode<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_111'>111</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_111'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>hashCode<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@101ca8da_117'>117</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@101ca8da_117'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toString<br/><b>Killed by : </b>none</span></span> mutated return of Object value for ohha/puzzlecrafter/grid/Coordinate::toString to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>ohha.puzzlecrafter.auxiliary.NeighboursTest.cardinalsReturnsCorrectCellsInCenter(ohha.puzzlecrafter.auxiliary.NeighboursTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.undeterminedCellOnRegionIsNotReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.duplicatedNumberOnRegionIsReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.undeterminedCellOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.notContainedCellIsNotReportedAsContained(ohha.puzzlecrafter.grid.RegionTest) (3 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.undeterminedCellIsReportedAsUndetermined(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.hashCodeIsConsistent(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.cardinalsReturnsCorrectCellsInCorner(ohha.puzzlecrafter.auxiliary.NeighboursTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.equalsIsSymmetricWhenReturningFalse(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.deepCopyCopiesCorrectly(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.nullRegionIsReturnedWhenCellIsInNoRegion(ohha.puzzlecrafter.grid.PartitionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalsIsSymmetricWhenReturningFalse(ohha.puzzlecrafter.grid.RegionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.undeterminedCellIsNotReportedAsFilled(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.emptyCellOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.uniqueNumberOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.equalsIsConsistentWhenReturningTrue(ohha.puzzlecrafter.grid.CoordinateTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.rectangularPartitionConstructorMakesMidRightRegion(ohha.puzzlecrafter.grid.PartitionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.rectangularPartitionConstructorMakesBottomLeftRegion(ohha.puzzlecrafter.grid.PartitionTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.filledCellIsReportedAsFilled(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.emptyCellOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.containedRegionIsReportedAsContained(ohha.puzzlecrafter.grid.PartitionTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.rectangularPartitionConstructorMakesMidLeftRegion(ohha.puzzlecrafter.grid.PartitionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.equalsIsConsistentWhenReturningFalse(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.duplicatedNumberOnRowIsReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.emptyCellIsNotReportedAsFilled(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.rectangularPartitionConstructorMakesCorrectAmountOfRegions(ohha.puzzlecrafter.grid.PartitionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.shiftXDoesntChangeYCoordinate(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.emptyCellIsNotReportedAsUndetermined(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.deepCopyCopiesDeep(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalsIsConsistentWhenReturningFalse(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.rectangularPartitionConstructorMakesTopRightRegion(ohha.puzzlecrafter.grid.PartitionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.deepCopyCopiesCorrectly(ohha.puzzlecrafter.grid.PartitionTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.switchYDoesntChangeXCoordinate(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.switchYChangesYCoordinate(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.equalsIsTransitive(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.cardinalsReturnsCorrectCellsOnEdge(ohha.puzzlecrafter.auxiliary.NeighboursTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.equalsDoesntEquateWithObjectOfDifferentType(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.uncontainedRegionIsNotReportedAsContained(ohha.puzzlecrafter.grid.PartitionTest) (1 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.diagonalsReturnsCorrectCellsOnEdge(ohha.puzzlecrafter.auxiliary.NeighboursTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.constructorInitialisesCorrectWidth(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.emptyCellOnRegionIsNotReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (3 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.rectangularPartitionConstructorMakesBottomRightRegion(ohha.puzzlecrafter.grid.PartitionTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.emptyCellIsReportedAsEmpty(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.rectangularRegionConstructorMakesCorrectAmountOfCells(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.surroundingReturnsCorrectCellsInCorner(ohha.puzzlecrafter.auxiliary.NeighboursTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.shiftXChangesXCoordinate(ohha.puzzlecrafter.grid.CoordinateTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.constructorInitialisesCorrectHeight(ohha.puzzlecrafter.grid.GridTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.switchXDoesntChangeYCoordinate(ohha.puzzlecrafter.grid.CoordinateTest) (3 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.surroundingReturnsCorrectCellsInCenter(ohha.puzzlecrafter.auxiliary.NeighboursTest) (1 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.uniqueNumberOnRowIsNotReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalsDoesntEquateWithUnequalRegionOfSameSize(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.deepCopyCopiesCorrectly(ohha.puzzlecrafter.grid.RegionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalsDoesntEquateWithObjectOfDifferentType(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.uniqueNumberOnRegionIsNotReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (1 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.surroundingReturnsCorrectAmountOfCellsInCenter(ohha.puzzlecrafter.auxiliary.NeighboursTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.equalsIsSymmetricWhenReturningTrue(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.shiftYDoesntChangeXCoordinate(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.duplicatedNumberOnColumnIsReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (290 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.equalObjectsHaveEqualHashCodes(ohha.puzzlecrafter.grid.CoordinateTest) (3 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalObjectsHaveEqualHashCodes(ohha.puzzlecrafter.grid.RegionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.equalsIsReflexive(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.surroundingReturnsCorrectCellsOnEdge(ohha.puzzlecrafter.auxiliary.NeighboursTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.equalsDoesntEquateWithNull(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.cardinalsReturnsCorrectAmountOfCells(ohha.puzzlecrafter.auxiliary.NeighboursTest) (5 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.diagonalsReturnsCorrectCellsInCenter(ohha.puzzlecrafter.auxiliary.NeighboursTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalsIsTransitive(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.deepCopyCopiesDeep(ohha.puzzlecrafter.grid.PartitionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.rectangularPartitionConstructorMakesTopLeftRegion(ohha.puzzlecrafter.grid.PartitionTest) (1 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.diagonalsReturnsCorrectCellsInCorner(ohha.puzzlecrafter.auxiliary.NeighboursTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalsDoesntEquateWithRegionOfDifferentSize(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalsIsConsistentWhenReturningTrue(ohha.puzzlecrafter.grid.RegionTest) (6 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.filledCellisNotReportedAsEmpty(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.deepCopyCopiesDeep(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.NeighboursTest.diagonalsReturnsCorrectAmountOfCells(ohha.puzzlecrafter.auxiliary.NeighboursTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.rectangularRegionConstructorMakesCorrectCells(ohha.puzzlecrafter.grid.RegionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.undeterminedCellIsNotReportedAsEmpty(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.shiftYChangesYCoordinate(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.PartitionTest.correctContainingRegionOfCellIsReturned(ohha.puzzlecrafter.grid.PartitionTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.hashCodeIsConsistent(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalsDoesntEquateWithNull(ohha.puzzlecrafter.grid.RegionTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.containedCellIsReportedAsContained(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.GridTest.filledCellIsNotReportedAsUndetermined(ohha.puzzlecrafter.grid.GridTest) (1 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalsIsSymmetricWhenReturningTrue(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li><li>ohha.puzzlecrafter.auxiliary.IsDuplicatedTest.undeterminedCellOnColumnIsNotReportedAsDuplicated(ohha.puzzlecrafter.auxiliary.IsDuplicatedTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.CoordinateTest.switchXChangesXCoordinate(ohha.puzzlecrafter.grid.CoordinateTest) (2 ms)</li><li>ohha.puzzlecrafter.grid.RegionTest.equalsIsReflexive(ohha.puzzlecrafter.grid.RegionTest) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.8
+
+</body>
+</html>
