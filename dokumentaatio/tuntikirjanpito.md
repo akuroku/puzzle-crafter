@@ -13,4 +13,5 @@ Päivä | Tunnit | Kuvaus
 15.8.2016 | 9h | Käyttöliittymätoteutuksen tutkimista & toteutusta
 17.8.2016 | 6h | Käyttöliittymän toteuttamista & refaktorointia
 18.8.2016 | 8h | Javadocien kirjoitusta & dokumentaation päivitystä
+22.8.2016 | 10h | Käyttöliittymän toteutusta
 ... | ... | ...
