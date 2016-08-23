@@ -15,19 +15,19 @@ public class GridTest {
     public void setUp() {
         grid = new Grid(4, 5);
         
-        grid.setValueAt(new Coordinate(0, 0), 1);
-        grid.setValueAt(new Coordinate(2, 0), 2);
-        grid.setValueAt(new Coordinate(3, 0), 3);
+        grid.setValueOfCellAt(new Coordinate(0, 0), 1);
+        grid.setValueOfCellAt(new Coordinate(2, 0), 2);
+        grid.setValueOfCellAt(new Coordinate(3, 0), 3);
         
-        grid.setValueAt(new Coordinate(0, 1), 1);
-        grid.setValueAt(new Coordinate(1, 1), 2);
-        grid.setValueAt(new Coordinate(4, 1), 2);
+        grid.setValueOfCellAt(new Coordinate(0, 1), 1);
+        grid.setValueOfCellAt(new Coordinate(1, 1), 2);
+        grid.setValueOfCellAt(new Coordinate(4, 1), 2);
         
-        grid.setValueAt(new Coordinate(2, 2), 3);
-        grid.setValueAt(new Coordinate(4, 2), -1);
+        grid.setValueOfCellAt(new Coordinate(2, 2), 3);
+        grid.setValueOfCellAt(new Coordinate(4, 2), -1);
         
-        grid.setValueAt(new Coordinate(3, 3), -1);
-        grid.setValueAt(new Coordinate(4, 3), -1);
+        grid.setValueOfCellAt(new Coordinate(3, 3), -1);
+        grid.setValueOfCellAt(new Coordinate(4, 3), -1);
         /*
         1 0 2 3 0
         1 2 0 0 2
@@ -96,14 +96,14 @@ public class GridTest {
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 5; x++) {
                 Coordinate cell = new Coordinate(x, y);
-                assertEquals(grid.getValueAt(cell), copy.getValueAt(cell));
+                assertEquals(grid.getValueOfCellAt(cell), copy.getValueOfCellAt(cell));
             }
         }
     }
     @Test
     public void deepCopyCopiesDeep() {
         Grid copy = grid.deepCopy();
-        grid.setValueAt(new Coordinate(0, 0), 20);
-        assertEquals(1, copy.getValueAt(new Coordinate(0, 0)));
+        grid.setValueOfCellAt(new Coordinate(0, 0), 20);
+        assertEquals(1, copy.getValueOfCellAt(new Coordinate(0, 0)));
     }
 }

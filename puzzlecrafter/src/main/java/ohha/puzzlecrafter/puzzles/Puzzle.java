@@ -10,6 +10,7 @@ import ohha.puzzlecrafter.grid.Grid;
 
 import java.util.List;
 import java.util.LinkedList;
+import java.util.Map;
 
 
 /**
@@ -24,15 +25,24 @@ public abstract class Puzzle {
         "Fillomino", "Sudoku"
     };
     
+    protected String name;
     private Grid grid;
     private List<Integer> values;
     private List<Coordinate> givens;
+    
+    private List<String> valueNames;
+    private Map<String, Integer> valueNameMap;
     
     
     public Puzzle(int height, int width) {
         grid = new Grid(height, width);
         values = new LinkedList<>();
         givens = new LinkedList<>();
+    }
+    
+    
+    public String getName() {
+        return name;
     }
     
     
@@ -110,7 +120,31 @@ public abstract class Puzzle {
      * @param value the value to fill in
      */
     public void setCell(Coordinate c, int value) {
-        grid.setValueAt(c, value);
+        grid.setValueOfCellAt(c, value);
+    }
+    
+    
+    /**
+     * Cycles the value in the cell at the given coordinate by the given amount.
+     * This method isn't intended to be used by the automated solver, as it also
+     * assigns to cells the value
+     * {@Link ohha.puzzlecrafter.grid.Grid#CELL_UNDETERMINED}.
+     * 
+     * @param c         the coordinate of the cell whose value to cycle
+     * @param amount    the amount of steps to cycle
+     */
+    public void cycleValueOfCell(Coordinate c, int amount) {
+        int value = grid.getValueOfCellAt(c);
+        
+        int oldIndex = getValues().indexOf(value);
+        int modulus = getValues().size() + 1;
+        int newIndex = ((oldIndex + amount) % modulus + modulus) % modulus;
+        
+        if (newIndex == getValues().size()) {
+            setCell(c, 0);
+        } else {
+            setCell(c, getValues().get(newIndex));
+        }
     }
     
     
@@ -215,7 +249,7 @@ public abstract class Puzzle {
         
         for (int y = 0; y < getGrid().getHeight(); y++) {
             for (int x = 0; x < getGrid().getWidth(); x++) {
-                s += getGrid().getValueAt(new Coordinate(x, y)) + " ";
+                s += getGrid().getValueOfCellAt(new Coordinate(x, y)) + " ";
             }
             s += "\n";
         }

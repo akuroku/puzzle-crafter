@@ -20,22 +20,22 @@ public class IsDuplicatedTest {
     public void setUp() {
         grid = new Grid(6, 6);
         
-        grid.setValueAt(new Coordinate(0, 0), 1);
-        grid.setValueAt(new Coordinate(2, 0), 2);
-        grid.setValueAt(new Coordinate(3, 0), 3);
+        grid.setValueOfCellAt(new Coordinate(0, 0), 1);
+        grid.setValueOfCellAt(new Coordinate(2, 0), 2);
+        grid.setValueOfCellAt(new Coordinate(3, 0), 3);
         
-        grid.setValueAt(new Coordinate(0, 1), 1);
-        grid.setValueAt(new Coordinate(1, 1), 2);
-        grid.setValueAt(new Coordinate(4, 1), 2);
+        grid.setValueOfCellAt(new Coordinate(0, 1), 1);
+        grid.setValueOfCellAt(new Coordinate(1, 1), 2);
+        grid.setValueOfCellAt(new Coordinate(4, 1), 2);
         
-        grid.setValueAt(new Coordinate(2, 2), 3);
-        grid.setValueAt(new Coordinate(4, 2), -1);
-        grid.setValueAt(new Coordinate(5, 2), 3);
+        grid.setValueOfCellAt(new Coordinate(2, 2), 3);
+        grid.setValueOfCellAt(new Coordinate(4, 2), -1);
+        grid.setValueOfCellAt(new Coordinate(5, 2), 3);
         
-        grid.setValueAt(new Coordinate(0, 3), -1);
-        grid.setValueAt(new Coordinate(4, 3), -1);
+        grid.setValueOfCellAt(new Coordinate(0, 3), -1);
+        grid.setValueOfCellAt(new Coordinate(4, 3), -1);
         
-        grid.setValueAt(new Coordinate(1, 4), 2);
+        grid.setValueOfCellAt(new Coordinate(1, 4), 2);
         
         
         partition = new Partition();

@@ -26,7 +26,7 @@ import java.util.LinkedList;
  */
 public class Grid {
     
-    public final static int MIN_SIZE = 1;
+    public final static int MIN_SIZE = 3;
     public final static int DEFAULT_SIZE = 9;
     public final static int MAX_SIZE = 100;
     
@@ -34,27 +34,81 @@ public class Grid {
     public static final int CELL_EMPTY = -1;
     
     private int[][] grid;
-    
+    private int height;
+    private int width;
     
     public Grid(int height, int width) {
-        grid = new int[height][width];
+        grid = new int[2 * height + 1][2 * width + 1];
+        this.height = height;
+        this.width = width;
     }
     
     
     public int getHeight() {
-        return grid.length;
+        return height;
     }
     public int getWidth() {
-        return grid[0].length;
+        return width;
     }
     
-    public void setValueAt(Coordinate c, int value) {
-        grid[c.getY()][c.getX()] = value;
+    
+    public void setValueOfCellAt(Coordinate c, int value) {
+        grid[2 * c.getY() + 1][2 * c.getX() + 1] = value;
     }
-    public int getValueAt(Coordinate c) {
-        return grid[c.getY()][c.getX()];
+    public int getValueOfCellAt(Coordinate c) {
+        return grid[2 * c.getY() + 1][2 * c.getX() + 1];
     }
     
+    public void setValueOfEdgeAt(Coordinate c, Side side, int value) {
+        switch(side) {
+            case TOP: {
+                grid[2 * c.getY()][2 * c.getX() + 1] = value;
+            }
+            case LEFT: {
+                grid[2 * c.getY() + 1][2 * c.getX()] = value;
+            }
+            case BOTTOM: {
+                grid[2 * (c.getY() + 1)][2 * c.getX() + 1] = value;
+            }
+            case RIGHT: {
+                grid[2 * c.getY() + 1][2 * (c.getX() + 1)] = value;
+            }
+        }
+    }
+    public int getValueOfEdgeAt(Coordinate c, Side side) {
+        switch(side) {
+            case TOP: {
+                return grid[2 * c.getY()][2 * c.getX() + 1];
+            }
+            case LEFT: {
+                return grid[2 * c.getY() + 1][2 * c.getX()];
+            }
+            case BOTTOM: {
+                return grid[2 * (c.getY() + 1)][2 * c.getX() + 1];
+            }
+            case RIGHT: {
+                return grid[2 * c.getY() + 1][2 * (c.getX() + 1)];
+            }
+            default: {
+                return 0;
+            }
+        }
+    }
+    
+    
+    /**
+     * Returns whether the coordinate given represents a cell contained in the
+     * grid.
+     * 
+     * @param c the coordinate of the cell to be tested
+     * @return  true if the grid contains the indicated cell, false otherwise
+     */
+    public boolean contains(Coordinate c) {
+        if (c == null) {
+            return false;
+        }
+        return 0 <= c.getX() && c.getX() < getWidth() && 0 <= c.getY() && c.getY() < getHeight();
+    }
     
     /**
      * Returns whether the value at the coordinate is undetermined or not.
@@ -67,7 +121,7 @@ public class Grid {
      * @return  true if the cell is undetermined, false otherwise
      */
     public boolean isUndetermined(Coordinate c) {
-        return getValueAt(c) == CELL_UNDETERMINED;
+        return getValueOfCellAt(c) == CELL_UNDETERMINED;
     }
     
     /**
@@ -81,7 +135,7 @@ public class Grid {
      * @return  true if the cell is empty, false otherwise
      */
     public boolean isEmpty(Coordinate c) {
-        return getValueAt(c) == CELL_EMPTY;
+        return getValueOfCellAt(c) == CELL_EMPTY;
     }
     
     /**
@@ -127,7 +181,7 @@ public class Grid {
         Grid copy = new Grid(getHeight(), getWidth());
         
         for (Coordinate coordinate : this.getListOfCoordinates()) {
-            copy.setValueAt(coordinate, this.getValueAt(coordinate));
+            copy.setValueOfCellAt(coordinate, this.getValueOfCellAt(coordinate));
         }
         
         return copy;

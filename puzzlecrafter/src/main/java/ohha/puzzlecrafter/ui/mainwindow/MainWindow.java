@@ -23,6 +23,7 @@ import javax.swing.WindowConstants;
 import ohha.puzzlecrafter.grid.Coordinate;
 import ohha.puzzlecrafter.grid.Grid;
 import ohha.puzzlecrafter.puzzles.Puzzle;
+import ohha.puzzlecrafter.ui.drawers.Drawer;
 
 
 /**
@@ -112,9 +113,9 @@ public class MainWindow implements Runnable {
         JLabel gridWidthLabel = new JLabel("Grid width:", JLabel.RIGHT);
         gridWidthLabel.setToolTipText("Input an integer between " + Grid.MIN_SIZE + " and " + Grid.MAX_SIZE + " to specify the width of the grid in cells.");
         
-        cellSizeSpinner = new JSpinner(new SpinnerNumberModel(Coordinate.DEFAULT_SIZE, Coordinate.MIN_SIZE, Coordinate.MAX_SIZE, 1));   // default, min, max, step
+        cellSizeSpinner = new JSpinner(new SpinnerNumberModel(Drawer.DEFAULT_CELL_SIZE, Drawer.MIN_CELL_SIZE, Drawer.MAX_CELL_SIZE, 1));   // default, min, max, step
         JLabel cellSizeLabel = new JLabel("Cell size:", JLabel.RIGHT);
-        cellSizeLabel.setToolTipText("Input an integer between " + Coordinate.MIN_SIZE + " and " + Coordinate.MAX_SIZE + " to specify the height and width of a cell in pixels.");
+        cellSizeLabel.setToolTipText("Input an integer between " + Drawer.MIN_CELL_SIZE + " and " + Drawer.MAX_CELL_SIZE + " to specify the height and width of a cell in pixels.");
         
         puzzleSettingsPane.add(gridHeightLabel);
         puzzleSettingsPane.add(gridHeightSpinner);

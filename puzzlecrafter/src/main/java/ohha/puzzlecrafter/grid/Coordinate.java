@@ -11,11 +11,7 @@ package ohha.puzzlecrafter.grid;
  * return new <code>Coordinate</code> objects instead of modifying the
  * <code>Coordinate</code> they were called on.
  */
-public class Coordinate {
-    
-    public static final int MIN_SIZE = 8;
-    public static final int DEFAULT_SIZE = 10;
-    public static final int MAX_SIZE = 100;
+public class Coordinate { 
     
     private final int x;
     private final int y;
@@ -87,6 +83,37 @@ public class Coordinate {
      */
     public Coordinate switchY(int newy) {
         return new Coordinate(this.x, newy);
+    }
+    
+    
+    /**
+     * Returns a new <code>Coordinate</code> one step away from the given
+     * <code>Coordinate</code> in the given direction.
+     * As this method is grid-agnostic, it lets you step outside of the grid.
+     * For a method that doesn't return coordinates outside the given {@link
+     * Grid}, see {@Link ohha.puzzlecrafter.auxiliary.Neighbours].
+     * 
+     * @param side  the direction of the wanted neighbour
+     * @return      the coordinate of the neighbour
+     */
+    public Coordinate getNeighbour(Side side) {
+        switch (side) {
+            case TOP: {
+                return shiftY(-1);
+            }
+            case LEFT: {
+                return shiftX(-1);
+            }
+            case BOTTOM: {
+                return shiftY(1);
+            }
+            case RIGHT: {
+                return shiftX(1);
+            }
+            default: {
+                return null;
+            }
+        }
     }
     
     

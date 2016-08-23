@@ -32,7 +32,7 @@ public final class IsDuplicated {
             if (i == c.getX()) {
                 continue;
             }
-            if (grid.getValueAt(c) == grid.getValueAt(c.switchX(i))) {
+            if (grid.getValueOfCellAt(c) == grid.getValueOfCellAt(c.switchX(i))) {
                 return true;
             }
         }
@@ -61,7 +61,7 @@ public final class IsDuplicated {
             if (i == c.getY()) {
                 continue;
             }
-            if (grid.getValueAt(c) == grid.getValueAt(c.switchY(i))) {
+            if (grid.getValueOfCellAt(c) == grid.getValueOfCellAt(c.switchY(i))) {
                 return true;
             }
         }
@@ -95,7 +95,7 @@ public final class IsDuplicated {
             if (coordinate.equals(c)) {
                 continue;
             }
-            if (grid.getValueAt(c) == grid.getValueAt(coordinate)) {
+            if (grid.getValueOfCellAt(c) == grid.getValueOfCellAt(coordinate)) {
                 return true;
             }
         }

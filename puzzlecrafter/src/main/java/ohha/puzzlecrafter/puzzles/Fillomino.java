@@ -21,6 +21,7 @@ public class Fillomino extends Puzzle {
     public Fillomino(int height, int width) {
         super(height, width);
         super.initialiseDefaultValues(height * width);
+        name = "Fillomino";
     }
     
     
@@ -39,8 +40,8 @@ public class Fillomino extends Puzzle {
         int max = 0;
         
         for (Coordinate c : getGrid().getListOfCoordinates()) {
-            if (getGrid().getValueAt(c) > max) {
-                max = getGrid().getValueAt(c);
+            if (getGrid().getValueOfCellAt(c) > max) {
+                max = getGrid().getValueOfCellAt(c);
             }
         }
         
@@ -55,7 +56,7 @@ public class Fillomino extends Puzzle {
             space++;
             
             for (Coordinate neighbour : Neighbours.cardinals(getGrid(), current)) {
-                if (getGrid().isUndetermined(neighbour) || getGrid().getValueAt(neighbour) == max) {
+                if (getGrid().isUndetermined(neighbour) || getGrid().getValueOfCellAt(neighbour) == max) {
                     queue.addIfUnadded(neighbour);
                 }
             }
@@ -86,7 +87,7 @@ public class Fillomino extends Puzzle {
         }
         
         for (Coordinate neighbour : Neighbours.cardinals(getGrid(), cell)) {
-            if (getGrid().getValueAt(neighbour) != getGrid().getValueAt(cell)
+            if (getGrid().getValueOfCellAt(neighbour) != getGrid().getValueOfCellAt(cell)
                     && getGrid().isFilledIn(neighbour)
                     && isRegionConstricted(neighbour)) {
                 return false;
@@ -109,7 +110,7 @@ public class Fillomino extends Puzzle {
         SingleTimeEntryQueue<Coordinate> queue = new SingleTimeEntryQueue<>();
         queue.addIfUnadded(c);
         
-        int value = getGrid().getValueAt(c);
+        int value = getGrid().getValueOfCellAt(c);
         
         for (int size = 1; !queue.isEmpty(); size++) {
             if (size > value) {
@@ -119,7 +120,7 @@ public class Fillomino extends Puzzle {
             Coordinate current = queue.dequeue();
             
             for (Coordinate neighbour : Neighbours.cardinals(getGrid(), current)) {
-                if (getGrid().getValueAt(neighbour) == value) {
+                if (getGrid().getValueOfCellAt(neighbour) == value) {
                     queue.addIfUnadded(neighbour);
                 }
             }
@@ -141,7 +142,7 @@ public class Fillomino extends Puzzle {
         SingleTimeEntryQueue<Coordinate> queue = new SingleTimeEntryQueue<>();
         queue.addIfUnadded(c);
         
-        int value = getGrid().getValueAt(c);
+        int value = getGrid().getValueOfCellAt(c);
         
         for (int size = 1; !queue.isEmpty(); size++) {
             if (size >= value) {
@@ -151,7 +152,7 @@ public class Fillomino extends Puzzle {
             Coordinate current = queue.dequeue();
             
             for (Coordinate neighbour : Neighbours.cardinals(getGrid(), current)) {
-                if (getGrid().getValueAt(neighbour) == value || getGrid().isUndetermined(neighbour)) {
+                if (getGrid().getValueOfCellAt(neighbour) == value || getGrid().isUndetermined(neighbour)) {
                     queue.addIfUnadded(neighbour);
                 }
             }

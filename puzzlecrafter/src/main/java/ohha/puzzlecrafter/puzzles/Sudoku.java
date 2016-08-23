@@ -24,11 +24,17 @@ public class Sudoku extends Puzzle {
         super(size, size);
         super.initialiseDefaultValues(size);
         this.partition = partition;
+        name = "Sudoku";
     }
     
     // initialise sudoku with rectangular regions with dimensions height and width
     public Sudoku(int size, int regionHeight, int regionWidth) {
         this(size, new Partition(regionHeight, regionWidth, size / regionHeight, size / regionWidth));
+    }
+    
+    
+    public Partition getPartition() {
+        return partition;
     }
     
     

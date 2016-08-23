@@ -6,6 +6,7 @@ import ohha.puzzlecrafter.grid.Grid;
 
 import java.util.List;
 import java.util.LinkedList;
+import ohha.puzzlecrafter.grid.Side;
 
 
 /**
@@ -30,16 +31,16 @@ public final class Neighbours {
         List<Coordinate> neighbours = new LinkedList<>();
         
         if (c.getX() > 0) {
-            neighbours.add(c.shiftX(-1));
+            neighbours.add(c.getNeighbour(Side.LEFT));
         }
         if (c.getY() > 0) { 
-            neighbours.add(c.shiftY(-1));
+            neighbours.add(c.getNeighbour(Side.TOP));
         }
         if (c.getX() < g.getWidth() - 1) {
-            neighbours.add(c.shiftX(1));
+            neighbours.add(c.getNeighbour(Side.RIGHT));
         }
         if (c.getY() < g.getHeight() - 1) {
-            neighbours.add(c.shiftY(1));
+            neighbours.add(c.getNeighbour(Side.BOTTOM));
         }
         return neighbours;
     }
