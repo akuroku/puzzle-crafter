@@ -14,4 +14,6 @@ Päivä | Tunnit | Kuvaus
 17.8.2016 | 6h | Käyttöliittymän toteuttamista & refaktorointia
 18.8.2016 | 8h | Javadocien kirjoitusta & dokumentaation päivitystä
 22.8.2016 | 10h | Käyttöliittymän toteutusta
+23.8.2016 | 9h | Käyttöliittymän toteutusta, pulmanmuokkauksen ensimmäinen versio toimii
+24.8.2016 | 5h | Käyttöliittymän toteutusta, pulmanmuokkauksen tab-toiminto toimii
 ... | ... | ...
