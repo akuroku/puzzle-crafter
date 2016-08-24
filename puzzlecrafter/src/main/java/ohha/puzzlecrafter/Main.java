@@ -5,7 +5,7 @@ import javax.swing.SwingUtilities;
 
 import ohha.puzzlecrafter.puzzles.*;
 import ohha.puzzlecrafter.grid.Coordinate;
-import ohha.puzzlecrafter.ui.drawers.SudokuDrawer;
+import ohha.puzzlecrafter.ui.drawers.*;
 import ohha.puzzlecrafter.ui.editorwindow.PuzzleEditorWindow;
 import ohha.puzzlecrafter.ui.mainwindow.MainWindow;
 
@@ -17,11 +17,11 @@ import ohha.puzzlecrafter.ui.mainwindow.MainWindow;
 public class Main {
 
     public static void main(String [] args) {
-        Sudoku puzzle = new Sudoku(6, 2, 3);
-        // Fillomino puzzle = new Fillomino(6, 6);
+        //Sudoku puzzle = new Sudoku(6, 2, 3);
+        Fillomino puzzle = new Fillomino(6, 6);
         
         
-        
+        /*
         puzzle.setGiven(new Coordinate(2, 0), 5);
         puzzle.setGiven(new Coordinate(4, 0), 6);
         
@@ -49,7 +49,7 @@ public class Main {
         */
         
         
-        /*
+        
         puzzle.setGiven(new Coordinate(1, 0), 1); // unnecessary for sudoku
         puzzle.setGiven(new Coordinate(2, 0), 6);
         puzzle.setGiven(new Coordinate(1, 1), 3);
@@ -76,6 +76,7 @@ public class Main {
         _ _ _ | 2(5) _
         */
         
+        
         // both puzzles solve as both sudokus and fillominos
         
         System.out.println("Puzzle:");
@@ -87,11 +88,18 @@ public class Main {
         }
         System.out.println("\n");
         
-        
+        /*
         Solver solver = new Solver(puzzle);
-        // solver.solvePuzzle();
+        solver.solvePuzzle();
+        */
+        
         
         SwingUtilities.invokeLater(new MainWindow());
-        SwingUtilities.invokeLater(new PuzzleEditorWindow(new SudokuDrawer(puzzle, 45)));
+        /*
+        SwingUtilities.invokeLater(new PuzzleEditorWindow(
+                //new SudokuDrawer(puzzle, 45)
+                new FillominoDrawer(puzzle, 45)
+        ));
+        /**/
     }
 }

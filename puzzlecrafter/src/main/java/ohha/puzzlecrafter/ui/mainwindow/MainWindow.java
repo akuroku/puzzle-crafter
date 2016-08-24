@@ -17,13 +17,16 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
-import ohha.puzzlecrafter.grid.Coordinate;
 import ohha.puzzlecrafter.grid.Grid;
+import ohha.puzzlecrafter.puzzles.Fillomino;
 import ohha.puzzlecrafter.puzzles.Puzzle;
 import ohha.puzzlecrafter.ui.drawers.Drawer;
+import ohha.puzzlecrafter.ui.drawers.FillominoDrawer;
+import ohha.puzzlecrafter.ui.editorwindow.PuzzleEditorWindow;
 
 
 /**
@@ -67,6 +70,7 @@ public class MainWindow implements Runnable {
         // Create puzzle selection bar on top
         
         puzzleDropDown = new JComboBox(Puzzle.STYLES);
+
         puzzleDropDown.setSelectedIndex(1);
         
         JLabel selectPuzzleLabel = new JLabel("Select puzzle style:", JLabel.CENTER);
@@ -139,15 +143,39 @@ public class MainWindow implements Runnable {
         // Create event listeners
         
         createPuzzleButton.addActionListener((ActionEvent ae) -> {
-            JOptionPane.showMessageDialog(frame,
+            switch((String) puzzleDropDown.getSelectedItem()) {
+                case "Fillomino": {
+                    makeFillomino();
+                    break;
+                }
+                case "Sudoku": {
+                    makeSudoku();
+                    break;
+                }
+                default: {
+                    JOptionPane.showMessageDialog(frame, "there is an error?", "error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+    }
+    
+    private void makeFillomino() {
+        SwingUtilities.invokeLater(new PuzzleEditorWindow(
+                new FillominoDrawer(
+                        new Fillomino((int) gridHeightSpinner.getValue(), (int) gridWidthSpinner.getValue()), 
+                        (int) cellSizeSpinner.getValue()
+                )
+        ));
+    }
+    
+    private void makeSudoku() {
+        JOptionPane.showMessageDialog(frame,
                     "Puzzle: " + (String) puzzleDropDown.getSelectedItem() +
                     "\nHeight: " + gridHeightSpinner.getValue() +
                     "\nWidth: " + gridWidthSpinner.getValue() +
                     "\nCell size: " + cellSizeSpinner.getValue(),
                     "uwu", JOptionPane.INFORMATION_MESSAGE);
-        });
     }
-    
     
     public JFrame getFrame() {
         return frame;

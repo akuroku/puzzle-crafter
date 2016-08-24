@@ -84,28 +84,21 @@ public class Solver {
     private void iterate(Coordinate c) {
         if (c == null) {
             // the puzzle has been successfully filled
-            System.out.println("A solution has been found!");
-            System.out.println(puzzle);
             solutions.add(puzzle.deepCopy());
-            System.out.print("");
             return;
         }
         
         // try all candidates on current cell
         for (int value : puzzle.getCandidates(c)) {
             puzzle.setCell(c, value);
-            System.out.print("Trying " + value + " at " + c);
             
             if (!puzzle.isPartialSolution(c)) {
-                System.out.println(", contradiction");
                 continue;
-            } else {
-                System.out.println("");
             }
             iterate(puzzle.getNextCell(c));
         }
         
         // set cell back to undetermined
-        puzzle.setCell(c, 0);
+        puzzle.setCellUndetermined(c);
     }
 }

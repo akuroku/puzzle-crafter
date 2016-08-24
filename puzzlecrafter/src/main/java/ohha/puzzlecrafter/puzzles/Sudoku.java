@@ -16,25 +16,17 @@ import java.util.LinkedList;
  */
 public class Sudoku extends Puzzle {
     
-    private Partition partition;
-    
-    
     // initialise sudoku with given regions
     public Sudoku(int size, Partition partition) {
         super(size, size);
         super.initialiseDefaultValues(size);
-        this.partition = partition;
+        setPartition(partition);
         name = "Sudoku";
     }
     
     // initialise sudoku with rectangular regions with dimensions height and width
     public Sudoku(int size, int regionHeight, int regionWidth) {
         this(size, new Partition(regionHeight, regionWidth, size / regionHeight, size / regionWidth));
-    }
-    
-    
-    public Partition getPartition() {
-        return partition;
     }
     
     
@@ -54,7 +46,7 @@ public class Sudoku extends Puzzle {
         if (IsDuplicated.onColumn(getGrid(), cell)) {
             return false;
         }
-        if (IsDuplicated.onRegion(getGrid(), partition, cell)) {
+        if (IsDuplicated.onRegion(getGrid(), getPartition(), cell)) {
             return false;
         }
         return true;
@@ -63,9 +55,12 @@ public class Sudoku extends Puzzle {
     
     @Override
     public Sudoku deepCopy() {
-        Sudoku copy = new Sudoku(getGrid().getHeight(), partition.deepCopy());
-        copy.setValues(new LinkedList<>(getValues()));
+        Sudoku copy = new Sudoku(getGrid().getHeight(), getPartition().deepCopy());
         copy.setGrid(getGrid().deepCopy());
+        // clues not used
+        copy.setValues(new LinkedList<>(getValues()));
+        copy.setGivens(new LinkedList<>(getGivens()));
+        
         return copy;
     }
 }

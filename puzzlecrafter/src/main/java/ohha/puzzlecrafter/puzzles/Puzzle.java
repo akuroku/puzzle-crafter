@@ -10,7 +10,8 @@ import ohha.puzzlecrafter.grid.Grid;
 
 import java.util.List;
 import java.util.LinkedList;
-import java.util.Map;
+import ohha.puzzlecrafter.Clue;
+import ohha.puzzlecrafter.grid.Partition;
 
 
 /**
@@ -26,18 +27,22 @@ public abstract class Puzzle {
     };
     
     protected String name;
+    
     private Grid grid;
+    private Partition partition;
+    
+    private List<Clue> clues;
+    
     private List<Integer> values;
     private List<Coordinate> givens;
-    
-    private List<String> valueNames;
-    private Map<String, Integer> valueNameMap;
     
     
     public Puzzle(int height, int width) {
         grid = new Grid(height, width);
+        clues = new LinkedList<>();
         values = new LinkedList<>();
         givens = new LinkedList<>();
+
     }
     
     
@@ -53,6 +58,19 @@ public abstract class Puzzle {
         return grid;
     }
     
+    public void setPartition(Partition partition) {
+        this.partition = partition;
+    }
+    public Partition getPartition() {
+        return this.partition;
+    }
+    
+    public void setClues(List<Clue> clues) {
+        this.clues = clues;
+    }
+    public List<Clue> getClues() {
+        return clues;
+    }
     
     /**
      * Sets the full selection of possible values the puzzle's cells may take in
@@ -115,11 +133,18 @@ public abstract class Puzzle {
      * This is the intended method for the solver to fill the grid with. Compare
      * to {@link #setGiven(Coordinate, int)}, whose purpose is to insert pre-
      * filled values as hints to the solver.
+     * <p>
+     * Givens may not hold the value
+     * {@Link ohha.puzzlecrafter.grid.Grid#CELL_UNDETERMINED}. If this method is
+     * asked to set that value, it won't.
      * 
      * @param c     the coordinate of the cell to fill
      * @param value the value to fill in
      */
     public void setCell(Coordinate c, int value) {
+        if (value == Grid.UNDETERMINED_CELL) {
+            return;
+        }
         grid.setValueOfCellAt(c, value);
     }
     
@@ -141,10 +166,25 @@ public abstract class Puzzle {
         int newIndex = ((oldIndex + amount) % modulus + modulus) % modulus;
         
         if (newIndex == getValues().size()) {
-            setCell(c, 0);
+            setCellUndetermined(c);
         } else {
             setCell(c, getValues().get(newIndex));
         }
+    }
+    
+    /**
+     * Sets a cell's value to
+     * {@Link ohha.puzzlecrafter.grid.Grid#CELL_UNDETERMINED}.
+     * This method is intended to be used when the solver resets a cell's
+     * contents, instead of {@Link #setCell(Coordinate, int)} and
+     * {@Link #setGiven{Coordinate, int)}, which will fail if trying to assign
+     * an undecided.
+     * 
+     * @param c the cell whose value to reset.
+     */
+    public void setCellUndetermined(Coordinate c) {
+        givens.remove(c);
+        grid.setValueOfCellAt(c, Grid.UNDETERMINED_CELL);
     }
     
     
@@ -154,24 +194,79 @@ public abstract class Puzzle {
      * This is the intended method for the puzzle writer to set pre-filled
      * values with. Compare to {@link #setCell}, which is the method the solver
      * will use to fill the grid with.
+     * <p>
+     * Givens may not hold the value
+     * {@Link ohha.puzzlecrafter.grid.Grid#CELL_UNDETERMINED}, and if this
+     * method is used to set a given cell undetermined, nothing is done.
      * 
      * @param c     the coordinate of the cell to set as a given
      * @param value the value to set in
      */
     public void setGiven(Coordinate c, int value) {
+        if(value == Grid.UNDETERMINED_CELL) {
+            return;
+        }
+        givens.add(c);
         setCell(c, value);
+    }
+    
+    /**
+     * Sets the cell indicated by the coordinate as a given, unless it is
+     * undetermined.
+     * This method only changes the 'given' status of a cell, but not its
+     * contents. For the latter, see {@link #setGiven}.
+     * 
+     * @param c the coordinate of the cell to set as a given 
+     */
+    public void setAsGiven(Coordinate c) {
+        if (grid.isUndetermined(c)) {
+            return;
+        }
         givens.add(c);
     }
     
     /**
+     * Removes the cell's status as a given.
+     * 
+     * @param c the coordinate of the cell whose status to change
+     */
+    public void setAsNotGiven(Coordinate c) {
+        givens.remove(c);
+    }
+    
+    /**
+     * Returns whether the cell indicated by the coordinate is a given or not.
+     * 
+     * @param c the coordinate to test
+     * @return  true if the cell is a given, false otherwise
+     */
+    public boolean isGiven(Coordinate c) {
+        return givens.contains(c);
+    }
+    
+    /**
+     * Sets the given list of coordinates as givens for the puzzle.
+     * This method is only intended for the use of {@Link #deepCopy()}, and
+     * does not check whether the cells are undetermined or not.
+     * 
+     * @param givens    the list of coordinates to set as givens
+     */
+    public void setGivens(List<Coordinate> givens) {
+        this.givens = givens;
+    }
+    
+    /**
      * Returns the coordinates of givens (pre-filled values) in the grid.
-     * This enables the solver not to overwrite these cells.
+     * This enables the solver not to overwrite these cells. Givens must not be
+     * the value {ohha.puzzlegrafter.grid.Grid#UNDETERMINED_CELL}.
      * 
      * @return  a list of coordinates of cells with givens
      */
     public List<Coordinate> getGivens() {
         return givens;
     }
+    
+    
     
     
     /**

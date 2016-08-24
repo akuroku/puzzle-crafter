@@ -7,17 +7,20 @@ import java.awt.event.MouseWheelEvent;
 import javax.swing.SwingUtilities;
 
 import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.puzzles.Puzzle;
 
 
 public class Editor extends MouseAdapter {
     
     private GridPane gridPane;
+    private Puzzle puzzle;
     
     private Coordinate cursor;
     
     
     public Editor(GridPane gridPane) {
         this.gridPane = gridPane;
+        this.puzzle = gridPane.getDrawer().getPuzzle();
         cursor = new Coordinate(0, 0);
     }
     
@@ -38,7 +41,22 @@ public class Editor extends MouseAdapter {
             return;
         }
         
-        gridPane.getDrawer().getPuzzle().cycleValueOfCell(cursor, amount);
+        puzzle.cycleValueOfCell(cursor, amount);
+        gridPane.repaint();
+        gridPane.revalidate();
+    }
+    
+    private void toggleGivenStatusAtCursor() {
+        if (cursor == null) {
+            return;
+        }
+        
+        if (puzzle.isGiven(cursor)) {
+            puzzle.setAsNotGiven(cursor);
+        } else {
+            puzzle.setAsGiven(cursor);
+        }
+        
         gridPane.repaint();
         gridPane.revalidate();
     }
@@ -48,15 +66,19 @@ public class Editor extends MouseAdapter {
     public void mouseClicked(MouseEvent me) {
         Coordinate newCursor = gridPane.getDrawer().pointToGridCellCoordinate(me.getPoint());
         
-        System.out.println("nwn");
-        
-        if (!(newCursor.equals(cursor))) {
-            setCursor(newCursor);
+        if (newCursor == null) {
+            setCursor(null);
             return;
         }
         
         if (SwingUtilities.isLeftMouseButton(me)) {
-            cycleCellAtCursor(1);
+            if (newCursor.equals(cursor)) {
+                cycleCellAtCursor(1);
+            }
+            setCursor(newCursor);
+        } else if (SwingUtilities.isRightMouseButton(me)) {
+            setCursor(newCursor);
+            toggleGivenStatusAtCursor();
         }
     }
     

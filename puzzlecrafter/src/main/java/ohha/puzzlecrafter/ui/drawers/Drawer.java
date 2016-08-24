@@ -1,7 +1,6 @@
 
 package ohha.puzzlecrafter.ui.drawers;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,7 +12,6 @@ import ohha.puzzlecrafter.grid.Coordinate;
 import ohha.puzzlecrafter.grid.Side;
 
 import ohha.puzzlecrafter.puzzles.Puzzle;
-import ohha.puzzlecrafter.ui.editorwindow.Editor;
 
 
 public abstract class Drawer {
@@ -102,7 +100,6 @@ public abstract class Drawer {
                 (topMargin + c.getY()) * (cellSize + THIN_EDGE_THICKNESS) + cellSize
         );
     }
-    
     public Point getTopLeftPixelCoordinateOfVertex(Coordinate c) {
         return new Point(
                 (leftMargin + c.getX()) * (cellSize + THIN_EDGE_THICKNESS) - (THIN_EDGE_THICKNESS + 1) / 2,
@@ -143,4 +140,6 @@ public abstract class Drawer {
     public abstract void drawFramingEdges(Graphics2D g2d);
     
     public abstract void drawVertex(Graphics2D g2d, Coordinate c);
+    
+    public abstract Drawer deepCopy();
 }

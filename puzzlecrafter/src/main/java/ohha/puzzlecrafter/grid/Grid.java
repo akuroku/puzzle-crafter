@@ -30,17 +30,27 @@ public class Grid {
     public final static int DEFAULT_SIZE = 9;
     public final static int MAX_SIZE = 100;
     
-    public static final int CELL_UNDETERMINED = 0;
-    public static final int CELL_EMPTY = -1;
+    public static final int UNDETERMINED_CELL = 0;
+    public static final int EMPTY_CELL = -1;
+    
     
     private int[][] grid;
     private int height;
     private int width;
     
+    
     public Grid(int height, int width) {
         grid = new int[2 * height + 1][2 * width + 1];
         this.height = height;
         this.width = width;
+    }
+    
+    
+    private void setGrid(int[][] grid) {
+        this.grid = grid;
+    }
+    private int[][] getGrid() {
+        return grid;
     }
     
     
@@ -115,13 +125,13 @@ public class Grid {
      * The value 'undetermined' represents a cell whose contents have not yet
      * been determined by the solver.
      * <p>
-     * The value is named in the constant <code>CELL_UNDETERMINED</code>.
+     * The value is named in the constant <code>UNDETERMINED_CELL</code>.
      * 
      * @param c the coordinate in the puzzle grid to probe
      * @return  true if the cell is undetermined, false otherwise
      */
     public boolean isUndetermined(Coordinate c) {
-        return getValueOfCellAt(c) == CELL_UNDETERMINED;
+        return getValueOfCellAt(c) == UNDETERMINED_CELL;
     }
     
     /**
@@ -129,13 +139,13 @@ public class Grid {
      * The value 'empty' represents a cell which has been determined empty by
      * the solver.
      * <p>
-     * The value is named in the constant <code>CELL_EMPTY</code>.
+     * The value is named in the constant <code>EMPTY_CELL</code>.
      * 
      * @param c the location in the puzzle grid to probe
      * @return  true if the cell is empty, false otherwise
      */
     public boolean isEmpty(Coordinate c) {
-        return getValueOfCellAt(c) == CELL_EMPTY;
+        return getValueOfCellAt(c) == EMPTY_CELL;
     }
     
     /**
@@ -179,10 +189,14 @@ public class Grid {
      */
     public Grid deepCopy() {
         Grid copy = new Grid(getHeight(), getWidth());
+        int[][] newGrid = new int[2 * height + 1][2 * width + 1];
         
-        for (Coordinate coordinate : this.getListOfCoordinates()) {
-            copy.setValueOfCellAt(coordinate, this.getValueOfCellAt(coordinate));
+        for (int y = 0; y < 2 * height + 1; y++) {
+            for (int x = 0; x < 2 * width + 1; x++) {
+                newGrid[y][x] = grid[y][x];
+            }
         }
+        copy.setGrid(newGrid);
         
         return copy;
     }

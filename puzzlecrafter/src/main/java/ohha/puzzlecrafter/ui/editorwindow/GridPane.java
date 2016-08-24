@@ -21,23 +21,43 @@ import ohha.puzzlecrafter.ui.drawers.Drawer;
  */
 public class GridPane extends JPanel {
     
+    private String code;
+    private int copies;
+    
     private Drawer drawer;
     private Editor editor;
     
-    public GridPane(Drawer drawer) {
+    public GridPane(Drawer drawer, String code) {
         super();
+        
+        this.code = code;
+        this.copies = 0;
         
         this.drawer = drawer;
         this.editor = new Editor(this);
         this.addMouseListener(editor);
         
-        this.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+        //this.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         this.setSize(new Dimension(drawer.getWidth(), drawer.getHeight()));
         
         this.setBackground(Color.white);
         this.setOpaque(true);
     }
     
+    
+    public void setCode(String code) {
+        this.code = code;
+    }
+    public String getCode() {
+        return code;
+    }
+    
+    public int getCopies() {
+        return copies;
+    }
+    public int incrementAndGetCopies() {
+        return ++copies;
+    }
     
     public Drawer getDrawer() {
         return drawer;
@@ -100,5 +120,10 @@ public class GridPane extends JPanel {
         for (Coordinate c : drawer.getPuzzle().getGrid().getListOfCoordinates()) {
             drawer.drawVertex(g2d, c);
         }
-    }  
+    }
+    
+    
+    public GridPane makeCopy() {
+        return new GridPane(drawer.deepCopy(), getCode() + "." + incrementAndGetCopies());
+    }
 }

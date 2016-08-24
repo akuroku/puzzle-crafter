@@ -2,6 +2,7 @@
 package ohha.puzzlecrafter.puzzles;
 
 import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.Side;
 import ohha.puzzlecrafter.auxiliary.SingleTimeEntryQueue;
 import ohha.puzzlecrafter.auxiliary.Neighbours;
 
@@ -17,11 +18,44 @@ import java.util.LinkedList;
  */
 public class Fillomino extends Puzzle {
     
+    public static final int THIN_DASHED_EDGE = 0;
+    public static final int THICK_SOLID_EDGE = 1;
+    public static final int NO_EDGE = -1;
+    
     
     public Fillomino(int height, int width) {
         super(height, width);
         super.initialiseDefaultValues(height * width);
         name = "Fillomino";
+    }
+    
+    
+    @Override
+    public void setCell(Coordinate c, int value) {
+        super.setCell(c, value);
+        
+        for (Side side : Side.values()) {
+            Coordinate neighbour = c.getNeighbour(side);
+            
+            if (getGrid().contains(neighbour)) {
+                if (getGrid().isUndetermined(neighbour)) {
+                    getGrid().setValueOfEdgeAt(c, side, THIN_DASHED_EDGE);
+                } else if (getGrid().getValueOfCellAt(neighbour) == getGrid().getValueOfCellAt(c)) {
+                    getGrid().setValueOfEdgeAt(c, side, NO_EDGE);
+                } else {
+                    getGrid().setValueOfEdgeAt(c, side, THICK_SOLID_EDGE);
+                }
+            }
+        }
+    }
+    
+    @Override
+    public void setCellUndetermined(Coordinate c) {
+        super.setCellUndetermined(c);
+        
+        for (Side side : Side.values()) {
+            getGrid().setValueOfEdgeAt(c, side, Fillomino.THIN_DASHED_EDGE);
+        }
     }
     
     
@@ -164,8 +198,11 @@ public class Fillomino extends Puzzle {
     @Override
     public Puzzle deepCopy() {
         Fillomino copy = new Fillomino(getGrid().getHeight(), getGrid().getWidth());
-        copy.setValues(new LinkedList<>(getValues()));
         copy.setGrid(getGrid().deepCopy());
+        // clues not used
+        copy.setValues(new LinkedList<>(getValues()));
+        copy.setGivens(new LinkedList<>(getGivens()));
+        
         return copy;
     }
 }
