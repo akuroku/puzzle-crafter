@@ -7,7 +7,6 @@ Toteutetaan ohjelma, jolla voi laatia kynä-ja-paperipulmia sekä ratkoa niitä. Oh
 - Ratko pulma käsin
 - Etsi kaikki pulman ratkaisut automaattisesti
 - Laadi pulma käsin
-- Generoi yksikäsitteisen ratkaisun omaava pulma automaattisesti
 
 **Luokkakaavio:**
 

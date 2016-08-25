@@ -47,7 +47,7 @@
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>          
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> y = 0; y &lt; partitionHeight; y++) {
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>              <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> x = 0; x &lt; partitionWidth; x++) {
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>                  regions.add(<strong class="jxr_keyword">new</strong> <a href="../../../ohha/puzzlecrafter/grid/Region.html">Region</a>(regionHeight, regionWidth, <strong class="jxr_keyword">new</strong> <a href="../../../ohha/puzzlecrafter/grid/Coordinate.html">Coordinate</a>(x * regionWidth, y * regionHeight)));
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>                  regions.add(<strong class="jxr_keyword">new</strong> <a href="../../../ohha/puzzlecrafter/grid/Region.html">Region</a>(regionHeight, regionWidth, <strong class="jxr_keyword">new</strong> <a href="../../../ohha/puzzlecrafter/grid/CellCoordinate.html">CellCoordinate</a>(x * regionWidth, y * regionHeight)));
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>              }
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>          }
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>      }
@@ -86,7 +86,7 @@
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>  <em class="jxr_javadoccomment">     * @return  returns the region containing the given cell, or null if no</em>
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>  <em class="jxr_javadoccomment">     * containing region is found</em>
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>      <strong class="jxr_keyword">public</strong> <a href="../../../ohha/puzzlecrafter/grid/Region.html">Region</a> getRegionOf(<a href="../../../ohha/puzzlecrafter/grid/Coordinate.html">Coordinate</a> c) {
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>      <strong class="jxr_keyword">public</strong> <a href="../../../ohha/puzzlecrafter/grid/Region.html">Region</a> getRegionOf(<a href="../../../ohha/puzzlecrafter/grid/CellCoordinate.html">CellCoordinate</a> c) {
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>          <strong class="jxr_keyword">for</strong> (Region region : regions) {
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>              <strong class="jxr_keyword">if</strong> (region.contains(c)) {
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>                  <strong class="jxr_keyword">return</strong> region;

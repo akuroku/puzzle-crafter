@@ -19,7 +19,7 @@
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment"> * A &lt;code&gt;Region&lt;/code&gt; doesn't contain any values filled into the puzzle. This</em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment"> * task is done by {@Link Grid}.</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment"> * &lt;p&gt;</em>
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment"> * As a &lt;code&gt;Region&lt;/code&gt; is a set of &lt;code&gt;Coordinate&lt;/code&gt;s, it may not</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment"> * As a &lt;code&gt;Region&lt;/code&gt; is a set of &lt;code&gt;CellCoordinate&lt;/code&gt;s, it may not</em>
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment"> * contain duplicate coordinates. No demands or requirements are made on the</em>
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment"> * components of the constituent coordinates; they may be negative as well,</em>
 <a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment"> * although the  &lt;code&gt;Grid&lt;/code&gt; class only expects non-negative components.</em>
@@ -31,7 +31,7 @@
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../ohha/puzzlecrafter/grid/Region.html">Region</a> {
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>      
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>      <strong class="jxr_keyword">private</strong> Set&lt;Coordinate&gt; cells;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>      <strong class="jxr_keyword">private</strong> Set&lt;CellCoordinate&gt; cells;
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>      
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>      
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>      <em class="jxr_javadoccomment">/**</em>
@@ -46,7 +46,7 @@
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     * @param regionWidth   width of region in cells</em>
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     * @param topLeft   coordinate of top-left cell of region</em>
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">public</strong> <a href="../../../ohha/puzzlecrafter/grid/Region.html">Region</a>(<strong class="jxr_keyword">int</strong> regionHeight, <strong class="jxr_keyword">int</strong> regionWidth, <a href="../../../ohha/puzzlecrafter/grid/Coordinate.html">Coordinate</a> topLeft) {
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">public</strong> <a href="../../../ohha/puzzlecrafter/grid/Region.html">Region</a>(<strong class="jxr_keyword">int</strong> regionHeight, <strong class="jxr_keyword">int</strong> regionWidth, <a href="../../../ohha/puzzlecrafter/grid/CellCoordinate.html">CellCoordinate</a> topLeft) {
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>          cells = <strong class="jxr_keyword">new</strong> HashSet&lt;&gt;();
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>          
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> y = 0; y &lt; regionHeight; y++) {
@@ -61,14 +61,14 @@
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">     * Adds cell at given coordinate into region.</em>
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     * @param c coordinate to be added</em>
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> addCellAt(<a href="../../../ohha/puzzlecrafter/grid/Coordinate.html">Coordinate</a> c) {
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> addCellAt(<a href="../../../ohha/puzzlecrafter/grid/CellCoordinate.html">CellCoordinate</a> c) {
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>          cells.add(c);
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>      }
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  <em class="jxr_javadoccomment">     * Returns the set of coordinates of the region's cells.</em>
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  <em class="jxr_javadoccomment">     * @return  the set of coordinates of the region's cells</em>
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>      <strong class="jxr_keyword">public</strong> Set&lt;Coordinate&gt; getCells() {
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>      <strong class="jxr_keyword">public</strong> Set&lt;CellCoordinate&gt; getCells() {
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>          <strong class="jxr_keyword">return</strong> cells;
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>      }
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>      
@@ -78,7 +78,7 @@
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>  <em class="jxr_javadoccomment">     * @param c coordinate of cell to test</em>
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>  <em class="jxr_javadoccomment">     * @return  true if the region contains the coordinate, false otherwise</em>
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> contains(<a href="../../../ohha/puzzlecrafter/grid/Coordinate.html">Coordinate</a> c) {
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> contains(<a href="../../../ohha/puzzlecrafter/grid/CellCoordinate.html">CellCoordinate</a> c) {
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>          <strong class="jxr_keyword">return</strong> cells.contains(c);
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>      }
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>      
@@ -122,8 +122,8 @@
 <a class="jxr_linenumber" name="L114" href="#L114">114</a>     <strong class="jxr_keyword">public</strong> <a href="../../../ohha/puzzlecrafter/grid/Region.html">Region</a> deepCopy() {
 <a class="jxr_linenumber" name="L115" href="#L115">115</a>         <a href="../../../ohha/puzzlecrafter/grid/Region.html">Region</a> copy = <strong class="jxr_keyword">new</strong> <a href="../../../ohha/puzzlecrafter/grid/Region.html">Region</a>();
 <a class="jxr_linenumber" name="L116" href="#L116">116</a>         
-<a class="jxr_linenumber" name="L117" href="#L117">117</a>         <strong class="jxr_keyword">for</strong> (Coordinate c : getCells()) {
-<a class="jxr_linenumber" name="L118" href="#L118">118</a>             copy.addCellAt(<strong class="jxr_keyword">new</strong> <a href="../../../ohha/puzzlecrafter/grid/Coordinate.html">Coordinate</a>(c.getX(), c.getY()));
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>         <strong class="jxr_keyword">for</strong> (CellCoordinate c : getCells()) {
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>             copy.addCellAt(<strong class="jxr_keyword">new</strong> <a href="../../../ohha/puzzlecrafter/grid/CellCoordinate.html">CellCoordinate</a>(c.getX(), c.getY()));
 <a class="jxr_linenumber" name="L119" href="#L119">119</a>         }
 <a class="jxr_linenumber" name="L120" href="#L120">120</a>         <strong class="jxr_keyword">return</strong> copy;
 <a class="jxr_linenumber" name="L121" href="#L121">121</a>     }
@@ -157,7 +157,7 @@
 <a class="jxr_linenumber" name="L149" href="#L149">149</a>     @Override
 <a class="jxr_linenumber" name="L150" href="#L150">150</a>     <strong class="jxr_keyword">public</strong> String toString() {
 <a class="jxr_linenumber" name="L151" href="#L151">151</a>         String s = <span class="jxr_string">""</span>;
-<a class="jxr_linenumber" name="L152" href="#L152">152</a>         <strong class="jxr_keyword">for</strong> (Coordinate c : getCells()) {
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>         <strong class="jxr_keyword">for</strong> (CellCoordinate c : getCells()) {
 <a class="jxr_linenumber" name="L153" href="#L153">153</a>             s += c.toString() + <span class="jxr_string">", "</span>;
 <a class="jxr_linenumber" name="L154" href="#L154">154</a>         }
 <a class="jxr_linenumber" name="L155" href="#L155">155</a>         <strong class="jxr_keyword">return</strong> s;
