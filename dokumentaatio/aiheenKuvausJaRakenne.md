@@ -12,3 +12,8 @@ Toteutetaan ohjelma, jolla voi laatia kynä-ja-paperipulmia sekä ratkoa niitä. Oh
 
 ![Luokkakaavio](/dokumentaatio/luokkakaavio.png)
 
+**Sekvenssikaavio: Fillomino-editorin luonti**
+![Fillomino-editorin luonti](/dokumentaatio/sekvenssikaavio-editorin_luonti.png)
+
+**Sekvenssikaavio: Välilehden kopiointi**
+![Välilehden kopiointi](/dokumentaatio/sekvenssikaavio-välilehden_kopiointi.png)
