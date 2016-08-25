@@ -4,9 +4,7 @@ package ohha.puzzlecrafter;
 import javax.swing.SwingUtilities;
 
 import ohha.puzzlecrafter.puzzles.*;
-import ohha.puzzlecrafter.grid.Coordinate;
-import ohha.puzzlecrafter.ui.drawers.*;
-import ohha.puzzlecrafter.ui.editorwindow.PuzzleEditorWindow;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.ui.mainwindow.MainWindow;
 
 
@@ -22,21 +20,21 @@ public class Main {
         
         
         /*
-        puzzle.setGiven(new Coordinate(2, 0), 5);
-        puzzle.setGiven(new Coordinate(4, 0), 6);
+        puzzle.setGiven(new CellCoordinate(2, 0), 5);
+        puzzle.setGiven(new CellCoordinate(4, 0), 6);
         
-        puzzle.setGiven(new Coordinate(3, 1), 4);
+        puzzle.setGiven(new CellCoordinate(3, 1), 4);
         
-        puzzle.setGiven(new Coordinate(0, 2), 4);
-        puzzle.setGiven(new Coordinate(4, 2), 2);
+        puzzle.setGiven(new CellCoordinate(0, 2), 4);
+        puzzle.setGiven(new CellCoordinate(4, 2), 2);
         
-        puzzle.setGiven(new Coordinate(1, 3), 6);
-        puzzle.setGiven(new Coordinate(5, 3), 5);
+        puzzle.setGiven(new CellCoordinate(1, 3), 6);
+        puzzle.setGiven(new CellCoordinate(5, 3), 5);
         
-        puzzle.setGiven(new Coordinate(2, 4), 3);
+        puzzle.setGiven(new CellCoordinate(2, 4), 3);
         
-        puzzle.setGiven(new Coordinate(1, 5), 1);
-        puzzle.setGiven(new Coordinate(3, 5), 6);
+        puzzle.setGiven(new CellCoordinate(1, 5), 1);
+        puzzle.setGiven(new CellCoordinate(3, 5), 6);
         /*
         _ _ 5 | _ 6 _
         _ _ _ | 4 _ _
@@ -50,21 +48,21 @@ public class Main {
         
         
         
-        puzzle.setGiven(new Coordinate(1, 0), 1); // unnecessary for sudoku
-        puzzle.setGiven(new Coordinate(2, 0), 6);
-        puzzle.setGiven(new Coordinate(1, 1), 3);
+        puzzle.setGiven(new CellCoordinate(1, 0), 1); // unnecessary for sudoku
+        puzzle.setGiven(new CellCoordinate(2, 0), 6);
+        puzzle.setGiven(new CellCoordinate(1, 1), 3);
         
-        puzzle.setGiven(new Coordinate(4, 1), 2);
-        puzzle.setGiven(new Coordinate(5, 1), 6);
-        puzzle.setGiven(new Coordinate(5, 2), 5);
+        puzzle.setGiven(new CellCoordinate(4, 1), 2);
+        puzzle.setGiven(new CellCoordinate(5, 1), 6);
+        puzzle.setGiven(new CellCoordinate(5, 2), 5);
         
-        puzzle.setGiven(new Coordinate(0, 3), 6);
-        puzzle.setGiven(new Coordinate(0, 4), 4);
-        puzzle.setGiven(new Coordinate(1, 4), 2);
+        puzzle.setGiven(new CellCoordinate(0, 3), 6);
+        puzzle.setGiven(new CellCoordinate(0, 4), 4);
+        puzzle.setGiven(new CellCoordinate(1, 4), 2);
         
-        puzzle.setGiven(new Coordinate(4, 4), 3);
-        puzzle.setGiven(new Coordinate(3, 5), 2);
-        puzzle.setGiven(new Coordinate(4, 5), 5); // unnecessary for sudoku
+        puzzle.setGiven(new CellCoordinate(4, 4), 3);
+        puzzle.setGiven(new CellCoordinate(3, 5), 2);
+        puzzle.setGiven(new CellCoordinate(4, 5), 5); // unnecessary for sudoku
         /*
         _(1)6 | _ _ _
         _ 3 _ | _ 2 6

@@ -9,7 +9,7 @@ import java.awt.RenderingHints;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Side;
 
 import ohha.puzzlecrafter.ui.drawers.Drawer;
@@ -90,7 +90,7 @@ public class GridPane extends JPanel {
         
         
         // first draw cell content
-        for (Coordinate c : drawer.getPuzzle().getGrid().getListOfCoordinates()) {
+        for (CellCoordinate c : drawer.getPuzzle().getGrid().getListOfCellCoordinates()) {
             drawer.drawCell(g2d, c);
         }
         
@@ -102,7 +102,7 @@ public class GridPane extends JPanel {
         
         
         // then draw internal edges
-        for (Coordinate c : drawer.getPuzzle().getGrid().getListOfCoordinates()) {
+        for (CellCoordinate c : drawer.getPuzzle().getGrid().getListOfCellCoordinates()) {
             if (c.getX() != 0) {
                 drawer.drawInternalEdge(g2d, c, Side.LEFT);
             }
@@ -117,7 +117,7 @@ public class GridPane extends JPanel {
         
         
         // then draw the vertices
-        for (Coordinate c : drawer.getPuzzle().getGrid().getListOfCoordinates()) {
+        for (CellCoordinate c : drawer.getPuzzle().getGrid().getListOfCellCoordinates()) {
             drawer.drawVertex(g2d, c);
         }
     }

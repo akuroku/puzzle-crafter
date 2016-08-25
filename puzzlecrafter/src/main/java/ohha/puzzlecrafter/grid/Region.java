@@ -11,7 +11,7 @@ import java.util.HashSet;
  * A <code>Region</code> doesn't contain any values filled into the puzzle. This
  * task is done by {@Link Grid}.
  * <p>
- * As a <code>Region</code> is a set of <code>Coordinate</code>s, it may not
+ * As a <code>Region</code> is a set of <code>CellCoordinate</code>s, it may not
  * contain duplicate coordinates. No demands or requirements are made on the
  * components of the constituent coordinates; they may be negative as well,
  * although the  <code>Grid</code> class only expects non-negative components.
@@ -23,7 +23,7 @@ import java.util.HashSet;
  */
 public class Region {
     
-    private Set<Coordinate> cells;
+    private Set<CellCoordinate> cells;
     
     
     /**
@@ -38,7 +38,7 @@ public class Region {
      * @param regionWidth   width of region in cells
      * @param topLeft   coordinate of top-left cell of region
      */
-    public Region(int regionHeight, int regionWidth, Coordinate topLeft) {
+    public Region(int regionHeight, int regionWidth, CellCoordinate topLeft) {
         cells = new HashSet<>();
         
         for (int y = 0; y < regionHeight; y++) {
@@ -53,14 +53,14 @@ public class Region {
      * Adds cell at given coordinate into region.
      * @param c coordinate to be added
      */
-    public void addCellAt(Coordinate c) {
+    public void addCellAt(CellCoordinate c) {
         cells.add(c);
     }
     /**
      * Returns the set of coordinates of the region's cells.
      * @return  the set of coordinates of the region's cells
      */
-    public Set<Coordinate> getCells() {
+    public Set<CellCoordinate> getCells() {
         return cells;
     }
     
@@ -70,7 +70,7 @@ public class Region {
      * @param c coordinate of cell to test
      * @return  true if the region contains the coordinate, false otherwise
      */
-    public boolean contains(Coordinate c) {
+    public boolean contains(CellCoordinate c) {
         return cells.contains(c);
     }
     
@@ -114,8 +114,8 @@ public class Region {
     public Region deepCopy() {
         Region copy = new Region();
         
-        for (Coordinate c : getCells()) {
-            copy.addCellAt(new Coordinate(c.getX(), c.getY()));
+        for (CellCoordinate c : getCells()) {
+            copy.addCellAt(new CellCoordinate(c.getX(), c.getY()));
         }
         return copy;
     }
@@ -149,7 +149,7 @@ public class Region {
     @Override
     public String toString() {
         String s = "";
-        for (Coordinate c : getCells()) {
+        for (CellCoordinate c : getCells()) {
             s += c.toString() + ", ";
         }
         return s;

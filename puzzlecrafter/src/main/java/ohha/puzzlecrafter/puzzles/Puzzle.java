@@ -5,7 +5,7 @@
 
 package ohha.puzzlecrafter.puzzles;
 
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Grid;
 
 import java.util.List;
@@ -34,9 +34,15 @@ public abstract class Puzzle {
     private List<Clue> clues;
     
     private List<Integer> values;
-    private List<Coordinate> givens;
+    private List<CellCoordinate> givens;
     
     
+    /**
+     * Constructs a new puzzle whose grid is of the given height and width.
+     * 
+     * @param height    the height of the grid in cells
+     * @param width     the width of the grid in cells
+     */
     public Puzzle(int height, int width) {
         grid = new Grid(height, width);
         clues = new LinkedList<>();
@@ -109,9 +115,9 @@ public abstract class Puzzle {
      * selection of values that are permitted in the puzzle.
      * 
      * @param c the coordinate of the cell whose possible values are requested
-     * @return 
+     * @return  a list of feasible values that may go into the given cell
      */
-    public List<Integer> getCandidates(Coordinate c) {
+    public List<Integer> getCandidates(CellCoordinate c) {
         return getValues();
     }
     
@@ -141,7 +147,7 @@ public abstract class Puzzle {
      * @param c     the coordinate of the cell to fill
      * @param value the value to fill in
      */
-    public void setCell(Coordinate c, int value) {
+    public void setCell(CellCoordinate c, int value) {
         if (value == Grid.UNDETERMINED_CELL) {
             return;
         }
@@ -158,7 +164,7 @@ public abstract class Puzzle {
      * @param c         the coordinate of the cell whose value to cycle
      * @param amount    the amount of steps to cycle
      */
-    public void cycleValueOfCell(Coordinate c, int amount) {
+    public void cycleValueOfCell(CellCoordinate c, int amount) {
         int value = grid.getValueOfCellAt(c);
         
         int oldIndex = getValues().indexOf(value);
@@ -182,7 +188,7 @@ public abstract class Puzzle {
      * 
      * @param c the cell whose value to reset.
      */
-    public void setCellUndetermined(Coordinate c) {
+    public void setCellUndetermined(CellCoordinate c) {
         givens.remove(c);
         grid.setValueOfCellAt(c, Grid.UNDETERMINED_CELL);
     }
@@ -202,8 +208,8 @@ public abstract class Puzzle {
      * @param c     the coordinate of the cell to set as a given
      * @param value the value to set in
      */
-    public void setGiven(Coordinate c, int value) {
-        if(value == Grid.UNDETERMINED_CELL) {
+    public void setGiven(CellCoordinate c, int value) {
+        if (value == Grid.UNDETERMINED_CELL) {
             return;
         }
         givens.add(c);
@@ -218,8 +224,8 @@ public abstract class Puzzle {
      * 
      * @param c the coordinate of the cell to set as a given 
      */
-    public void setAsGiven(Coordinate c) {
-        if (grid.isUndetermined(c)) {
+    public void setAsGiven(CellCoordinate c) {
+        if (grid.isCellUndetermined(c)) {
             return;
         }
         givens.add(c);
@@ -230,7 +236,7 @@ public abstract class Puzzle {
      * 
      * @param c the coordinate of the cell whose status to change
      */
-    public void setAsNotGiven(Coordinate c) {
+    public void setAsNotGiven(CellCoordinate c) {
         givens.remove(c);
     }
     
@@ -240,7 +246,7 @@ public abstract class Puzzle {
      * @param c the coordinate to test
      * @return  true if the cell is a given, false otherwise
      */
-    public boolean isGiven(Coordinate c) {
+    public boolean isGiven(CellCoordinate c) {
         return givens.contains(c);
     }
     
@@ -251,7 +257,7 @@ public abstract class Puzzle {
      * 
      * @param givens    the list of coordinates to set as givens
      */
-    public void setGivens(List<Coordinate> givens) {
+    public void setGivens(List<CellCoordinate> givens) {
         this.givens = givens;
     }
     
@@ -262,7 +268,7 @@ public abstract class Puzzle {
      * 
      * @return  a list of coordinates of cells with givens
      */
-    public List<Coordinate> getGivens() {
+    public List<CellCoordinate> getGivens() {
         return givens;
     }
     
@@ -277,20 +283,20 @@ public abstract class Puzzle {
      * more efficient sequence of cells that results in detecting futile efforts
      * earlier and thus triggering backtracking earlier.
      * <p>
-     * The passed parameter {@param c} is the coordinate of the cell where the
+     * The passed parameter is the coordinate of the cell where the
      * solver last filled a value.
      * <p>
      * It is important that any implementation makes sure all the cells of the
      * grid are covered.
      * 
-     * @param c  the cell last modified by the solver
-     * @return 
+     * @param c the cell last modified by the solver
+     * @return  the next cell intended for the solver to modify
      */
-    public Coordinate getNextCell(Coordinate c) {
-        Coordinate next = c.shiftX(1);
+    public CellCoordinate getNextCell(CellCoordinate c) {
+        CellCoordinate next = c.shiftX(1);
         
         if (next.getX() >= grid.getWidth()) {
-            next = new Coordinate(0, c.getY() + 1);
+            next = new CellCoordinate(0, c.getY() + 1);
             
             if (next.getY() >= grid.getHeight()) {
                 return null;
@@ -311,7 +317,7 @@ public abstract class Puzzle {
      * in contradiction with the puzzle's rules.
      * This method must be implemented case by case in each puzzle.
      * <p>
-     * The passed parameter {@param c} is the coordinate of the cell where the
+     * The passed parameter is the coordinate of the cell where the
      * solver last filled a value, as it is most often sufficient to check that
      * the rules of the puzzle still hold only around the cell that changed.
      * 
@@ -319,7 +325,7 @@ public abstract class Puzzle {
      * @return  true if the puzzle may be completed into a valid solution, false
      * otherwise
      */
-    public abstract boolean isPartialSolution(Coordinate c);
+    public abstract boolean isPartialSolution(CellCoordinate c);
     
     
     /**
@@ -344,7 +350,7 @@ public abstract class Puzzle {
         
         for (int y = 0; y < getGrid().getHeight(); y++) {
             for (int x = 0; x < getGrid().getWidth(); x++) {
-                s += getGrid().getValueOfCellAt(new Coordinate(x, y)) + " ";
+                s += getGrid().getValueOfCellAt(new CellCoordinate(x, y)) + " ";
             }
             s += "\n";
         }

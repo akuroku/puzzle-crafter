@@ -10,7 +10,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Grid;
 import ohha.puzzlecrafter.grid.Side;
 import ohha.puzzlecrafter.puzzles.Fillomino;
@@ -25,7 +25,7 @@ public class FillominoDrawer extends Drawer {
     }
 
     @Override
-    public void drawCell(Graphics2D g2d, Coordinate c) {
+    public void drawCell(Graphics2D g2d, CellCoordinate c) {
         int value = getPuzzle().getGrid().getValueOfCellAt(c);
         
         if (value != Grid.UNDETERMINED_CELL) {
@@ -38,15 +38,15 @@ public class FillominoDrawer extends Drawer {
                 g2d.fill(new Ellipse2D.Double(topLeft.x, topLeft.y, getCellSize(), getCellSize()));
             }
             g2d.setColor(Color.black);
-            g2d.setFont(Drawer.DEFAULT_FONT.deriveFont(getFontSizeInPoints()));
+            g2d.setFont(Drawer.DEFAULT_FONT.deriveFont(getFontSizeInPoints(value)));
         
             g2d.drawString(value + "", bottomLeft.x, bottomLeft.y);
         }
     }
 
     @Override
-    public void drawInternalEdge(Graphics2D g2d, Coordinate c, Side side) {
-        if (getPuzzle().getGrid().getValueOfEdgeAt(c, side) == Fillomino.NO_EDGE) {
+    public void drawInternalEdge(Graphics2D g2d, CellCoordinate c, Side side) {
+        if (getPuzzle().getGrid().getValueOfEdgeAt(c.getEdgeAt(side)) == Fillomino.NO_EDGE) {
             return;
         }
         
@@ -56,7 +56,7 @@ public class FillominoDrawer extends Drawer {
         Point bottomRight = getTopLeftPixelCoordinateOfVertex(c.shiftX(1).shiftY(1));
 
         
-        if (getPuzzle().getGrid().getValueOfEdgeAt(c, side) == Fillomino.THIN_DASHED_EDGE) {
+        if (getPuzzle().getGrid().getValueOfEdgeAt(c.getEdgeAt(side)) == Fillomino.THIN_DASHED_EDGE) {
             g2d.setStroke(new BasicStroke(Drawer.THIN_EDGE_THICKNESS));
             g2d.setColor(new Color(254, 254, 254));
             
@@ -79,7 +79,7 @@ public class FillominoDrawer extends Drawer {
             }
         }
         
-        switch(getPuzzle().getGrid().getValueOfEdgeAt(c, side)) {
+        switch(getPuzzle().getGrid().getValueOfEdgeAt(c.getEdgeAt(side))) {
             case Fillomino.THICK_SOLID_EDGE: {
                 g2d.setStroke(new BasicStroke(Drawer.THICK_EDGE_THICKNESS));
                 break;
@@ -116,7 +116,7 @@ public class FillominoDrawer extends Drawer {
 
     @Override
     public void drawFramingEdges(Graphics2D g2d) {
-        Coordinate c = new Coordinate(0, 0);
+        CellCoordinate c = new CellCoordinate(0, 0);
         Point topLeft = getTopLeftPixelCoordinateOfVertex(c);
         Point topRight = getTopLeftPixelCoordinateOfVertex(c.shiftX(getPuzzle().getGrid().getWidth()));
         Point bottomLeft = getTopLeftPixelCoordinateOfVertex(c.shiftY(getPuzzle().getGrid().getHeight()));
@@ -128,7 +128,7 @@ public class FillominoDrawer extends Drawer {
     }
 
     @Override
-    public void drawVertex(Graphics2D g2d, Coordinate c) {
+    public void drawVertex(Graphics2D g2d, CellCoordinate c) {
         
     }
 

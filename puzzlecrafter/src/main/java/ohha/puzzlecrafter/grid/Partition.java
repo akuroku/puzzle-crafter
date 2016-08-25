@@ -39,7 +39,7 @@ public class Partition {
         
         for (int y = 0; y < partitionHeight; y++) {
             for (int x = 0; x < partitionWidth; x++) {
-                regions.add(new Region(regionHeight, regionWidth, new Coordinate(x * regionWidth, y * regionHeight)));
+                regions.add(new Region(regionHeight, regionWidth, new CellCoordinate(x * regionWidth, y * regionHeight)));
             }
         }
     }
@@ -78,7 +78,7 @@ public class Partition {
      * @return  returns the region containing the given cell, or null if no
      * containing region is found
      */
-    public Region getRegionOf(Coordinate c) {
+    public Region getRegionOf(CellCoordinate c) {
         for (Region region : regions) {
             if (region.contains(c)) {
                 return region;

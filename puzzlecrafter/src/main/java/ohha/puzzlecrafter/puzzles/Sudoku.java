@@ -3,7 +3,7 @@ package ohha.puzzlecrafter.puzzles;
 
 import ohha.puzzlecrafter.auxiliary.IsDuplicated;
 import ohha.puzzlecrafter.grid.Partition;
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 
 import java.util.LinkedList;
 
@@ -16,7 +16,16 @@ import java.util.LinkedList;
  */
 public class Sudoku extends Puzzle {
     
-    // initialise sudoku with given regions
+    /**
+     * Constructs a new empty Sudoku of the given height and width, with the
+     * given partition.
+     * The {@Link ohha.puzzlecrafter.grid.Partition} supplied must be a valid
+     * partition, but this is not enforced by this constructor. See the
+     * Partition class for methods for enforcing it.
+     * 
+     * @param size      the height and width of the grid in cells
+     * @param partition the partition to use
+     */
     public Sudoku(int size, Partition partition) {
         super(size, size);
         super.initialiseDefaultValues(size);
@@ -24,7 +33,17 @@ public class Sudoku extends Puzzle {
         name = "Sudoku";
     }
     
-    // initialise sudoku with rectangular regions with dimensions height and width
+    /**
+     * Constructs a new empty Sudoku of the given height and width, with the 
+     * partition consisting of equal-sized rectangular regions of the given
+     * height and width.
+     * The rectangular {@link ohha.puzzlecrafter.grid.Region} parameters must
+     * define a valid partition, but this is not enforced by this constructor.
+     * 
+     * @param size          the height and width of the grid in cells
+     * @param regionHeight  the height of a region in cells
+     * @param regionWidth   the width of a region in cells
+     */
     public Sudoku(int size, int regionHeight, int regionWidth) {
         this(size, new Partition(regionHeight, regionWidth, size / regionHeight, size / regionWidth));
     }
@@ -32,14 +51,14 @@ public class Sudoku extends Puzzle {
     
     /*
     @Override
-    public Coordinate getNextCell(Coordinate c) {
+    public CellCoordinate getNextCell(CellCoordinate c) {
         // override with a better heuristic if you can
     }
     */
     
     
     @Override
-    public boolean isPartialSolution(Coordinate cell) {
+    public boolean isPartialSolution(CellCoordinate cell) {
         if (IsDuplicated.onRow(getGrid(), cell)) {
             return false;
         }

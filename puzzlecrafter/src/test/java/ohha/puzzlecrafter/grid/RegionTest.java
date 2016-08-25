@@ -13,19 +13,19 @@ public class RegionTest {
     private Region b2;
     private Region b3;
     private Region c;
-    private Coordinate s;
+    private CellCoordinate s;
     
     
     @Before
     public void setUp() {
-        s = new Coordinate(0, 0);
-        Coordinate t = new Coordinate(1, 0);
-        Coordinate u = new Coordinate(2, 0);
-        Coordinate v = new Coordinate(3, 0);
-        Coordinate w = new Coordinate(0, 1);
-        Coordinate x = new Coordinate(1, 1);
-        Coordinate y = new Coordinate(2, 1);
-        Coordinate z = new Coordinate(3, 1);
+        s = new CellCoordinate(0, 0);
+        CellCoordinate t = new CellCoordinate(1, 0);
+        CellCoordinate u = new CellCoordinate(2, 0);
+        CellCoordinate v = new CellCoordinate(3, 0);
+        CellCoordinate w = new CellCoordinate(0, 1);
+        CellCoordinate x = new CellCoordinate(1, 1);
+        CellCoordinate y = new CellCoordinate(2, 1);
+        CellCoordinate z = new CellCoordinate(3, 1);
         
         a = new Region();
         a.addCellAt(s);
@@ -68,16 +68,16 @@ public class RegionTest {
     
     @Test
     public void rectangularRegionConstructorMakesCorrectAmountOfCells() {
-        Region r = new Region(2, 3, new Coordinate(1, 1));
+        Region r = new Region(2, 3, new CellCoordinate(1, 1));
         assertEquals(6, r.getCells().size());
     }
     @Test
     public void rectangularRegionConstructorMakesCorrectCells() {
-        Region r = new Region(2, 3, new Coordinate(1, 1));
+        Region r = new Region(2, 3, new CellCoordinate(1, 1));
         
         for (int y = 1; y <= 2; y++) {
             for (int x = 1; x <= 3; x++) {
-                assertTrue(r.contains(new Coordinate(x, y)));
+                assertTrue(r.contains(new CellCoordinate(x, y)));
             }
         }
     }
@@ -89,14 +89,14 @@ public class RegionTest {
         
         assertEquals(a.getCells().size(), copy.getCells().size());
         
-        for (Coordinate c : a.getCells()) {
+        for (CellCoordinate c : a.getCells()) {
             assertTrue(copy.contains(c));
         }
     }
     @Test
     public void deepCopyCopiesDeep() {
         Region copy = a.deepCopy();
-        a.addCellAt(new Coordinate(10, 10));
+        a.addCellAt(new CellCoordinate(10, 10));
         
         assertEquals(2, copy.getCells().size());
     }

@@ -7,8 +7,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
-import ohha.puzzlecrafter.auxiliary.FontSize;
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Side;
 
 import ohha.puzzlecrafter.puzzles.Puzzle;
@@ -83,24 +82,39 @@ public abstract class Drawer {
     }
     
     
-    public float getFontSizeInPoints() {
-        return FontSize.fromPixelsToPoints(cellSize);
+    public float getFontSizeInPoints(int value) {
+        // assumes non-negative int
+        int digits;
+        
+        if (value == 0) {
+            digits = 1;
+        } else {
+            digits = (int) (Math.log10(value) + 1);
+        }
+        
+        if (digits == 1) {
+            return cellSize;
+        }
+        if (digits == 2) {
+            return cellSize * 0.75f;
+        }
+        return cellSize * 0.5f;
     }
     
     
-    public Point getTopLeftPixelCoordinateOfGridCell(Coordinate c) {
+    public Point getTopLeftPixelCoordinateOfGridCell(CellCoordinate c) {
         return new Point(
                 (leftMargin + c.getX()) * (cellSize + THIN_EDGE_THICKNESS),
                 (topMargin + c.getY()) * (cellSize + THIN_EDGE_THICKNESS)
         );
     }
-    public Point getBottomLeftPixelCoordinateOfGridCell(Coordinate c) {
+    public Point getBottomLeftPixelCoordinateOfGridCell(CellCoordinate c) {
         return new Point(
                 (leftMargin + c.getX()) * (cellSize + THIN_EDGE_THICKNESS),
                 (topMargin + c.getY()) * (cellSize + THIN_EDGE_THICKNESS) + cellSize
         );
     }
-    public Point getTopLeftPixelCoordinateOfVertex(Coordinate c) {
+    public Point getTopLeftPixelCoordinateOfVertex(CellCoordinate c) {
         return new Point(
                 (leftMargin + c.getX()) * (cellSize + THIN_EDGE_THICKNESS) - (THIN_EDGE_THICKNESS + 1) / 2,
                 (topMargin + c.getY()) * (cellSize + THIN_EDGE_THICKNESS) - (THIN_EDGE_THICKNESS + 1) / 2
@@ -108,7 +122,7 @@ public abstract class Drawer {
     }
     
     
-    public Coordinate pointToGridCellCoordinate(Point point) {
+    public CellCoordinate pointToGridCellCoordinate(Point point) {
         int period = cellSize + THIN_EDGE_THICKNESS;
         
         int x = point.x - leftMargin * period;
@@ -118,9 +132,9 @@ public abstract class Drawer {
             return null;
         }
         
-        Coordinate c = new Coordinate(x / period, y / period);
+        CellCoordinate c = new CellCoordinate(x / period, y / period);
         
-        if (!getPuzzle().getGrid().contains(c)) {
+        if (!getPuzzle().getGrid().containsCell(c)) {
             return null;
         }
         
@@ -128,18 +142,18 @@ public abstract class Drawer {
     }
     
     
-    public void drawCursor(Graphics2D g2d, Coordinate c) {
+    public void drawCursor(Graphics2D g2d, CellCoordinate c) {
         g2d.setColor(new Color(200, 200, 200, 127));
         g2d.fill(new Rectangle(getTopLeftPixelCoordinateOfGridCell(c), new Dimension(cellSize, cellSize)));
     }
     
-    public abstract void drawCell(Graphics2D g2d, Coordinate c);
+    public abstract void drawCell(Graphics2D g2d, CellCoordinate c);
     
-    public abstract void drawInternalEdge(Graphics2D g2d, Coordinate c, Side side);
+    public abstract void drawInternalEdge(Graphics2D g2d, CellCoordinate c, Side side);
     
     public abstract void drawFramingEdges(Graphics2D g2d);
     
-    public abstract void drawVertex(Graphics2D g2d, Coordinate c);
+    public abstract void drawVertex(Graphics2D g2d, CellCoordinate c);
     
     public abstract Drawer deepCopy();
 }

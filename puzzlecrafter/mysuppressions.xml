@@ -5,7 +5,15 @@
     "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
-    <suppress files="MainWindow.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="PuzzleEditorWindow.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="Main.java" checks="[a-zA-Z0-9]*"/>
+    
+    <suppress files="Drawer.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="FillominoDrawer.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="SudokuDrawer.java" checks="[a-zA-Z0-9]*"/>
+    
+    <suppress files="Editor.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="GridPane.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="PuzzleEditorWindow.java" checks="[a-zA-Z0-9]*"/>
+    
+    <suppress files="MainWindow.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

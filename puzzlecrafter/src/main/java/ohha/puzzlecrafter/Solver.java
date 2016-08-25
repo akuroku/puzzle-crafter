@@ -2,7 +2,7 @@
 package ohha.puzzlecrafter;
 
 import ohha.puzzlecrafter.puzzles.Puzzle;
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -26,6 +26,11 @@ public class Solver {
     private List<Puzzle> solutions;
     
     
+    /**
+     * Constructs a new solver for solving the given puzzle.
+     * 
+     * @param puzzle    the puzzle to be solved
+     */
     public Solver(Puzzle puzzle) {
         this.puzzle = puzzle;
     }
@@ -44,7 +49,7 @@ public class Solver {
         solutions = new LinkedList<>();
         
         System.out.println("Starting!");
-        iterate(new Coordinate(0, 0));
+        iterate(new CellCoordinate(0, 0));
         
         if (solutions.isEmpty()) {
             System.out.println("No solutions found");
@@ -81,7 +86,7 @@ public class Solver {
      * 
      * @param c  coordinates of the cell to try placing values in
      */
-    private void iterate(Coordinate c) {
+    private void iterate(CellCoordinate c) {
         if (c == null) {
             // the puzzle has been successfully filled
             solutions.add(puzzle.deepCopy());

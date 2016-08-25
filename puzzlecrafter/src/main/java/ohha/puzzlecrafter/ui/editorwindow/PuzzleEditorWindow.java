@@ -70,6 +70,8 @@ public class PuzzleEditorWindow implements Runnable {
         
         // create tabbed pane
         tabbedPane = new JTabbedPane();
+        tabbedPane.setTabPlacement(JTabbedPane.TOP);
+        tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
         
         tabbedPane.add("1", new GridPane(drawer, "1"));
         

@@ -1,7 +1,7 @@
 
 package ohha.puzzlecrafter.auxiliary;
 
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Grid;
 
 import java.util.List;
@@ -27,8 +27,8 @@ public final class Neighbours {
      * @param c the coordinate of the cell whose neighbours to fetch
      * @return  a list of the coordinates of the cardinal neighbours
      */
-    public static List<Coordinate> cardinals(Grid g, Coordinate c) {
-        List<Coordinate> neighbours = new LinkedList<>();
+    public static List<CellCoordinate> cardinals(Grid g, CellCoordinate c) {
+        List<CellCoordinate> neighbours = new LinkedList<>();
         
         if (c.getX() > 0) {
             neighbours.add(c.getNeighbour(Side.LEFT));
@@ -57,8 +57,8 @@ public final class Neighbours {
      * @param c the coordinate of the cell whose neighbours to fetch
      * @return  a list of the coordinates of the diagonal neighbours
      */
-    public static List<Coordinate> diagonals(Grid grid, Coordinate c) {
-        List<Coordinate> neighbours = new LinkedList<>();
+    public static List<CellCoordinate> diagonals(Grid grid, CellCoordinate c) {
+        List<CellCoordinate> neighbours = new LinkedList<>();
         
         if (c.getX() > 0) {
             if (c.getY() > 0) {
@@ -92,8 +92,8 @@ public final class Neighbours {
      * @return  a list of the coordinates of the cells that touch the given cell
      * by corners
      */
-    public static List<Coordinate> surrounding(Grid grid, Coordinate c) {
-        List<Coordinate> neighbours = new LinkedList<>();
+    public static List<CellCoordinate> surrounding(Grid grid, CellCoordinate c) {
+        List<CellCoordinate> neighbours = new LinkedList<>();
         
         if (c.getX() > 0) {
             if (c.getY() > 0) {

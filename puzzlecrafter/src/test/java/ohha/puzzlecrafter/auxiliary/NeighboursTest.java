@@ -1,7 +1,7 @@
 
 package ohha.puzzlecrafter.auxiliary;
 
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Grid;
 
 import java.util.List;
@@ -15,28 +15,28 @@ import static org.junit.Assert.*;
 public class NeighboursTest {
     
     private Grid grid;
-    private Coordinate topleft;
-    private Coordinate top;
-    private Coordinate topright;
-    private Coordinate left;
-    private Coordinate center;
-    private Coordinate right;
-    private Coordinate bottomleft;
-    private Coordinate bottom;
-    private Coordinate bottomright;
+    private CellCoordinate topleft;
+    private CellCoordinate top;
+    private CellCoordinate topright;
+    private CellCoordinate left;
+    private CellCoordinate center;
+    private CellCoordinate right;
+    private CellCoordinate bottomleft;
+    private CellCoordinate bottom;
+    private CellCoordinate bottomright;
     
     @Before
     public void setUp() {
         grid = new Grid(3, 3);
-        topleft = new Coordinate(0, 0);
-        top = new Coordinate(1, 0);
-        topright = new Coordinate(2, 0);
-        left = new Coordinate(0, 1);
-        center = new Coordinate(1, 1);
-        right = new Coordinate(2, 1);
-        bottomleft = new Coordinate(0, 2);
-        bottom = new Coordinate(1, 2);
-        bottomright = new Coordinate(2, 2);
+        topleft = new CellCoordinate(0, 0);
+        top = new CellCoordinate(1, 0);
+        topright = new CellCoordinate(2, 0);
+        left = new CellCoordinate(0, 1);
+        center = new CellCoordinate(1, 1);
+        right = new CellCoordinate(2, 1);
+        bottomleft = new CellCoordinate(0, 2);
+        bottom = new CellCoordinate(1, 2);
+        bottomright = new CellCoordinate(2, 2);
     }
     
     
@@ -55,34 +55,34 @@ public class NeighboursTest {
     
     @Test
     public void cardinalsReturnsCorrectCellsInCenter() {
-        List<Coordinate> neighbours = new LinkedList<>();
-        neighbours.add(new Coordinate(1, 0));
-        neighbours.add(new Coordinate(1, 2));
-        neighbours.add(new Coordinate(0, 1));
-        neighbours.add(new Coordinate(2, 1));
+        List<CellCoordinate> neighbours = new LinkedList<>();
+        neighbours.add(new CellCoordinate(1, 0));
+        neighbours.add(new CellCoordinate(1, 2));
+        neighbours.add(new CellCoordinate(0, 1));
+        neighbours.add(new CellCoordinate(2, 1));
         
-        for (Coordinate cell : neighbours) {
+        for (CellCoordinate cell : neighbours) {
             assertTrue(Neighbours.cardinals(grid, center).contains(cell));
         }
     }
     @Test
     public void cardinalsReturnsCorrectCellsOnEdge() {
-        List<Coordinate> neighbours = new LinkedList<>();
-        neighbours.add(new Coordinate(1, 1));
-        neighbours.add(new Coordinate(0, 2));
-        neighbours.add(new Coordinate(2, 2));
+        List<CellCoordinate> neighbours = new LinkedList<>();
+        neighbours.add(new CellCoordinate(1, 1));
+        neighbours.add(new CellCoordinate(0, 2));
+        neighbours.add(new CellCoordinate(2, 2));
         
-        for (Coordinate cell : neighbours) {
+        for (CellCoordinate cell : neighbours) {
             assertTrue(Neighbours.cardinals(grid, bottom).contains(cell));
         }
     }
     @Test
     public void cardinalsReturnsCorrectCellsInCorner() {
-        List<Coordinate> neighbours = new LinkedList<>();
-        neighbours.add(new Coordinate(0, 1));
-        neighbours.add(new Coordinate(1, 2));
+        List<CellCoordinate> neighbours = new LinkedList<>();
+        neighbours.add(new CellCoordinate(0, 1));
+        neighbours.add(new CellCoordinate(1, 2));
         
-        for (Coordinate cell : neighbours) {
+        for (CellCoordinate cell : neighbours) {
             assertTrue(Neighbours.cardinals(grid, bottomleft).contains(cell));
         }
     }
@@ -103,23 +103,23 @@ public class NeighboursTest {
     
     @Test
     public void diagonalsReturnsCorrectCellsInCenter() {
-        List<Coordinate> neighbours = new LinkedList<>();
-        neighbours.add(new Coordinate(0, 0));
-        neighbours.add(new Coordinate(0, 2));
-        neighbours.add(new Coordinate(2, 2));
-        neighbours.add(new Coordinate(2, 0));
+        List<CellCoordinate> neighbours = new LinkedList<>();
+        neighbours.add(new CellCoordinate(0, 0));
+        neighbours.add(new CellCoordinate(0, 2));
+        neighbours.add(new CellCoordinate(2, 2));
+        neighbours.add(new CellCoordinate(2, 0));
         
-        for (Coordinate cell : neighbours) {
+        for (CellCoordinate cell : neighbours) {
             assertTrue(Neighbours.diagonals(grid, center).contains(cell));
         }
     }
     @Test
     public void diagonalsReturnsCorrectCellsOnEdge() {
-        List<Coordinate> neighbours = new LinkedList<>();
-        neighbours.add(new Coordinate(0, 1));
-        neighbours.add(new Coordinate(2, 1));
+        List<CellCoordinate> neighbours = new LinkedList<>();
+        neighbours.add(new CellCoordinate(0, 1));
+        neighbours.add(new CellCoordinate(2, 1));
         
-        for (Coordinate cell : neighbours) {
+        for (CellCoordinate cell : neighbours) {
             assertTrue(Neighbours.diagonals(grid, bottom).contains(cell));
         }
     }
@@ -144,41 +144,41 @@ public class NeighboursTest {
     
     @Test
     public void surroundingReturnsCorrectCellsInCenter() {
-        List<Coordinate> neighbours = new LinkedList<>();
-        neighbours.add(new Coordinate(0, 0));
-        neighbours.add(new Coordinate(1, 0));
-        neighbours.add(new Coordinate(2, 0));
-        neighbours.add(new Coordinate(0, 1));
-        neighbours.add(new Coordinate(2, 1));
-        neighbours.add(new Coordinate(0, 2));
-        neighbours.add(new Coordinate(1, 2));
-        neighbours.add(new Coordinate(2, 2));
+        List<CellCoordinate> neighbours = new LinkedList<>();
+        neighbours.add(new CellCoordinate(0, 0));
+        neighbours.add(new CellCoordinate(1, 0));
+        neighbours.add(new CellCoordinate(2, 0));
+        neighbours.add(new CellCoordinate(0, 1));
+        neighbours.add(new CellCoordinate(2, 1));
+        neighbours.add(new CellCoordinate(0, 2));
+        neighbours.add(new CellCoordinate(1, 2));
+        neighbours.add(new CellCoordinate(2, 2));
         
-        for (Coordinate cell : neighbours) {
+        for (CellCoordinate cell : neighbours) {
             assertTrue(Neighbours.surrounding(grid, center).contains(cell));
         }
     }
     @Test
     public void surroundingReturnsCorrectCellsOnEdge() {
-        List<Coordinate> neighbours = new LinkedList<>();
-        neighbours.add(new Coordinate(0, 1));
-        neighbours.add(new Coordinate(1, 1));
-        neighbours.add(new Coordinate(2, 1));
-        neighbours.add(new Coordinate(0, 2));
-        neighbours.add(new Coordinate(2, 2));
+        List<CellCoordinate> neighbours = new LinkedList<>();
+        neighbours.add(new CellCoordinate(0, 1));
+        neighbours.add(new CellCoordinate(1, 1));
+        neighbours.add(new CellCoordinate(2, 1));
+        neighbours.add(new CellCoordinate(0, 2));
+        neighbours.add(new CellCoordinate(2, 2));
         
-        for (Coordinate cell : neighbours) {
+        for (CellCoordinate cell : neighbours) {
             assertTrue(Neighbours.surrounding(grid, bottom).contains(cell));
         }
     }
     @Test
     public void surroundingReturnsCorrectCellsInCorner() {
-        List<Coordinate> neighbours = new LinkedList<>();
-        neighbours.add(new Coordinate(0, 1));
-        neighbours.add(new Coordinate(1, 1));
-        neighbours.add(new Coordinate(1, 2));
+        List<CellCoordinate> neighbours = new LinkedList<>();
+        neighbours.add(new CellCoordinate(0, 1));
+        neighbours.add(new CellCoordinate(1, 1));
+        neighbours.add(new CellCoordinate(1, 2));
         
-        for (Coordinate cell : neighbours) {
+        for (CellCoordinate cell : neighbours) {
             assertTrue(Neighbours.surrounding(grid, bottomleft).contains(cell));
         }
     }

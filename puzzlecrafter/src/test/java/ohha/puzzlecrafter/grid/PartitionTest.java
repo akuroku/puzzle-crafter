@@ -23,79 +23,79 @@ public class PartitionTest {
         p = new Partition(2, 3, 3, 2);
         
         topLeft = new Region();
-        topLeft.addCellAt(new Coordinate(0, 0));
-        topLeft.addCellAt(new Coordinate(1, 0));
-        topLeft.addCellAt(new Coordinate(2, 0));
-        topLeft.addCellAt(new Coordinate(0, 1));
-        topLeft.addCellAt(new Coordinate(1, 1));
-        topLeft.addCellAt(new Coordinate(2, 1));
+        topLeft.addCellAt(new CellCoordinate(0, 0));
+        topLeft.addCellAt(new CellCoordinate(1, 0));
+        topLeft.addCellAt(new CellCoordinate(2, 0));
+        topLeft.addCellAt(new CellCoordinate(0, 1));
+        topLeft.addCellAt(new CellCoordinate(1, 1));
+        topLeft.addCellAt(new CellCoordinate(2, 1));
 
         topRight = new Region();
-        topRight.addCellAt(new Coordinate(3, 0));
-        topRight.addCellAt(new Coordinate(4, 0));
-        topRight.addCellAt(new Coordinate(5, 0));
-        topRight.addCellAt(new Coordinate(3, 1));
-        topRight.addCellAt(new Coordinate(4, 1));
-        topRight.addCellAt(new Coordinate(5, 1));
+        topRight.addCellAt(new CellCoordinate(3, 0));
+        topRight.addCellAt(new CellCoordinate(4, 0));
+        topRight.addCellAt(new CellCoordinate(5, 0));
+        topRight.addCellAt(new CellCoordinate(3, 1));
+        topRight.addCellAt(new CellCoordinate(4, 1));
+        topRight.addCellAt(new CellCoordinate(5, 1));
 
         midLeft = new Region();
-        midLeft.addCellAt(new Coordinate(0, 2));
-        midLeft.addCellAt(new Coordinate(1, 2));
-        midLeft.addCellAt(new Coordinate(2, 2));
-        midLeft.addCellAt(new Coordinate(0, 3));
-        midLeft.addCellAt(new Coordinate(1, 3));
-        midLeft.addCellAt(new Coordinate(2, 3));
+        midLeft.addCellAt(new CellCoordinate(0, 2));
+        midLeft.addCellAt(new CellCoordinate(1, 2));
+        midLeft.addCellAt(new CellCoordinate(2, 2));
+        midLeft.addCellAt(new CellCoordinate(0, 3));
+        midLeft.addCellAt(new CellCoordinate(1, 3));
+        midLeft.addCellAt(new CellCoordinate(2, 3));
 
         midRight = new Region();
-        midRight.addCellAt(new Coordinate(3, 2));
-        midRight.addCellAt(new Coordinate(4, 2));
-        midRight.addCellAt(new Coordinate(5, 2));
-        midRight.addCellAt(new Coordinate(3, 3));
-        midRight.addCellAt(new Coordinate(4, 3));
-        midRight.addCellAt(new Coordinate(5, 3));
+        midRight.addCellAt(new CellCoordinate(3, 2));
+        midRight.addCellAt(new CellCoordinate(4, 2));
+        midRight.addCellAt(new CellCoordinate(5, 2));
+        midRight.addCellAt(new CellCoordinate(3, 3));
+        midRight.addCellAt(new CellCoordinate(4, 3));
+        midRight.addCellAt(new CellCoordinate(5, 3));
 
         bottomLeft = new Region();
-        bottomLeft.addCellAt(new Coordinate(0, 4));
-        bottomLeft.addCellAt(new Coordinate(1, 4));
-        bottomLeft.addCellAt(new Coordinate(2, 4));
-        bottomLeft.addCellAt(new Coordinate(0, 5));
-        bottomLeft.addCellAt(new Coordinate(1, 5));
-        bottomLeft.addCellAt(new Coordinate(2, 5));
+        bottomLeft.addCellAt(new CellCoordinate(0, 4));
+        bottomLeft.addCellAt(new CellCoordinate(1, 4));
+        bottomLeft.addCellAt(new CellCoordinate(2, 4));
+        bottomLeft.addCellAt(new CellCoordinate(0, 5));
+        bottomLeft.addCellAt(new CellCoordinate(1, 5));
+        bottomLeft.addCellAt(new CellCoordinate(2, 5));
 
         bottomRight = new Region();
-        bottomRight.addCellAt(new Coordinate(3, 4));
-        bottomRight.addCellAt(new Coordinate(4, 4));
-        bottomRight.addCellAt(new Coordinate(5, 4));
-        bottomRight.addCellAt(new Coordinate(3, 5));
-        bottomRight.addCellAt(new Coordinate(4, 5));
-        bottomRight.addCellAt(new Coordinate(5, 5));
+        bottomRight.addCellAt(new CellCoordinate(3, 4));
+        bottomRight.addCellAt(new CellCoordinate(4, 4));
+        bottomRight.addCellAt(new CellCoordinate(5, 4));
+        bottomRight.addCellAt(new CellCoordinate(3, 5));
+        bottomRight.addCellAt(new CellCoordinate(4, 5));
+        bottomRight.addCellAt(new CellCoordinate(5, 5));
     }
     
     
     @Test
     public void containedRegionIsReportedAsContained() {
         Region r = new Region();
-        r.addCellAt(new Coordinate(0, 20));
-        r.addCellAt(new Coordinate(0, 21));
+        r.addCellAt(new CellCoordinate(0, 20));
+        r.addCellAt(new CellCoordinate(0, 21));
         p.addRegion(r);
         assertTrue(p.contains(r));
     }
     @Test
     public void uncontainedRegionIsNotReportedAsContained() {
         Region r = new Region();
-        r.addCellAt(new Coordinate(0, 20));
-        r.addCellAt(new Coordinate(0, 21));
+        r.addCellAt(new CellCoordinate(0, 20));
+        r.addCellAt(new CellCoordinate(0, 21));
         assertFalse(p.contains(r));
     }
     
     
     @Test
     public void correctContainingRegionOfCellIsReturned() {
-        assertEquals(topLeft, p.getRegionOf(new Coordinate(1, 1)));
+        assertEquals(topLeft, p.getRegionOf(new CellCoordinate(1, 1)));
     }
     @Test
     public void nullRegionIsReturnedWhenCellIsInNoRegion() {
-        assertEquals(null, p.getRegionOf(new Coordinate(20, 20)));
+        assertEquals(null, p.getRegionOf(new CellCoordinate(20, 20)));
     }
     
     
@@ -144,8 +144,8 @@ public class PartitionTest {
     @Test
     public void deepCopyCopiesDeep() {
         Partition copy = p.deepCopy();
-        p.getRegionOf(new Coordinate(0, 0)).addCellAt(new Coordinate(10, 10));
+        p.getRegionOf(new CellCoordinate(0, 0)).addCellAt(new CellCoordinate(10, 10));
         
-        assertFalse(copy.getRegionOf(new Coordinate(0, 0)).contains(new Coordinate(10, 10)));
+        assertFalse(copy.getRegionOf(new CellCoordinate(0, 0)).contains(new CellCoordinate(10, 10)));
     }
 }

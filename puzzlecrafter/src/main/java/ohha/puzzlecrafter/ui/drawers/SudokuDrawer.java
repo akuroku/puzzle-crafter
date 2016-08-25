@@ -10,7 +10,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Grid;
 import ohha.puzzlecrafter.grid.Side;
 import ohha.puzzlecrafter.puzzles.Sudoku;
@@ -26,7 +26,7 @@ public class SudokuDrawer extends Drawer {
     
     
     @Override
-    public void drawCell(Graphics2D g2d, Coordinate c) {
+    public void drawCell(Graphics2D g2d, CellCoordinate c) {
         
         int value = getPuzzle().getGrid().getValueOfCellAt(c);
         
@@ -41,7 +41,7 @@ public class SudokuDrawer extends Drawer {
             }
                 
             g2d.setColor(Color.black);
-            g2d.setFont(Drawer.DEFAULT_FONT.deriveFont(getFontSizeInPoints()));
+            g2d.setFont(Drawer.DEFAULT_FONT.deriveFont(getFontSizeInPoints(value)));
         
             g2d.drawString(value + "", bottomLeft.x, bottomLeft.y);
         }
@@ -49,7 +49,7 @@ public class SudokuDrawer extends Drawer {
     
     
     @Override
-    public void drawInternalEdge(Graphics2D g2d, Coordinate c, Side side) {
+    public void drawInternalEdge(Graphics2D g2d, CellCoordinate c, Side side) {
         Point topLeft = getTopLeftPixelCoordinateOfVertex(c);
         Point topRight = getTopLeftPixelCoordinateOfVertex(c.shiftX(1));
         Point bottomLeft = getTopLeftPixelCoordinateOfVertex(c.shiftY(1));
@@ -86,7 +86,7 @@ public class SudokuDrawer extends Drawer {
     
     @Override
     public void drawFramingEdges(Graphics2D g2d) {
-        Coordinate c = new Coordinate(0, 0);
+        CellCoordinate c = new CellCoordinate(0, 0);
         Point topLeft = getTopLeftPixelCoordinateOfVertex(c);
         Point topRight = getTopLeftPixelCoordinateOfVertex(c.shiftX(getPuzzle().getGrid().getWidth()));
         Point bottomLeft = getTopLeftPixelCoordinateOfVertex(c.shiftY(getPuzzle().getGrid().getHeight()));
@@ -99,7 +99,7 @@ public class SudokuDrawer extends Drawer {
     
 
     @Override
-    public void drawVertex(Graphics2D g2d, Coordinate c) {
+    public void drawVertex(Graphics2D g2d, CellCoordinate c) {
     }
     
     

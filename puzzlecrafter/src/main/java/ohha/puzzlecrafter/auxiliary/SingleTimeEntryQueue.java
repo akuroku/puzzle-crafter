@@ -18,6 +18,9 @@ public class SingleTimeEntryQueue<T> {
     private Queue<T> queue;
     
     
+    /**
+     * Constructs an empty new <code>SingleTimeEntryQueue</code>.
+     */
     public SingleTimeEntryQueue() {
         entered = new HashSet<>();
         queue = new LinkedList<>();

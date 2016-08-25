@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import javax.swing.SwingUtilities;
 
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.puzzles.Puzzle;
 
 
@@ -15,20 +15,20 @@ public class Editor extends MouseAdapter {
     private GridPane gridPane;
     private Puzzle puzzle;
     
-    private Coordinate cursor;
+    private CellCoordinate cursor;
     
     
     public Editor(GridPane gridPane) {
         this.gridPane = gridPane;
         this.puzzle = gridPane.getDrawer().getPuzzle();
-        cursor = new Coordinate(0, 0);
+        cursor = new CellCoordinate(0, 0);
     }
     
     
-    public Coordinate getCursor() {
+    public CellCoordinate getCursor() {
         return cursor;
     }
-    public void setCursor(Coordinate c) {
+    public void setCursor(CellCoordinate c) {
         cursor = c;
         
         gridPane.repaint();
@@ -64,7 +64,7 @@ public class Editor extends MouseAdapter {
     
     @Override
     public void mouseClicked(MouseEvent me) {
-        Coordinate newCursor = gridPane.getDrawer().pointToGridCellCoordinate(me.getPoint());
+        CellCoordinate newCursor = gridPane.getDrawer().pointToGridCellCoordinate(me.getPoint());
         
         if (newCursor == null) {
             setCursor(null);

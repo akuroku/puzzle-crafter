@@ -2,7 +2,7 @@
 package ohha.puzzlecrafter.auxiliary;
 
 import ohha.puzzlecrafter.grid.Grid;
-import ohha.puzzlecrafter.grid.Coordinate;
+import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Partition;
 
 
@@ -23,8 +23,8 @@ public final class IsDuplicated {
      * @return      returns true if the cell is filled in and unique on its row,
      * and false otherwise
      */
-    public static boolean onRow(Grid grid, Coordinate c) {
-        if (!grid.isFilledIn(c)) {
+    public static boolean onRow(Grid grid, CellCoordinate c) {
+        if (!grid.isCellFilledIn(c)) {
             return false;
         }
         
@@ -52,8 +52,8 @@ public final class IsDuplicated {
      * @return      returns true if the cell is filled in and unique on its
      * column, and false otherwise
      */
-    public static boolean onColumn(Grid grid, Coordinate c) {
-        if (!grid.isFilledIn(c)) {
+    public static boolean onColumn(Grid grid, CellCoordinate c) {
+        if (!grid.isCellFilledIn(c)) {
             return false;
         }
         
@@ -86,12 +86,12 @@ public final class IsDuplicated {
      * @return          returns true if the cell is filled in and unique on its
      * column, and false otherwise
      */
-    public static boolean onRegion(Grid grid, Partition partition, Coordinate c) {
-        if (!grid.isFilledIn(c)) {
+    public static boolean onRegion(Grid grid, Partition partition, CellCoordinate c) {
+        if (!grid.isCellFilledIn(c)) {
             return false;
         }
         
-        for (Coordinate coordinate : partition.getRegionOf(c).getCells()) {
+        for (CellCoordinate coordinate : partition.getRegionOf(c).getCells()) {
             if (coordinate.equals(c)) {
                 continue;
             }
