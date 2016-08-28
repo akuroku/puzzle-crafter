@@ -6,9 +6,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
+import ohha.puzzlecrafter.Solver;
 import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Side;
 
@@ -24,8 +23,11 @@ public class GridPane extends JPanel {
     private String code;
     private int copies;
     
+    
     private Drawer drawer;
     private Editor editor;
+    private Solver solver;
+    
     
     public GridPane(Drawer drawer, String code) {
         super();
@@ -36,6 +38,8 @@ public class GridPane extends JPanel {
         this.drawer = drawer;
         this.editor = new Editor(this);
         this.addMouseListener(editor);
+        
+        this.solver = new Solver(drawer.getPuzzle());
         
         //this.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         this.setSize(new Dimension(drawer.getWidth(), drawer.getHeight()));
@@ -69,6 +73,11 @@ public class GridPane extends JPanel {
     }
     public Editor getEditor() {
         return editor;
+    }
+    
+    
+    public Solver getSolver() {
+        return solver;
     }
     
     

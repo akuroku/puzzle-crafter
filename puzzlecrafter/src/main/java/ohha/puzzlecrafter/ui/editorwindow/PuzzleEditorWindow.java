@@ -6,12 +6,15 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseWheelEvent;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
+import ohha.puzzlecrafter.Solver;
+import ohha.puzzlecrafter.puzzles.Puzzle;
 
 import ohha.puzzlecrafter.ui.drawers.Drawer;
 
@@ -82,8 +85,9 @@ public class PuzzleEditorWindow implements Runnable {
         menuBar = new JMenuBar();
         
         
-        JMenu copyMenu = new JMenu("Tab");
-        copyMenu.setMnemonic(KeyEvent.VK_T);
+        // create tab menu
+        JMenu tabMenu = new JMenu("Tab");
+        tabMenu.setMnemonic(KeyEvent.VK_T);
         
         
         JMenuItem closeButton = new JMenuItem("Close");
@@ -95,7 +99,7 @@ public class PuzzleEditorWindow implements Runnable {
                 frame.dispose();
             }
         });
-        copyMenu.add(closeButton);
+        tabMenu.add(closeButton);
         
         
         JMenuItem renameButton = new JMenuItem("Rename");
@@ -114,18 +118,67 @@ public class PuzzleEditorWindow implements Runnable {
             tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), code);
             getActiveGridPane().setCode(code);
         });
-        copyMenu.add(renameButton);
+        tabMenu.add(renameButton);
         
         
         JMenuItem copyButton = new JMenuItem("Copy");
         copyButton.addActionListener((ActionEvent ae) -> {
             copy();
         });
-        copyMenu.add(copyButton);
+        tabMenu.add(copyButton);
         
-        menuBar.add(copyMenu);
+        menuBar.add(tabMenu);
         
-        container.add(menuBar, BorderLayout.NORTH);
+        
+        // create solve menu
+        
+        JMenu solveMenu = new JMenu("Solve");
+        tabMenu.setMnemonic(KeyEvent.VK_S);
+        
+        
+        JMenuItem countSolutionsButton = new JMenuItem("Count solutions");
+        countSolutionsButton.setMnemonic(KeyEvent.VK_C);
+        countSolutionsButton.addActionListener((ActionEvent ae) -> {
+            int solutions = new Solver(getActiveGridPane().getDrawer().getPuzzle()).getAmountOfSolutions();
+            
+            String message;
+            
+            if (solutions == 0) {
+                message = "No solutions found!";
+            } else if (solutions == 1) {
+                message = "One solution found!";
+            } else {
+                message = solutions + " solutions found!";
+            }
+            JOptionPane.showMessageDialog(frame, message);
+        });
+        solveMenu.add(countSolutionsButton);
+        
+        
+        JMenuItem getSolutionsButton = new JMenuItem("Generate solutions");
+        getSolutionsButton.setMnemonic(KeyEvent.VK_S);
+        getSolutionsButton.addActionListener((ActionEvent ae) -> {
+            List<Puzzle> solutions = new Solver(getActiveGridPane().getDrawer().getPuzzle()).getSolutions();
+            
+            if (solutions.isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "No solutions found!");
+                return;
+            }
+            
+            String code;
+            int i = 1;
+            
+            for (Puzzle puzzle : new Solver(getActiveGridPane().getDrawer().getPuzzle().deepCopy()).getSolutions()) {
+                code = getActiveGridPane().getCode() + ".s." + i++;
+                tabbedPane.add(code, new GridPane(getActiveGridPane().getDrawer().duplicate(puzzle), code));
+            }
+        });
+        solveMenu.add(getSolutionsButton);
+        
+        menuBar.add(solveMenu);
+        
+        
+        frame.setJMenuBar(menuBar);
     }
     
     

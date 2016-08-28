@@ -7,6 +7,7 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,8 +25,10 @@ import javax.swing.WindowConstants;
 import ohha.puzzlecrafter.grid.Grid;
 import ohha.puzzlecrafter.puzzles.Fillomino;
 import ohha.puzzlecrafter.puzzles.Puzzle;
+import ohha.puzzlecrafter.puzzles.Sudoku;
 import ohha.puzzlecrafter.ui.drawers.Drawer;
 import ohha.puzzlecrafter.ui.drawers.FillominoDrawer;
+import ohha.puzzlecrafter.ui.drawers.SudokuDrawer;
 import ohha.puzzlecrafter.ui.editorwindow.PuzzleEditorWindow;
 
 
@@ -70,8 +73,7 @@ public class MainWindow implements Runnable {
         // Create puzzle selection bar on top
         
         puzzleDropDown = new JComboBox(Puzzle.STYLES);
-
-        puzzleDropDown.setSelectedIndex(1);
+        puzzleDropDown.setSelectedIndex(0);
         
         JLabel selectPuzzleLabel = new JLabel("Select puzzle style:", JLabel.CENTER);
         selectPuzzleLabel.setLabelFor(puzzleDropDown);
@@ -142,6 +144,23 @@ public class MainWindow implements Runnable {
         
         // Create event listeners
         
+        puzzleDropDown.addItemListener((ItemEvent ie) -> {
+            switch ((String) ie.getItem()) {
+                case "Sudoku": {
+                    gridHeightLabel.setText("Grid size:");
+                    gridWidthLabel.setText("Region width:");
+                    break;
+                }
+                case "Fillomino": {
+                    gridHeightLabel.setText("Grid height:");
+                    gridWidthLabel.setText("Grid width:");
+                    break;
+                }
+                default:
+                    break;
+            }
+        });
+        
         createPuzzleButton.addActionListener((ActionEvent ae) -> {
             switch((String) puzzleDropDown.getSelectedItem()) {
                 case "Fillomino": {
@@ -169,12 +188,21 @@ public class MainWindow implements Runnable {
     }
     
     private void makeSudoku() {
-        JOptionPane.showMessageDialog(frame,
-                    "Puzzle: " + (String) puzzleDropDown.getSelectedItem() +
-                    "\nHeight: " + gridHeightSpinner.getValue() +
-                    "\nWidth: " + gridWidthSpinner.getValue() +
-                    "\nCell size: " + cellSizeSpinner.getValue(),
-                    "uwu", JOptionPane.INFORMATION_MESSAGE);
+        int gridSize = (int) gridHeightSpinner.getValue();
+        int regionWidth = (int) gridWidthSpinner.getValue();
+        int regionHeight = gridSize / regionWidth;
+        
+        if (gridSize != regionHeight * regionWidth) {
+            JOptionPane.showMessageDialog(frame, "Region width doesn't divide grid size evenly!");
+            return;
+        }
+        
+        SwingUtilities.invokeLater(new PuzzleEditorWindow(
+                new SudokuDrawer(
+                        new Sudoku(gridSize, regionHeight, regionWidth), 
+                        (int) cellSizeSpinner.getValue()
+                )
+        ));
     }
     
     public JFrame getFrame() {

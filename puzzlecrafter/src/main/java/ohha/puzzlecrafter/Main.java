@@ -1,6 +1,7 @@
 
 package ohha.puzzlecrafter;
 
+import java.util.List;
 import javax.swing.SwingUtilities;
 
 import ohha.puzzlecrafter.puzzles.*;
@@ -88,8 +89,16 @@ public class Main {
         
         /*
         Solver solver = new Solver(puzzle);
-        solver.solvePuzzle();
-        */
+        
+        List<Puzzle> solutions = solver.getSolutions();
+        if (solutions == null) {
+            System.out.println("Ei ratkaisuja");
+        } else { 
+            for (Puzzle p : solutions) {
+                System.out.println(p);
+            }
+        }
+        /**/
         
         
         SwingUtilities.invokeLater(new MainWindow());

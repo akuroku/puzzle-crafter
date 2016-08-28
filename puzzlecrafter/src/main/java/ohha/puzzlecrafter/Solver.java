@@ -33,6 +33,7 @@ public class Solver {
      */
     public Solver(Puzzle puzzle) {
         this.puzzle = puzzle;
+        this.solutions = new LinkedList<>();
     }
     
     public void setPuzzle(Puzzle puzzle) {
@@ -44,25 +45,37 @@ public class Solver {
      * Searches for all the solutions of the puzzle and stores them in the list
      * solutions.
      * The printing commands are for debugging purposes and will be removed.
+     * 
+     * @return  a list of the solutions
      */
-    public void solvePuzzle() {
+    public List<Puzzle> getSolutions() {
         solutions = new LinkedList<>();
         
-        System.out.println("Starting!");
-        iterate(new CellCoordinate(0, 0));
+        eraseNonGivens();
+        
+        iterate(puzzle.getStartingCell());
         
         if (solutions.isEmpty()) {
-            System.out.println("No solutions found");
-            return;
+            return null;
         }
-        
-        System.out.println(solutions.size() + " solutions found:");
-        for (Puzzle p : solutions) {
-            System.out.print(p);
-            System.out.println("------");
-        }
+        return solutions;
     }
     
+    
+    /**
+     * Searches for all the solutions of the puzzle, stores them in the list
+     * solutions and returns the size of that list.
+     * 
+     * @return  number of solutions found
+     */
+    public int getAmountOfSolutions() {
+        getSolutions();
+        
+        if (solutions.isEmpty()) {
+            return 0;
+        }
+        return solutions.size();
+    }
     
     /**
      * Forms the recursive backbone of the solution search algorithm.
@@ -105,5 +118,21 @@ public class Solver {
         
         // set cell back to undetermined
         puzzle.setCellUndetermined(c);
+    }
+    
+    
+    /**
+     * Sets all non-given cells undetermined so that they won't interfere with
+     * the solving process, as the solver would eventually overwrite them.
+     */
+    private void eraseNonGivens() {
+        for (CellCoordinate c : puzzle.getGrid().getListOfCellCoordinates()) {
+            if (puzzle.getGivens().contains(c)) {
+                continue;
+            }
+            if (!puzzle.getGrid().isCellUndetermined(c)) {
+                puzzle.setCellUndetermined(c);
+            }
+        }
     }
 }

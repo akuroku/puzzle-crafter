@@ -273,7 +273,27 @@ public abstract class Puzzle {
     }
     
     
-    
+    /**
+     * Returns the first cell to start the iteration from.
+     * The default implementation simply starts from the top left corner, moving
+     * row by row from top to bottom, looking for the first non-given cell.
+     * Concrete puzzle implementations may override this method to provide a
+     * more efficient sequence of cells that results in detecting futile efforts
+     * earlier and thus triggering backtracking earlier.
+     * <p>
+     * If this method is overridden, the method {@Link #getNextCell} must also
+     * be overridden to make sure that the solver tries every cell.
+     * 
+     * @return  the cell for the solver to start from
+     */
+    public CellCoordinate getStartingCell() {
+        CellCoordinate start = new CellCoordinate(0, 0);
+        
+        while (getGivens().contains(start)) {
+            start = getNextCell(start);
+        }
+        return start;
+    }
     
     /**
      * Returns the next undetermined cell for the solver to try, or null if
@@ -283,11 +303,10 @@ public abstract class Puzzle {
      * more efficient sequence of cells that results in detecting futile efforts
      * earlier and thus triggering backtracking earlier.
      * <p>
-     * The passed parameter is the coordinate of the cell where the
-     * solver last filled a value.
-     * <p>
      * It is important that any implementation makes sure all the cells of the
      * grid are covered.
+     * <p> If this method is overridden, the method {@Link #getStartingCell}
+     * must also be overridden to make sure that the solver tries every cell.
      * 
      * @param c the cell last modified by the solver
      * @return  the next cell intended for the solver to modify

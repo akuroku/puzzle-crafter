@@ -104,10 +104,9 @@ public class Grid {
      */
     public void setValueOfEdgeAt(EdgeCoordinate e, int value) {
         if (e.getOrientation() == EdgeCoordinate.HORIZONTAL_EDGE) {
-            grid[2 * e.getY() + 1][2 * e.getX()] = value;
-        }
-        if (e.getOrientation() == EdgeCoordinate.VERTICAL_EDGE) {
             grid[2 * e.getY()][2 * e.getX() + 1] = value;
+        } else if (e.getOrientation() == EdgeCoordinate.VERTICAL_EDGE) {
+            grid[2 * e.getY() + 1][2 * e.getX()] = value;
         }
     }
     
@@ -119,10 +118,10 @@ public class Grid {
      */
     public int getValueOfEdgeAt(EdgeCoordinate e) {
         if (e.getOrientation() == EdgeCoordinate.HORIZONTAL_EDGE) {
-            return grid[2 * e.getY() + 1][2 * e.getX()];
+            return grid[2 * e.getY()][2 * e.getX() + 1];
         }
         if (e.getOrientation() == EdgeCoordinate.VERTICAL_EDGE) {
-            return grid[2 * e.getY()][2 * e.getX() + 1];
+            return grid[2 * e.getY() + 1][2 * e.getX()];
         }
         return UNDETERMINED_EDGE;
     }

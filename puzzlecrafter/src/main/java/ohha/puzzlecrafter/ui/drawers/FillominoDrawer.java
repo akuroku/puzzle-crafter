@@ -14,6 +14,8 @@ import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Grid;
 import ohha.puzzlecrafter.grid.Side;
 import ohha.puzzlecrafter.puzzles.Fillomino;
+import ohha.puzzlecrafter.puzzles.Puzzle;
+import ohha.puzzlecrafter.puzzles.Sudoku;
 
 
 public class FillominoDrawer extends Drawer {
@@ -26,21 +28,10 @@ public class FillominoDrawer extends Drawer {
 
     @Override
     public void drawCell(Graphics2D g2d, CellCoordinate c) {
-        int value = getPuzzle().getGrid().getValueOfCellAt(c);
+        super.drawCell(g2d, c);
         
-        if (value != Grid.UNDETERMINED_CELL) {
-            Point bottomLeft = getBottomLeftPixelCoordinateOfGridCell(c);
-            
-            if (getPuzzle().getGivens().contains(c)) {
-                Point topLeft = getTopLeftPixelCoordinateOfGridCell(c);
-                
-                g2d.setColor(new Color(230, 230, 230));
-                g2d.fill(new Ellipse2D.Double(topLeft.x, topLeft.y, getCellSize(), getCellSize()));
-            }
-            g2d.setColor(Color.black);
-            g2d.setFont(Drawer.DEFAULT_FONT.deriveFont(getFontSizeInPoints(value)));
-        
-            g2d.drawString(value + "", bottomLeft.x, bottomLeft.y);
+        if (!getPuzzle().getGrid().isCellUndetermined(c)) {
+            drawNumber(g2d, c, getPuzzle().getGrid().getValueOfCellAt(c));
         }
     }
 
@@ -131,7 +122,11 @@ public class FillominoDrawer extends Drawer {
     public void drawVertex(Graphics2D g2d, CellCoordinate c) {
         
     }
-
+    
+    @Override
+    public Drawer duplicate(Puzzle puzzle) {
+        return new FillominoDrawer((Fillomino) puzzle, getCellSize());
+    }
     
     @Override
     public Drawer deepCopy() {

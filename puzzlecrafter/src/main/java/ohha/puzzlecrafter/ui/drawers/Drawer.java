@@ -4,9 +4,12 @@ package ohha.puzzlecrafter.ui.drawers;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import ohha.puzzlecrafter.grid.CellCoordinate;
 import ohha.puzzlecrafter.grid.Side;
 
@@ -93,7 +96,7 @@ public abstract class Drawer {
         }
         
         if (digits == 1) {
-            return cellSize;
+            return cellSize * 0.9f;
         }
         if (digits == 2) {
             return cellSize * 0.75f;
@@ -142,18 +145,46 @@ public abstract class Drawer {
     }
     
     
+    public void drawNumber(Graphics2D g2d, CellCoordinate c, int value) {
+        Point topLeft = getTopLeftPixelCoordinateOfGridCell(c);
+        String text = value + "";
+        
+        g2d.setColor(Color.black);
+        g2d.setFont(Drawer.DEFAULT_FONT.deriveFont(getFontSizeInPoints(value)));
+        
+        FontMetrics fm = g2d.getFontMetrics(g2d.getFont());
+        
+        topLeft.translate(
+                (cellSize - fm.stringWidth(text)) / 2,
+                (cellSize - fm.getHeight()) / 2 + fm.getAscent()
+        );
+        
+        g2d.drawString(value + "", topLeft.x, topLeft.y);
+    }
+    
+    
     public void drawCursor(Graphics2D g2d, CellCoordinate c) {
         g2d.setColor(new Color(200, 200, 200, 127));
         g2d.fill(new Rectangle(getTopLeftPixelCoordinateOfGridCell(c), new Dimension(cellSize, cellSize)));
     }
     
-    public abstract void drawCell(Graphics2D g2d, CellCoordinate c);
+    
+    public void drawCell(Graphics2D g2d, CellCoordinate c) {
+        if (getPuzzle().getGivens().contains(c)) {
+            Point topLeft = getTopLeftPixelCoordinateOfGridCell(c);
+
+            g2d.setColor(new Color(230, 230, 230));
+            g2d.fill(new Ellipse2D.Double(topLeft.x, topLeft.y, getCellSize(), getCellSize()));
+        }
+    };
     
     public abstract void drawInternalEdge(Graphics2D g2d, CellCoordinate c, Side side);
     
     public abstract void drawFramingEdges(Graphics2D g2d);
     
     public abstract void drawVertex(Graphics2D g2d, CellCoordinate c);
+    
+    public abstract Drawer duplicate(Puzzle puzzle);
     
     public abstract Drawer deepCopy();
 }

@@ -21,7 +21,6 @@ public class Editor extends MouseAdapter {
     public Editor(GridPane gridPane) {
         this.gridPane = gridPane;
         this.puzzle = gridPane.getDrawer().getPuzzle();
-        cursor = new CellCoordinate(0, 0);
     }
     
     
@@ -66,18 +65,9 @@ public class Editor extends MouseAdapter {
     public void mouseClicked(MouseEvent me) {
         CellCoordinate newCursor = gridPane.getDrawer().pointToGridCellCoordinate(me.getPoint());
         
-        if (newCursor == null) {
-            setCursor(null);
-            return;
-        }
+        setCursor(newCursor);
         
-        if (SwingUtilities.isLeftMouseButton(me)) {
-            if (newCursor.equals(cursor)) {
-                cycleCellAtCursor(1);
-            }
-            setCursor(newCursor);
-        } else if (SwingUtilities.isRightMouseButton(me)) {
-            setCursor(newCursor);
+        if (SwingUtilities.isRightMouseButton(me)) {
             toggleGivenStatusAtCursor();
         }
     }
@@ -88,6 +78,9 @@ public class Editor extends MouseAdapter {
     listener attached to the frame window
     */
     public void mouseWheelMoved2(MouseWheelEvent mwe) {
+        if (puzzle.getGivens().contains(cursor)) {
+            return;
+        }
         cycleCellAtCursor(mwe.getWheelRotation());
     }
 }
