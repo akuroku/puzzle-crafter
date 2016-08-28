@@ -1,7 +1,6 @@
 
 package ohha.puzzlecrafter;
 
-import java.util.List;
 import javax.swing.SwingUtilities;
 
 import ohha.puzzlecrafter.puzzles.*;
