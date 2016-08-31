@@ -19,7 +19,7 @@ public class Sudoku extends Puzzle {
     /**
      * Constructs a new empty Sudoku of the given height and width, with the
      * given partition.
-     * The {@Link ohha.puzzlecrafter.grid.Partition} supplied must be a valid
+     * The {@link ohha.puzzlecrafter.grid.Partition} supplied must be a valid
      * partition, but this is not enforced by this constructor. See the
      * Partition class for methods for enforcing it.
      * 

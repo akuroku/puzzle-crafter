@@ -3,7 +3,7 @@ package ohha.puzzlecrafter.grid;
 
 /**
  * Represents coordinates of an edge in the grid.
- * As {@Link CellCoordinate}s, they serve mostly as conceptual wrappers for
+ * As {@link CellCoordinate}s, they serve mostly as conceptual wrappers for
  * pairs of numbers, and do not hold the actual values the grid's edges may
  * have, see {@link Grid}.
  * <p>

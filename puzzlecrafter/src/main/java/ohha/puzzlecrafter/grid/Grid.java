@@ -8,8 +8,8 @@ import java.util.LinkedList;
  * This class serves as a conceptual wrapper for a two-dimensional integer array
  * containing the puzzle grid cells' values.
  * The actual state of the puzzle is completely contained in this class, as
- * {@Link <code>Cell</code>} objects only act as coordinates, completely
- * agnostic to the value the puzzle may have at its coordinate.
+ * {@link CellCoordinate} objects only act as coordinates, completely agnostic
+ * to the value the puzzle may have at its coordinate.
  * <p>
  * The cells, edges and vertices can all hold values to be interpreted by each
  * concrete puzzle style as needed. For example, Fillomino stores in edges
@@ -21,7 +21,7 @@ import java.util.LinkedList;
  * downward. These are interweaved in the actual two-dimensional integer array
  * that stores the values.
  * <p>
- * Two special integers have been reserved (see <code>{@Link Cell}</code>):
+ * Two special integers have been reserved (see {@link CellCoordinate}):
  * <ul>
  * <li> 0 always means a cell whose contents have not been determined by the
  * solver. Solved puzzles will not contain the value 0.
@@ -272,7 +272,7 @@ public class Grid {
     /**
      * Returns a list of coordinates to use when looping over every internal
      * edge of the grid.
-     * See also {@Link #isInternalEdge(EdgeCoordinate)}.
+     * See also {@link #isInternalEdge(EdgeCoordinate)}.
      * 
      * @return  a list containing coordinates for each internal edge in the grid
      */

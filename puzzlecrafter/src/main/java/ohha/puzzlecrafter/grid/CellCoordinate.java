@@ -5,7 +5,7 @@ package ohha.puzzlecrafter.grid;
  * Represents coordinates of a cell in the puzzle grid.
  * They serve as conceptual wrappers for a pair of numbers. In particular, this
  * means that they do not hold the actual values found in the puzzle's cells,
- * see {@Link <code>Grid</code>} for this.
+ * see {@link Grid} for this.
  * <p>
  * <code>CellCoordinate</code> objects are immutable, and the "modifier" methods
  * return new <code>CellCoordinate</code> objects instead of modifying the
@@ -20,7 +20,7 @@ public class CellCoordinate {
     /**
      * Constructs a new <code>CellCoordinate</code> with the given x- and
      * y-components.
-     * Although a {@Link Grid} expects non-negative components that are within
+     * Although a {@link Grid} expects non-negative components that are within
      * the bounds of the grid, this demand is not enforced in this class.
      * 
      * @param x the x-component
@@ -74,7 +74,7 @@ public class CellCoordinate {
      * Returns a new <code>CellCoordinate</code> with the specified x-component.
      * Specifically, the new <code>CellCoordinate</code> shares its y-component with
      * the <code>CellCoordinate</code> the method was called on, and the new
-     * <code>CellCoordinate</code>'s x-component is {@param newx}.
+     * <code>CellCoordinate</code>'s x-component is <code>newx</code>.
      * 
      * @param   newx   the new x-coordinate
      * @return  a new <code>CellCoordinate</code> with a switched x-component
@@ -85,9 +85,9 @@ public class CellCoordinate {
     
     /**
      * Returns a new <code>CellCoordinate</code> with the specified y-component.
-     * Specifically, the new <code>CellCoordinate</code> shares its x-component with
-     * the <code>CellCoordinate</code> the method was called on, and the new
-     * <code>CellCoordinate</code>'s y-component is {@param newy}.
+     * Specifically, the new <code>CellCoordinate</code> shares its x-component
+     * with the <code>CellCoordinate</code> the method was called on, and the
+     * new <code>CellCoordinate</code>'s y-component is <code>newy</code>.
      * 
      * @param   newy   the new y-component
      * @return  a new <code>CellCoordinate</code> with a switched y-component
@@ -102,7 +102,7 @@ public class CellCoordinate {
      * <code>CellCoordinate</code> in the given direction.
      * As this method is grid-agnostic, it lets you step outside of the grid.
      * For a method that doesn't return coordinates outside the given {@link
-     * Grid}, see {@Link ohha.puzzlecrafter.auxiliary.Neighbours].
+     * Grid}, see {@link ohha.puzzlecrafter.auxiliary.Neighbours}.
      * 
      * @param side  the direction of the wanted neighbour
      * @return      the coordinate of the neighbour
@@ -125,7 +125,7 @@ public class CellCoordinate {
     
     
     /**
-     * Returns a new {@Link EdgeCoordinate} indicating the edge on the given
+     * Returns a new {@link EdgeCoordinate} indicating the edge on the given
      * side of the cell the method is called on.
      * 
      * @param side  the side of the edge that is wanted

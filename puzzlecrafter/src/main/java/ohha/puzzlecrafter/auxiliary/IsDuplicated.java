@@ -13,10 +13,10 @@ import ohha.puzzlecrafter.grid.Partition;
 public final class IsDuplicated {
     /**
      * Returns whether a cell's value is unique on its row.
-     * Uniqueness is only tested if the cell's value is filled in (see
-     * <code>{@Link Grid}</code>). Undetermined and empty are considered non-
-     * values, and the method returns false whether the cell is the only
-     * undetermined/empty-valued cell on its row or not.
+     * Uniqueness is only tested if the cell's value is filled in (see {@link
+     * Grid}). Undetermined and empty are considered non-values, and the method
+     * returns false whether the cell is the only undetermined/empty-valued cell
+     * on its row or not.
      * 
      * @param grid  the grid to test on
      * @param c     the coordinate of the cell to test
@@ -43,8 +43,8 @@ public final class IsDuplicated {
     /**
      * Returns whether a cell's value is unique on its column.
      * Uniqueness is only tested if the cell's value is filled in (see
-     * <code>{@Link Grid}</code>). Undetermined and empty are considered non-
-     * values, and the method returns false whether the cell is the the only
+     * {@link Grid}). Undetermined and empty are considered non-values, and the
+     * method returns false whether the cell is the the only 
      * undetermined/empty-valued cell on its column or not.
      * 
      * @param grid  the grid to test on
@@ -71,14 +71,14 @@ public final class IsDuplicated {
     
     /**
      * Returns whether a cell's value is unique on its region.
-     * Uniqueness is only tested if the cell's value is filled in (see
-     * <code>{@Link Grid}</code>). Undetermined and empty are considered non-
-     * values, and the method returns false whether the cell is the the only
+     * Uniqueness is only tested if the cell's value is filled in (see {@link
+     * Grid}). Undetermined and empty are considered non-values, and the method
+     * returns false whether the cell is the the only
      * undetermined/empty-valued cell on its region or not.
      * <p>
      * The method expects to receive a valid partition (see
-     * <code>{@Link Partition}</code>), in particular it expects that the cell
-     * is contained in one of the partition's regions.
+     * {@link Partition}), in particular it expects that the cell is contained
+     * in one of the partition's regions.
      * 
      * @param grid      the grid to test on
      * @param partition the partition to test on

@@ -81,11 +81,12 @@ public abstract class Puzzle {
     /**
      * Sets the full selection of possible values the puzzle's cells may take in
      * the solved puzzle.
-     * All values but {@Link ohha.puzzlecrafter.grid.Grid#CELL_UNDETERMINED} are
+     * All values but {@link ohha.puzzlecrafter.grid.Grid#UNDETERMINED_CELL} are
      * permitted here. This restriction isn't enforced here, however.
      * <p>
-     * Compare to {@link #getCandidates(Coordinate)}, whose purpose is to supply a possibly filtered
-     * selection of possible values for a certain cell.
+     * Compare to {@link #getCandidates(CellCoordinate)}, whose purpose is to
+     * supply a possibly filtered selection of possible values for a certain
+     * cell.
      * 
      * @param values    the list of values the cells of the puzzle may take
      */
@@ -137,11 +138,11 @@ public abstract class Puzzle {
     /**
      * Fills the given value into the cell at the given coordinate.
      * This is the intended method for the solver to fill the grid with. Compare
-     * to {@link #setGiven(Coordinate, int)}, whose purpose is to insert pre-
-     * filled values as hints to the solver.
+     * to {@link #setGiven(CellCoordinate, int)}, whose purpose is to insert
+     * pre-filled values as hints to the solver.
      * <p>
      * Givens may not hold the value
-     * {@Link ohha.puzzlecrafter.grid.Grid#CELL_UNDETERMINED}. If this method is
+     * {@link ohha.puzzlecrafter.grid.Grid#UNDETERMINED_CELL}. If this method is
      * asked to set that value, it won't.
      * 
      * @param c     the coordinate of the cell to fill
@@ -159,7 +160,7 @@ public abstract class Puzzle {
      * Cycles the value in the cell at the given coordinate by the given amount.
      * This method isn't intended to be used by the automated solver, as it also
      * assigns to cells the value
-     * {@Link ohha.puzzlecrafter.grid.Grid#CELL_UNDETERMINED}.
+     * {@link ohha.puzzlecrafter.grid.Grid#UNDETERMINED_CELL}.
      * 
      * @param c         the coordinate of the cell whose value to cycle
      * @param amount    the amount of steps to cycle
@@ -180,10 +181,10 @@ public abstract class Puzzle {
     
     /**
      * Sets a cell's value to
-     * {@Link ohha.puzzlecrafter.grid.Grid#CELL_UNDETERMINED}.
+     * {@link ohha.puzzlecrafter.grid.Grid#UNDETERMINED_CELL}.
      * This method is intended to be used when the solver resets a cell's
-     * contents, instead of {@Link #setCell(Coordinate, int)} and
-     * {@Link #setGiven{Coordinate, int)}, which will fail if trying to assign
+     * contents, instead of {@link #setCell(CellCoordinate, int)} and
+     * {@link #setGiven(CellCoordinate, int)}, which will fail if trying to assign
      * an undecided.
      * 
      * @param c the cell whose value to reset.
@@ -202,7 +203,7 @@ public abstract class Puzzle {
      * will use to fill the grid with.
      * <p>
      * Givens may not hold the value
-     * {@Link ohha.puzzlecrafter.grid.Grid#CELL_UNDETERMINED}, and if this
+     * {@link ohha.puzzlecrafter.grid.Grid#UNDETERMINED_CELL}, and if this
      * method is used to set a given cell undetermined, nothing is done.
      * 
      * @param c     the coordinate of the cell to set as a given
@@ -252,7 +253,7 @@ public abstract class Puzzle {
     
     /**
      * Sets the given list of coordinates as givens for the puzzle.
-     * This method is only intended for the use of {@Link #deepCopy()}, and
+     * This method is only intended for the use of {@link #deepCopy()}, and
      * does not check whether the cells are undetermined or not.
      * 
      * @param givens    the list of coordinates to set as givens
@@ -281,7 +282,7 @@ public abstract class Puzzle {
      * more efficient sequence of cells that results in detecting futile efforts
      * earlier and thus triggering backtracking earlier.
      * <p>
-     * If this method is overridden, the method {@Link #getNextCell} must also
+     * If this method is overridden, the method {@link #getNextCell} must also
      * be overridden to make sure that the solver tries every cell.
      * 
      * @return  the cell for the solver to start from
@@ -305,7 +306,7 @@ public abstract class Puzzle {
      * <p>
      * It is important that any implementation makes sure all the cells of the
      * grid are covered.
-     * <p> If this method is overridden, the method {@Link #getStartingCell}
+     * <p> If this method is overridden, the method {@link #getStartingCell}
      * must also be overridden to make sure that the solver tries every cell.
      * 
      * @param c the cell last modified by the solver

@@ -111,7 +111,7 @@ public class Partition {
     
     /**
      * Returns a deep copy of the <code>Partition</code> it was called on, deep
-     * copying the consitutent <code>{@Link Region}</code>s.
+     * copying the consitutent <code>{@link Region}</code>s.
      * 
      * @return a deep copy of the <code>Partition</code> it was called on
      */

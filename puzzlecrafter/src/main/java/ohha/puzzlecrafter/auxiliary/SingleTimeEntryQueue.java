@@ -10,7 +10,8 @@ import java.util.LinkedList;
 /**
  * Represents a queue into which elements may be entered only once, regardless
  * of whether they've already exited the queue or not.
- * Made for use in floodfill algorithms, see <code>{@Link Fillomino}</code>.
+ * Made for use in floodfill algorithms, see
+ * {@link ohha.puzzlecrafter.puzzles.Fillomino}.
  */
 public class SingleTimeEntryQueue<T> {
     

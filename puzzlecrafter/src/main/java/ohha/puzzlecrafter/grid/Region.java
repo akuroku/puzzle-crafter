@@ -9,7 +9,7 @@ import java.util.HashSet;
  * Represents a set of cells forming a region, for example the 3x3 boxes in
  * Sudoku or the regions in Star Battle.
  * A <code>Region</code> doesn't contain any values filled into the puzzle. This
- * task is done by {@Link Grid}.
+ * task is done by {@link Grid}.
  * <p>
  * As a <code>Region</code> is a set of <code>CellCoordinate</code>s, it may not
  * contain duplicate coordinates. No demands or requirements are made on the
