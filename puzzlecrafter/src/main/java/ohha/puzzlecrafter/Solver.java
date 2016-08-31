@@ -49,15 +49,16 @@ public class Solver {
      * @return  a list of the solutions
      */
     public List<Puzzle> getSolutions() {
+        eraseNonGivens();
+        
         solutions = new LinkedList<>();
         
-        eraseNonGivens();
+        if (!isValidState()) {
+            return solutions;
+        }
         
         iterate(puzzle.getStartingCell());
         
-        if (solutions.isEmpty()) {
-            return null;
-        }
         return solutions;
     }
     
@@ -118,6 +119,27 @@ public class Solver {
         
         // set cell back to undetermined
         puzzle.setCellUndetermined(c);
+    }
+    
+    
+    /**
+     * Tests whether the puzzle's current state is valid. Meant to be used as a
+     * check before the solver starts to see if the puzzle is in a solvable
+     * state.
+     * <p>
+     * This method may return true even if the puzzle actually has no solutions,
+     * its utility is to weed out unsolvable puzzles that the solver can't
+     * detect, such as a Sudoku with two same givens on the same row.
+     * 
+     * @return false if the puzzle is obviously unsolvable, true otherwise
+     */
+    private boolean isValidState() {
+        for (CellCoordinate c : puzzle.getGivens()) {
+            if (!puzzle.isPartialSolution(c)) {
+                return false;
+            }
+        }
+        return true;
     }
     
     
